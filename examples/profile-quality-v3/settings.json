@@ -1,0 +1,15 @@
+{
+  "profiles": [
+    {
+      "id": "profile-v3",
+      "model": "gemini-3.8-flash",
+      "thinking": "MEDIUM",
+      "dimension": 1920,
+      "timeout_seconds": 20,
+      "attempts": 1,
+      "retry_mode": "budget"
+    }
+  ],
+  "repetitions": 3,
+  "workers": 1
+}

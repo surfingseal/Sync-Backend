@@ -1,0 +1,70 @@
+{
+  "schema_version": "3",
+  "scene": {
+    "category": "cityscape",
+    "description": "An illuminated city skyline at twilight with a prominent communications tower atop a mountain and warm city lights reflecting across a river.",
+    "time_of_day": "dusk",
+    "weather": "clear"
+  },
+  "visual": {
+    "brightness": 0.42,
+    "color_temperature": "neutral",
+    "dominant_colors": [
+      "#1a2e5a",
+      "#2c234d",
+      "#f5a623",
+      "#ffd15c",
+      "#121b29"
+    ],
+    "motion": "low",
+    "contrast": "high",
+    "saturation": "medium"
+  },
+  "mood": {
+    "primary": "cinematic",
+    "secondary": [
+      "dreamy",
+      "reflective",
+      "romantic"
+    ],
+    "tags": [
+      "cinematic",
+      "dreamy",
+      "reflective",
+      "romantic"
+    ],
+    "energy": 0.5,
+    "valence": 0.65
+  },
+  "music_profile": {
+    "tempo": "slow-medium",
+    "energy": 0.5,
+    "genres": [
+      "city-pop",
+      "k-indie",
+      "chillwave"
+    ],
+    "genre_candidates": [
+      {
+        "category": "city-retro",
+        "name": "city-pop",
+        "score": 0.86
+      },
+      {
+        "category": "korean",
+        "name": "k-indie",
+        "score": 0.82
+      },
+      {
+        "category": "electronic",
+        "name": "chillwave",
+        "score": 0.77
+      }
+    ]
+  },
+  "confidence": {
+    "mood": 0.88,
+    "genre": 0.84,
+    "tempo": 0.8
+  }
+}

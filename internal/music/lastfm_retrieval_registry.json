@@ -1,0 +1,4143 @@
+{
+  "version": 2,
+  "policy": {
+    "retrieval_policy_version": 1,
+    "eligible_reach": 5000,
+    "provisional_reach": 1000,
+    "minimum_sample_requested": 20,
+    "minimum_valid_unique_tracks": 15,
+    "minimum_unique_artists": 8,
+    "maximum_duplicate_ratio": 0.1,
+    "concentration_warning_above": 0.4,
+    "severe_concentration_above": 0.6
+  },
+  "genres": [
+    {
+      "canonical": "pop",
+      "tags": [
+        {
+          "canonical": "pop",
+          "mapping_type": "exact",
+          "lastfm_tag": "pop",
+          "category": "genre",
+          "retrieval_status": "eligible",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 234242,
+            "total": 2091306,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 13,
+            "max_tracks_per_artist": 3,
+            "top1_artist_share": 0.15,
+            "top3_artist_share": 0.4,
+            "source": "artifacts/lastfm-specificity-live-20261004/mappings.json",
+            "recorded_at": "2026-10-04T12:37:19.596008Z",
+            "info_recorded_at": "2026-10-04T12:37:19.401782Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_at_least_5000",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "indie-pop",
+      "tags": [
+        {
+          "canonical": "indie-pop",
+          "mapping_type": "exact",
+          "lastfm_tag": "indie pop",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "dream-pop",
+      "tags": [
+        {
+          "canonical": "dream-pop",
+          "mapping_type": "exact",
+          "lastfm_tag": "dream pop",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "synth-pop",
+      "tags": [
+        {
+          "canonical": "synth-pop",
+          "mapping_type": "exact",
+          "lastfm_tag": "synth pop",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "acoustic-pop",
+      "tags": [
+        {
+          "canonical": "acoustic-pop",
+          "mapping_type": "exact",
+          "lastfm_tag": "acoustic pop",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "chamber-pop",
+      "tags": [
+        {
+          "canonical": "chamber-pop",
+          "mapping_type": "exact",
+          "lastfm_tag": "chamber pop",
+          "category": "subgenre",
+          "retrieval_status": "eligible",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 5232,
+            "total": 23710,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 12,
+            "max_tracks_per_artist": 6,
+            "top1_artist_share": 0.3,
+            "top3_artist_share": 0.5499999999999999,
+            "source": "artifacts/lastfm-specificity-live-20261004/mappings.json",
+            "recorded_at": "2026-10-04T12:37:18.325036Z",
+            "info_recorded_at": "2026-10-04T12:37:18.131753Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_at_least_5000",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "chamber-pop",
+          "mapping_type": "orthographic_alias",
+          "lastfm_tag": "chamber-pop",
+          "category": "subgenre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 78,
+            "total": 1376,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 16,
+            "valid_received": 16,
+            "invalid_received": 0,
+            "valid_unique_tracks": 16,
+            "duplicate_ratio": 0,
+            "unique_artists": 13,
+            "max_tracks_per_artist": 3,
+            "top1_artist_share": 0.1875,
+            "top3_artist_share": 0.375,
+            "source": "artifacts/lastfm-specificity-live-20261004/mappings.json",
+            "recorded_at": "2026-10-04T12:37:18.760019Z",
+            "info_recorded_at": "2026-10-04T12:37:18.540111Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_below_1000"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "chamber-pop",
+          "mapping_type": "orthographic_alias",
+          "lastfm_tag": "chamberpop",
+          "category": "subgenre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 104,
+            "total": 266,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 5,
+            "valid_received": 5,
+            "invalid_received": 0,
+            "valid_unique_tracks": 5,
+            "duplicate_ratio": 0,
+            "unique_artists": 5,
+            "max_tracks_per_artist": 1,
+            "top1_artist_share": 0.2,
+            "top3_artist_share": 0.6000000000000001,
+            "source": "artifacts/lastfm-specificity-live-20261004/mappings.json",
+            "recorded_at": "2026-10-04T12:37:17.452198Z",
+            "info_recorded_at": "2026-10-04T12:37:17.188032Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "folk-pop",
+      "tags": [
+        {
+          "canonical": "folk-pop",
+          "mapping_type": "exact",
+          "lastfm_tag": "folk pop",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "bedroom-pop",
+      "tags": [
+        {
+          "canonical": "bedroom-pop",
+          "mapping_type": "exact",
+          "lastfm_tag": "bedroom pop",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "alternative-pop",
+      "tags": [
+        {
+          "canonical": "alternative-pop",
+          "mapping_type": "exact",
+          "lastfm_tag": "alternative pop",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "rock",
+      "tags": [
+        {
+          "canonical": "rock",
+          "mapping_type": "exact",
+          "lastfm_tag": "rock",
+          "category": "genre",
+          "retrieval_status": "eligible",
+          "retrieval_policy_version": 1,
+          "semantic_review": "metadata_reviewed_no_audio_certification",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 403391,
+            "total": 4076597,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 12,
+            "max_tracks_per_artist": 4,
+            "top1_artist_share": 0.2,
+            "top3_artist_share": 0.55,
+            "source": "current final bounded supplement tracks; reused info: artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "recorded_at": "2026-10-04T14:41:24.582532Z",
+            "info_recorded_at": "2026-10-04T07:14:18.920855Z",
+            "reused": false,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_at_least_5000",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "indie-rock",
+      "tags": [
+        {
+          "canonical": "indie-rock",
+          "mapping_type": "exact",
+          "lastfm_tag": "indie rock",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "metadata_reviewed_no_audio_certification",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 137771,
+            "total": 934890,
+            "taggings": null,
+            "sample_requested": 10,
+            "sample_received": 10,
+            "valid_received": 10,
+            "invalid_received": 0,
+            "valid_unique_tracks": 10,
+            "duplicate_ratio": 0,
+            "unique_artists": 4,
+            "max_tracks_per_artist": 7,
+            "top1_artist_share": 0.7,
+            "top3_artist_share": 0.8999999999999999,
+            "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "recorded_at": "2026-10-04T07:14:40.312423Z",
+            "info_recorded_at": "2026-10-04T07:14:40.115263Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": [
+            "artist_concentration_above_40_percent",
+            "severe_artist_concentration_above_60_percent"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": "alternative-rock",
+      "tags": [
+        {
+          "canonical": "alternative-rock",
+          "mapping_type": "exact",
+          "lastfm_tag": "alternative rock",
+          "category": "subgenre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "metadata_reviewed_no_audio_certification",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 170561,
+            "total": 1237789,
+            "taggings": null,
+            "sample_requested": 10,
+            "sample_received": 10,
+            "valid_received": 10,
+            "invalid_received": 0,
+            "valid_unique_tracks": 10,
+            "duplicate_ratio": 0,
+            "unique_artists": 6,
+            "max_tracks_per_artist": 5,
+            "top1_artist_share": 0.5,
+            "top3_artist_share": 0.7,
+            "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "recorded_at": "2026-10-04T07:14:39.459608Z",
+            "info_recorded_at": "2026-10-04T07:14:39.263553Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": [
+            "artist_concentration_above_40_percent"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": "soft-rock",
+      "tags": [
+        {
+          "canonical": "soft-rock",
+          "mapping_type": "exact",
+          "lastfm_tag": "soft rock",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "post-rock",
+      "tags": [
+        {
+          "canonical": "post-rock",
+          "mapping_type": "exact",
+          "lastfm_tag": "post rock",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "post-rock",
+          "mapping_type": "orthographic_alias",
+          "lastfm_tag": "post-rock",
+          "category": "subgenre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 10,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": true,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "blues-rock",
+      "tags": [
+        {
+          "canonical": "blues-rock",
+          "mapping_type": "exact",
+          "lastfm_tag": "blues rock",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "shoegaze",
+      "tags": [
+        {
+          "canonical": "shoegaze",
+          "mapping_type": "exact",
+          "lastfm_tag": "shoegaze",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "r\u0026b",
+      "tags": [
+        {
+          "canonical": "r\u0026b",
+          "mapping_type": "explicit_alias",
+          "lastfm_tag": "r and b",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "r\u0026b",
+          "mapping_type": "exact",
+          "lastfm_tag": "r\u0026b",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "r\u0026b",
+          "mapping_type": "explicit_alias",
+          "lastfm_tag": "rnb",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "alternative-r\u0026b",
+      "tags": [
+        {
+          "canonical": "alternative-r\u0026b",
+          "mapping_type": "exact",
+          "lastfm_tag": "alternative r\u0026b",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "alternative-r\u0026b",
+          "mapping_type": "explicit_alias",
+          "lastfm_tag": "alternative rnb",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "neo-soul",
+      "tags": [
+        {
+          "canonical": "neo-soul",
+          "mapping_type": "exact",
+          "lastfm_tag": "neo soul",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "soul",
+      "tags": [
+        {
+          "canonical": "soul",
+          "mapping_type": "exact",
+          "lastfm_tag": "soul",
+          "category": "genre",
+          "retrieval_status": "eligible",
+          "retrieval_policy_version": 1,
+          "semantic_review": "metadata_reviewed_no_audio_certification",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 102252,
+            "total": 698449,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 9,
+            "max_tracks_per_artist": 7,
+            "top1_artist_share": 0.35,
+            "top3_artist_share": 0.7,
+            "source": "current final bounded supplement tracks; reused info: artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "recorded_at": "2026-10-04T14:41:24.808924Z",
+            "info_recorded_at": "2026-10-04T07:14:21.064913Z",
+            "reused": false,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_at_least_5000",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "funk",
+      "tags": [
+        {
+          "canonical": "funk",
+          "mapping_type": "exact",
+          "lastfm_tag": "funk",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "electronic",
+      "tags": [
+        {
+          "canonical": "electronic",
+          "mapping_type": "exact",
+          "lastfm_tag": "electronic",
+          "category": "genre",
+          "retrieval_status": "eligible",
+          "retrieval_policy_version": 1,
+          "semantic_review": "metadata_reviewed_no_audio_certification",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 262839,
+            "total": 2508909,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 12,
+            "max_tracks_per_artist": 4,
+            "top1_artist_share": 0.2,
+            "top3_artist_share": 0.44999999999999996,
+            "source": "current scoped supplement tracks; reused info: artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "recorded_at": "2026-10-04T14:20:46.056965Z",
+            "info_recorded_at": "2026-10-04T07:14:19.630824Z",
+            "reused": false,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_at_least_5000",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "ambient",
+      "tags": [
+        {
+          "canonical": "ambient",
+          "mapping_type": "exact",
+          "lastfm_tag": "ambient",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "metadata_reviewed_no_audio_certification",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 150621,
+            "total": 1132233,
+            "taggings": null,
+            "sample_requested": 10,
+            "sample_received": 10,
+            "valid_received": 10,
+            "invalid_received": 0,
+            "valid_unique_tracks": 10,
+            "duplicate_ratio": 0,
+            "unique_artists": 3,
+            "max_tracks_per_artist": 8,
+            "top1_artist_share": 0.8,
+            "top3_artist_share": 1,
+            "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "recorded_at": "2026-10-04T07:14:25.117433Z",
+            "info_recorded_at": "2026-10-04T07:14:24.92346Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": [
+            "artist_concentration_above_40_percent",
+            "severe_artist_concentration_above_60_percent"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": "downtempo",
+      "tags": [
+        {
+          "canonical": "downtempo",
+          "mapping_type": "exact",
+          "lastfm_tag": "downtempo",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "house",
+      "tags": [
+        {
+          "canonical": "house",
+          "mapping_type": "exact",
+          "lastfm_tag": "House",
+          "category": "subgenre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 10,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": true,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "synthwave",
+      "tags": [
+        {
+          "canonical": "synthwave",
+          "mapping_type": "exact",
+          "lastfm_tag": "synthwave",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "chillout",
+      "tags": [
+        {
+          "canonical": "chillout",
+          "mapping_type": "exact",
+          "lastfm_tag": "chillout",
+          "category": "activity_context",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 10,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": true,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "chillwave",
+      "tags": [
+        {
+          "canonical": "chillwave",
+          "mapping_type": "exact",
+          "lastfm_tag": "chillwave",
+          "category": "genre",
+          "retrieval_status": "eligible",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 8516,
+            "total": 34792,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 14,
+            "max_tracks_per_artist": 4,
+            "top1_artist_share": 0.2,
+            "top3_artist_share": 0.44999999999999996,
+            "source": "current final bounded supplement (info and tracks); prior observation: canonical candidate only; no provider observation",
+            "recorded_at": "2026-10-04T14:41:25.622692Z",
+            "info_recorded_at": "2026-10-04T14:41:25.393274Z",
+            "reused": false,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_at_least_5000",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "drone",
+      "tags": [
+        {
+          "canonical": "drone",
+          "mapping_type": "exact",
+          "lastfm_tag": "drone",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "trip-hop",
+      "tags": [
+        {
+          "canonical": "trip-hop",
+          "mapping_type": "exact",
+          "lastfm_tag": "trip hop",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "electronica",
+      "tags": [
+        {
+          "canonical": "electronica",
+          "mapping_type": "exact",
+          "lastfm_tag": "electronica",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "metadata_reviewed_no_audio_certification",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 102613,
+            "total": 639877,
+            "taggings": null,
+            "sample_requested": 10,
+            "sample_received": 10,
+            "valid_received": 10,
+            "invalid_received": 0,
+            "valid_unique_tracks": 10,
+            "duplicate_ratio": 0,
+            "unique_artists": 6,
+            "max_tracks_per_artist": 4,
+            "top1_artist_share": 0.4,
+            "top3_artist_share": 0.7000000000000001,
+            "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "recorded_at": "2026-10-04T07:14:45.57052Z",
+            "info_recorded_at": "2026-10-04T07:14:45.357411Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "hip-hop",
+      "tags": [
+        {
+          "canonical": "hip-hop",
+          "mapping_type": "exact",
+          "lastfm_tag": "Hip-Hop",
+          "category": "genre",
+          "retrieval_status": "eligible",
+          "retrieval_policy_version": 1,
+          "semantic_review": "metadata_reviewed_no_audio_certification",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 131667,
+            "total": 923775,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 9,
+            "max_tracks_per_artist": 11,
+            "top1_artist_share": 0.55,
+            "top3_artist_share": 0.7000000000000001,
+            "source": "current scoped supplement tracks; reused info: artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "recorded_at": "2026-10-04T14:20:45.538937Z",
+            "info_recorded_at": "2026-10-04T07:14:20.342796Z",
+            "reused": false,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_at_least_5000",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": [
+            "artist_concentration_above_40_percent"
+          ]
+        },
+        {
+          "canonical": "hip-hop",
+          "mapping_type": "orthographic_alias",
+          "lastfm_tag": "hip hop",
+          "category": "genre",
+          "retrieval_status": "eligible",
+          "retrieval_policy_version": 1,
+          "semantic_review": "metadata_reviewed_no_audio_certification",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 80704,
+            "total": 467161,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 8,
+            "max_tracks_per_artist": 10,
+            "top1_artist_share": 0.5,
+            "top3_artist_share": 0.7,
+            "source": "current scoped supplement tracks; reused info: artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "recorded_at": "2026-10-04T14:20:45.740198Z",
+            "info_recorded_at": "2026-10-04T07:14:47.69869Z",
+            "reused": false,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_at_least_5000",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": [
+            "artist_concentration_above_40_percent"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": "lo-fi-hip-hop",
+      "tags": [
+        {
+          "canonical": "lo-fi-hip-hop",
+          "mapping_type": "explicit_alias",
+          "lastfm_tag": "lo-fi",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "lo-fi-hip-hop",
+          "mapping_type": "explicit_alias",
+          "lastfm_tag": "lo-fi beats",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "lo-fi-hip-hop",
+          "mapping_type": "exact",
+          "lastfm_tag": "lo-fi hip-hop",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "lo-fi-hip-hop",
+          "mapping_type": "explicit_alias",
+          "lastfm_tag": "lofi",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "chill-hop",
+      "tags": [
+        {
+          "canonical": "chill-hop",
+          "mapping_type": "exact",
+          "lastfm_tag": "chill hop",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "trap",
+      "tags": [
+        {
+          "canonical": "trap",
+          "mapping_type": "exact",
+          "lastfm_tag": "trap",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "acoustic",
+      "tags": [
+        {
+          "canonical": "acoustic",
+          "mapping_type": "exact",
+          "lastfm_tag": "acoustic",
+          "category": "style",
+          "retrieval_status": "eligible",
+          "retrieval_policy_version": 1,
+          "semantic_review": "metadata_reviewed_no_audio_certification",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 111917,
+            "total": 487037,
+            "taggings": null,
+            "sample_requested": 50,
+            "sample_received": 50,
+            "valid_received": 50,
+            "invalid_received": 0,
+            "valid_unique_tracks": 50,
+            "duplicate_ratio": 0,
+            "unique_artists": 29,
+            "max_tracks_per_artist": 15,
+            "top1_artist_share": 0.3,
+            "top3_artist_share": 0.42,
+            "source": "artifacts/lastfm-retrieval-live-20261004/evaluation.json (tracks); artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json (info)",
+            "recorded_at": "2026-10-04T07:54:05.898345Z",
+            "info_recorded_at": "2026-10-04T07:14:46.8272Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_at_least_5000",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "folk",
+      "tags": [
+        {
+          "canonical": "folk",
+          "mapping_type": "explicit_alias",
+          "lastfm_tag": "acoustic folk",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "folk",
+          "mapping_type": "exact",
+          "lastfm_tag": "folk",
+          "category": "genre",
+          "retrieval_status": "eligible",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 151602,
+            "total": 962578,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 15,
+            "max_tracks_per_artist": 3,
+            "top1_artist_share": 0.15,
+            "top3_artist_share": 0.35,
+            "source": "artifacts/lastfm-specificity-live-20261004/mappings.json",
+            "recorded_at": "2026-10-04T12:37:19.181878Z",
+            "info_recorded_at": "2026-10-04T12:37:18.989701Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_at_least_5000",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "indie-folk",
+      "tags": [
+        {
+          "canonical": "indie-folk",
+          "mapping_type": "exact",
+          "lastfm_tag": "indie folk",
+          "category": "subgenre",
+          "retrieval_status": "eligible",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 17134,
+            "total": 81474,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 15,
+            "max_tracks_per_artist": 4,
+            "top1_artist_share": 0.2,
+            "top3_artist_share": 0.4,
+            "source": "artifacts/lastfm-specificity-live-20261004/mappings.json",
+            "recorded_at": "2026-10-04T12:37:17.904228Z",
+            "info_recorded_at": "2026-10-04T12:37:17.712194Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_at_least_5000",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "indie-folk",
+          "mapping_type": "orthographic_alias",
+          "lastfm_tag": "indie-folk",
+          "category": "subgenre",
+          "retrieval_status": "provisional",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 1133,
+            "total": 5101,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 19,
+            "max_tracks_per_artist": 2,
+            "top1_artist_share": 0.1,
+            "top3_artist_share": 0.2,
+            "source": "artifacts/lastfm-specificity-live-20261004/mappings.json",
+            "recorded_at": "2026-10-04T12:37:17.904184Z",
+            "info_recorded_at": "2026-10-04T12:37:17.712274Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_between_1000_and_4999",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "indie-folk",
+          "mapping_type": "orthographic_alias",
+          "lastfm_tag": "indiefolk",
+          "category": "subgenre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 228,
+            "total": 658,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 18,
+            "max_tracks_per_artist": 3,
+            "top1_artist_share": 0.15,
+            "top3_artist_share": 0.25,
+            "source": "artifacts/lastfm-specificity-live-20261004/mappings.json",
+            "recorded_at": "2026-10-04T12:37:18.309732Z",
+            "info_recorded_at": "2026-10-04T12:37:18.117677Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_below_1000"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "singer-songwriter",
+      "tags": [
+        {
+          "canonical": "singer-songwriter",
+          "mapping_type": "exact",
+          "lastfm_tag": "singer-songwriter",
+          "category": "style",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "metadata_reviewed_no_audio_certification",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 110192,
+            "total": 860607,
+            "taggings": null,
+            "sample_requested": 10,
+            "sample_received": 10,
+            "valid_received": 10,
+            "invalid_received": 0,
+            "valid_unique_tracks": 10,
+            "duplicate_ratio": 0,
+            "unique_artists": 5,
+            "max_tracks_per_artist": 5,
+            "top1_artist_share": 0.5,
+            "top3_artist_share": 0.7999999999999999,
+            "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "recorded_at": "2026-10-04T07:14:42.660899Z",
+            "info_recorded_at": "2026-10-04T07:14:42.455753Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": [
+            "artist_concentration_above_40_percent"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": "americana",
+      "tags": [
+        {
+          "canonical": "americana",
+          "mapping_type": "exact",
+          "lastfm_tag": "americana",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "jazz",
+      "tags": [
+        {
+          "canonical": "jazz",
+          "mapping_type": "exact",
+          "lastfm_tag": "jazz",
+          "category": "genre",
+          "retrieval_status": "eligible",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 150164,
+            "total": 1199981,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 13,
+            "max_tracks_per_artist": 4,
+            "top1_artist_share": 0.2,
+            "top3_artist_share": 0.4,
+            "source": "artifacts/lastfm-specificity-live-20261004/mappings.json",
+            "recorded_at": "2026-10-04T12:37:17.453738Z",
+            "info_recorded_at": "2026-10-04T12:37:17.187957Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_at_least_5000",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "jazz",
+          "mapping_type": "explicit_alias",
+          "lastfm_tag": "urban jazz",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "smooth-jazz",
+      "tags": [
+        {
+          "canonical": "smooth-jazz",
+          "mapping_type": "exact",
+          "lastfm_tag": "smooth jazz",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "acoustic-jazz",
+      "tags": [
+        {
+          "canonical": "acoustic-jazz",
+          "mapping_type": "exact",
+          "lastfm_tag": "acoustic jazz",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "bossa-nova",
+      "tags": [
+        {
+          "canonical": "bossa-nova",
+          "mapping_type": "exact",
+          "lastfm_tag": "bossa nova",
+          "category": "subgenre",
+          "retrieval_status": "eligible",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 20193,
+            "total": 71286,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 12,
+            "max_tracks_per_artist": 4,
+            "top1_artist_share": 0.2,
+            "top3_artist_share": 0.44999999999999996,
+            "source": "artifacts/lastfm-specificity-live-20261004/mappings.json",
+            "recorded_at": "2026-10-04T12:37:19.597052Z",
+            "info_recorded_at": "2026-10-04T12:37:19.401783Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_at_least_5000",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "bossa-nova",
+          "mapping_type": "orthographic_alias",
+          "lastfm_tag": "bossa-nova",
+          "category": "subgenre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 269,
+            "total": 556,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 19,
+            "max_tracks_per_artist": 2,
+            "top1_artist_share": 0.1,
+            "top3_artist_share": 0.2,
+            "source": "artifacts/lastfm-specificity-live-20261004/mappings.json",
+            "recorded_at": "2026-10-04T12:37:19.171581Z",
+            "info_recorded_at": "2026-10-04T12:37:18.977518Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_below_1000"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "bossa-nova",
+          "mapping_type": "orthographic_alias",
+          "lastfm_tag": "bossanova",
+          "category": "subgenre",
+          "retrieval_status": "provisional",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 1511,
+            "total": 3407,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 5,
+            "max_tracks_per_artist": 14,
+            "top1_artist_share": 0.7,
+            "top3_artist_share": 0.9,
+            "source": "artifacts/lastfm-specificity-live-20261004/mappings.json",
+            "recorded_at": "2026-10-04T12:37:18.76028Z",
+            "info_recorded_at": "2026-10-04T12:37:18.565169Z",
+            "reused": true,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_between_1000_and_4999",
+            "unique_artists_below_8",
+            "severe_concentration_limits_to_provisional",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": [
+            "artist_concentration_above_40_percent",
+            "severe_artist_concentration_above_60_percent"
+          ]
+        }
+      ]
+    },
+    {
+      "canonical": "jazz-fusion",
+      "tags": [
+        {
+          "canonical": "jazz-fusion",
+          "mapping_type": "exact",
+          "lastfm_tag": "jazz fusion",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "classical",
+      "tags": [
+        {
+          "canonical": "classical",
+          "mapping_type": "exact",
+          "lastfm_tag": "Classical",
+          "category": "genre",
+          "retrieval_status": "eligible",
+          "retrieval_policy_version": 1,
+          "semantic_review": "metadata_reviewed_no_audio_certification",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 75045,
+            "total": 581633,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 14,
+            "max_tracks_per_artist": 3,
+            "top1_artist_share": 0.15,
+            "top3_artist_share": 0.4,
+            "source": "current scoped supplement tracks; reused info: artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "recorded_at": "2026-10-04T14:20:45.30667Z",
+            "info_recorded_at": "2026-10-04T07:14:22.565405Z",
+            "reused": false,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_at_least_5000",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "neo-classical",
+      "tags": [
+        {
+          "canonical": "neo-classical",
+          "mapping_type": "explicit_alias",
+          "lastfm_tag": "modern classical",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "neo-classical",
+          "mapping_type": "exact",
+          "lastfm_tag": "neo-classical",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "chamber-classical",
+      "tags": [
+        {
+          "canonical": "chamber-classical",
+          "mapping_type": "exact",
+          "lastfm_tag": "chamber classical",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "cinematic",
+      "tags": [
+        {
+          "canonical": "cinematic",
+          "mapping_type": "exact",
+          "lastfm_tag": "cinematic",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "soundtrack",
+      "tags": [
+        {
+          "canonical": "soundtrack",
+          "mapping_type": "exact",
+          "lastfm_tag": "Soundtrack",
+          "category": "genre",
+          "retrieval_status": "eligible",
+          "retrieval_policy_version": 1,
+          "semantic_review": "metadata_reviewed_no_audio_certification",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 86000,
+            "total": 579250,
+            "taggings": null,
+            "sample_requested": 20,
+            "sample_received": 20,
+            "valid_received": 20,
+            "invalid_received": 0,
+            "valid_unique_tracks": 20,
+            "duplicate_ratio": 0,
+            "unique_artists": 19,
+            "max_tracks_per_artist": 2,
+            "top1_artist_share": 0.1,
+            "top3_artist_share": 0.2,
+            "source": "current final bounded supplement tracks; reused info: artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "recorded_at": "2026-10-04T14:41:25.872268Z",
+            "info_recorded_at": "2026-10-04T07:14:26.39063Z",
+            "reused": false,
+            "info_success": true,
+            "tracks_success": true
+          },
+          "decision_reasons": [
+            "reach_at_least_5000",
+            "artist_diversity_sufficient",
+            "requested_sample_at_least_20",
+            "valid_unique_tracks_at_least_15",
+            "duplicate_ratio_within_limit"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "soundtrack",
+          "mapping_type": "explicit_alias",
+          "lastfm_tag": "western soundtrack",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "cinematic-ambient",
+      "tags": [
+        {
+          "canonical": "cinematic-ambient",
+          "mapping_type": "exact",
+          "lastfm_tag": "cinematic ambient",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "orchestral",
+      "tags": [
+        {
+          "canonical": "orchestral",
+          "mapping_type": "exact",
+          "lastfm_tag": "orchestral",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "k-pop",
+      "tags": [
+        {
+          "canonical": "k-pop",
+          "mapping_type": "exact",
+          "lastfm_tag": "k-pop",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "k-indie",
+      "tags": [
+        {
+          "canonical": "k-indie",
+          "mapping_type": "exact",
+          "lastfm_tag": "k-indie",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 657,
+            "total": 2468,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "current final bounded supplement (info and tracks); prior observation: canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "2026-10-04T14:41:25.198056Z",
+            "reused": false,
+            "info_success": true,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "top_tracks_success_not_established",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "korean-ballad",
+      "tags": [
+        {
+          "canonical": "korean-ballad",
+          "mapping_type": "exact",
+          "lastfm_tag": "korean ballad",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "korean-r\u0026b",
+      "tags": [
+        {
+          "canonical": "korean-r\u0026b",
+          "mapping_type": "exact",
+          "lastfm_tag": "korean r\u0026b",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        },
+        {
+          "canonical": "korean-r\u0026b",
+          "mapping_type": "explicit_alias",
+          "lastfm_tag": "korean rnb",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "city-pop",
+      "tags": [
+        {
+          "canonical": "city-pop",
+          "mapping_type": "exact",
+          "lastfm_tag": "city pop",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": 902,
+            "total": 3157,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "current final bounded supplement (info and tracks); prior observation: canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "2026-10-04T14:41:25.002908Z",
+            "reused": false,
+            "info_success": true,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "top_tracks_success_not_established",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "retro-pop",
+      "tags": [
+        {
+          "canonical": "retro-pop",
+          "mapping_type": "exact",
+          "lastfm_tag": "retro pop",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "disco",
+      "tags": [
+        {
+          "canonical": "disco",
+          "mapping_type": "exact",
+          "lastfm_tag": "disco",
+          "category": "genre",
+          "retrieval_status": "insufficient_evidence",
+          "retrieval_policy_version": 1,
+          "semantic_review": "not_performed",
+          "human_review": "not_performed",
+          "evidence": {
+            "reach": null,
+            "total": null,
+            "taggings": null,
+            "sample_requested": 0,
+            "sample_received": 0,
+            "valid_received": 0,
+            "invalid_received": 0,
+            "valid_unique_tracks": 0,
+            "duplicate_ratio": 0,
+            "unique_artists": 0,
+            "max_tracks_per_artist": 0,
+            "top1_artist_share": 0,
+            "top3_artist_share": 0,
+            "source": "canonical candidate only; no provider observation",
+            "recorded_at": "",
+            "info_recorded_at": "",
+            "reused": false,
+            "info_success": false,
+            "tracks_success": false
+          },
+          "decision_reasons": [
+            "info_success_not_established",
+            "top_tracks_success_not_established",
+            "reach_missing",
+            "requested_sample_below_20",
+            "valid_unique_tracks_below_15"
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "canonical": "other",
+      "tags": []
+    },
+    {
+      "canonical": "unknown",
+      "tags": []
+    }
+  ],
+  "families": [
+    {
+      "family": "pop",
+      "primary": {
+        "canonical": "pop",
+        "mapping_type": "family_fallback",
+        "lastfm_tag": "pop",
+        "category": "genre",
+        "retrieval_status": "eligible",
+        "retrieval_policy_version": 1,
+        "semantic_review": "not_performed",
+        "human_review": "not_performed",
+        "evidence": {
+          "reach": 234242,
+          "total": 2091306,
+          "taggings": null,
+          "sample_requested": 20,
+          "sample_received": 20,
+          "valid_received": 20,
+          "invalid_received": 0,
+          "valid_unique_tracks": 20,
+          "duplicate_ratio": 0,
+          "unique_artists": 13,
+          "max_tracks_per_artist": 3,
+          "top1_artist_share": 0.15,
+          "top3_artist_share": 0.4,
+          "source": "artifacts/lastfm-specificity-live-20261004/mappings.json",
+          "recorded_at": "2026-10-04T12:37:19.596008Z",
+          "info_recorded_at": "2026-10-04T12:37:19.401782Z",
+          "reused": true,
+          "info_success": true,
+          "tracks_success": true
+        },
+        "decision_reasons": [
+          "reach_at_least_5000",
+          "artist_diversity_sufficient",
+          "requested_sample_at_least_20",
+          "valid_unique_tracks_at_least_15",
+          "duplicate_ratio_within_limit"
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "family": "rock",
+      "primary": {
+        "canonical": "rock",
+        "mapping_type": "family_fallback",
+        "lastfm_tag": "rock",
+        "category": "genre",
+        "retrieval_status": "eligible",
+        "retrieval_policy_version": 1,
+        "semantic_review": "metadata_reviewed_no_audio_certification",
+        "human_review": "not_performed",
+        "evidence": {
+          "reach": 403391,
+          "total": 4076597,
+          "taggings": null,
+          "sample_requested": 20,
+          "sample_received": 20,
+          "valid_received": 20,
+          "invalid_received": 0,
+          "valid_unique_tracks": 20,
+          "duplicate_ratio": 0,
+          "unique_artists": 12,
+          "max_tracks_per_artist": 4,
+          "top1_artist_share": 0.2,
+          "top3_artist_share": 0.55,
+          "source": "current final bounded supplement tracks; reused info: artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "recorded_at": "2026-10-04T14:41:24.582532Z",
+          "info_recorded_at": "2026-10-04T07:14:18.920855Z",
+          "reused": false,
+          "info_success": true,
+          "tracks_success": true
+        },
+        "decision_reasons": [
+          "reach_at_least_5000",
+          "artist_diversity_sufficient",
+          "requested_sample_at_least_20",
+          "valid_unique_tracks_at_least_15",
+          "duplicate_ratio_within_limit"
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "family": "rnb-soul",
+      "primary": {
+        "canonical": "rnb-soul",
+        "mapping_type": "family_fallback",
+        "lastfm_tag": "soul",
+        "category": "genre",
+        "retrieval_status": "eligible",
+        "retrieval_policy_version": 1,
+        "semantic_review": "metadata_reviewed_no_audio_certification",
+        "human_review": "not_performed",
+        "evidence": {
+          "reach": 102252,
+          "total": 698449,
+          "taggings": null,
+          "sample_requested": 20,
+          "sample_received": 20,
+          "valid_received": 20,
+          "invalid_received": 0,
+          "valid_unique_tracks": 20,
+          "duplicate_ratio": 0,
+          "unique_artists": 9,
+          "max_tracks_per_artist": 7,
+          "top1_artist_share": 0.35,
+          "top3_artist_share": 0.7,
+          "source": "current final bounded supplement tracks; reused info: artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "recorded_at": "2026-10-04T14:41:24.808924Z",
+          "info_recorded_at": "2026-10-04T07:14:21.064913Z",
+          "reused": false,
+          "info_success": true,
+          "tracks_success": true
+        },
+        "decision_reasons": [
+          "reach_at_least_5000",
+          "artist_diversity_sufficient",
+          "requested_sample_at_least_20",
+          "valid_unique_tracks_at_least_15",
+          "duplicate_ratio_within_limit"
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "family": "electronic",
+      "primary": {
+        "canonical": "electronic",
+        "mapping_type": "family_fallback",
+        "lastfm_tag": "electronic",
+        "category": "genre",
+        "retrieval_status": "eligible",
+        "retrieval_policy_version": 1,
+        "semantic_review": "metadata_reviewed_no_audio_certification",
+        "human_review": "not_performed",
+        "evidence": {
+          "reach": 262839,
+          "total": 2508909,
+          "taggings": null,
+          "sample_requested": 20,
+          "sample_received": 20,
+          "valid_received": 20,
+          "invalid_received": 0,
+          "valid_unique_tracks": 20,
+          "duplicate_ratio": 0,
+          "unique_artists": 12,
+          "max_tracks_per_artist": 4,
+          "top1_artist_share": 0.2,
+          "top3_artist_share": 0.44999999999999996,
+          "source": "current scoped supplement tracks; reused info: artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "recorded_at": "2026-10-04T14:20:46.056965Z",
+          "info_recorded_at": "2026-10-04T07:14:19.630824Z",
+          "reused": false,
+          "info_success": true,
+          "tracks_success": true
+        },
+        "decision_reasons": [
+          "reach_at_least_5000",
+          "artist_diversity_sufficient",
+          "requested_sample_at_least_20",
+          "valid_unique_tracks_at_least_15",
+          "duplicate_ratio_within_limit"
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "family": "hip-hop",
+      "primary": {
+        "canonical": "hip-hop",
+        "mapping_type": "family_fallback",
+        "lastfm_tag": "Hip-Hop",
+        "category": "genre",
+        "retrieval_status": "eligible",
+        "retrieval_policy_version": 1,
+        "semantic_review": "metadata_reviewed_no_audio_certification",
+        "human_review": "not_performed",
+        "evidence": {
+          "reach": 131667,
+          "total": 923775,
+          "taggings": null,
+          "sample_requested": 20,
+          "sample_received": 20,
+          "valid_received": 20,
+          "invalid_received": 0,
+          "valid_unique_tracks": 20,
+          "duplicate_ratio": 0,
+          "unique_artists": 9,
+          "max_tracks_per_artist": 11,
+          "top1_artist_share": 0.55,
+          "top3_artist_share": 0.7000000000000001,
+          "source": "current scoped supplement tracks; reused info: artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "recorded_at": "2026-10-04T14:20:45.538937Z",
+          "info_recorded_at": "2026-10-04T07:14:20.342796Z",
+          "reused": false,
+          "info_success": true,
+          "tracks_success": true
+        },
+        "decision_reasons": [
+          "reach_at_least_5000",
+          "artist_diversity_sufficient",
+          "requested_sample_at_least_20",
+          "valid_unique_tracks_at_least_15",
+          "duplicate_ratio_within_limit"
+        ],
+        "warnings": [
+          "artist_concentration_above_40_percent"
+        ]
+      }
+    },
+    {
+      "family": "acoustic-folk",
+      "primary": {
+        "canonical": "acoustic-folk",
+        "mapping_type": "family_fallback",
+        "lastfm_tag": "folk",
+        "category": "genre",
+        "retrieval_status": "eligible",
+        "retrieval_policy_version": 1,
+        "semantic_review": "not_performed",
+        "human_review": "not_performed",
+        "evidence": {
+          "reach": 151602,
+          "total": 962578,
+          "taggings": null,
+          "sample_requested": 20,
+          "sample_received": 20,
+          "valid_received": 20,
+          "invalid_received": 0,
+          "valid_unique_tracks": 20,
+          "duplicate_ratio": 0,
+          "unique_artists": 15,
+          "max_tracks_per_artist": 3,
+          "top1_artist_share": 0.15,
+          "top3_artist_share": 0.35,
+          "source": "artifacts/lastfm-specificity-live-20261004/mappings.json",
+          "recorded_at": "2026-10-04T12:37:19.181878Z",
+          "info_recorded_at": "2026-10-04T12:37:18.989701Z",
+          "reused": true,
+          "info_success": true,
+          "tracks_success": true
+        },
+        "decision_reasons": [
+          "reach_at_least_5000",
+          "artist_diversity_sufficient",
+          "requested_sample_at_least_20",
+          "valid_unique_tracks_at_least_15",
+          "duplicate_ratio_within_limit"
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "family": "jazz",
+      "primary": null
+    },
+    {
+      "family": "classical",
+      "primary": {
+        "canonical": "classical",
+        "mapping_type": "family_fallback",
+        "lastfm_tag": "Classical",
+        "category": "genre",
+        "retrieval_status": "eligible",
+        "retrieval_policy_version": 1,
+        "semantic_review": "metadata_reviewed_no_audio_certification",
+        "human_review": "not_performed",
+        "evidence": {
+          "reach": 75045,
+          "total": 581633,
+          "taggings": null,
+          "sample_requested": 20,
+          "sample_received": 20,
+          "valid_received": 20,
+          "invalid_received": 0,
+          "valid_unique_tracks": 20,
+          "duplicate_ratio": 0,
+          "unique_artists": 14,
+          "max_tracks_per_artist": 3,
+          "top1_artist_share": 0.15,
+          "top3_artist_share": 0.4,
+          "source": "current scoped supplement tracks; reused info: artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "recorded_at": "2026-10-04T14:20:45.30667Z",
+          "info_recorded_at": "2026-10-04T07:14:22.565405Z",
+          "reused": false,
+          "info_success": true,
+          "tracks_success": true
+        },
+        "decision_reasons": [
+          "reach_at_least_5000",
+          "artist_diversity_sufficient",
+          "requested_sample_at_least_20",
+          "valid_unique_tracks_at_least_15",
+          "duplicate_ratio_within_limit"
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "family": "cinematic",
+      "primary": null
+    },
+    {
+      "family": "korean",
+      "primary": null
+    },
+    {
+      "family": "city-retro",
+      "primary": null
+    },
+    {
+      "family": "other",
+      "primary": null
+    }
+  ],
+  "auxiliary_moods": [
+    {
+      "lastfm_tag": "aggressive",
+      "category": "mood",
+      "retrieval_status": "insufficient_evidence",
+      "retrieval_policy_version": 1,
+      "semantic_review": "metadata_reviewed_no_audio_certification",
+      "human_review": "not_performed",
+      "evidence": {
+        "reach": 3584,
+        "total": 16587,
+        "taggings": null,
+        "sample_requested": 10,
+        "sample_received": 10,
+        "valid_received": 10,
+        "invalid_received": 0,
+        "valid_unique_tracks": 10,
+        "duplicate_ratio": 0,
+        "unique_artists": 9,
+        "max_tracks_per_artist": 2,
+        "top1_artist_share": 0.2,
+        "top3_artist_share": 0.4,
+        "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+        "recorded_at": "2026-10-04T07:14:37.286985Z",
+        "info_recorded_at": "2026-10-04T07:14:37.08904Z",
+        "reused": true,
+        "info_success": true,
+        "tracks_success": true
+      },
+      "decision_reasons": [
+        "requested_sample_below_20",
+        "valid_unique_tracks_below_15"
+      ],
+      "warnings": []
+    },
+    {
+      "lastfm_tag": "atmospheric",
+      "category": "mood",
+      "retrieval_status": "insufficient_evidence",
+      "retrieval_policy_version": 1,
+      "semantic_review": "metadata_reviewed_no_audio_certification",
+      "human_review": "not_performed",
+      "evidence": {
+        "reach": 28966,
+        "total": 160946,
+        "taggings": null,
+        "sample_requested": 10,
+        "sample_received": 10,
+        "valid_received": 10,
+        "invalid_received": 0,
+        "valid_unique_tracks": 10,
+        "duplicate_ratio": 0,
+        "unique_artists": 10,
+        "max_tracks_per_artist": 1,
+        "top1_artist_share": 0.1,
+        "top3_artist_share": 0.30000000000000004,
+        "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+        "recorded_at": "2026-10-04T07:14:38.009707Z",
+        "info_recorded_at": "2026-10-04T07:14:37.810323Z",
+        "reused": true,
+        "info_success": true,
+        "tracks_success": true
+      },
+      "decision_reasons": [
+        "requested_sample_below_20",
+        "valid_unique_tracks_below_15"
+      ],
+      "warnings": []
+    },
+    {
+      "lastfm_tag": "calm",
+      "category": "mood",
+      "retrieval_status": "insufficient_evidence",
+      "retrieval_policy_version": 1,
+      "semantic_review": "metadata_reviewed_no_audio_certification",
+      "human_review": "not_performed",
+      "evidence": {
+        "reach": 7698,
+        "total": 37966,
+        "taggings": null,
+        "sample_requested": 10,
+        "sample_received": 10,
+        "valid_received": 10,
+        "invalid_received": 0,
+        "valid_unique_tracks": 10,
+        "duplicate_ratio": 0,
+        "unique_artists": 9,
+        "max_tracks_per_artist": 2,
+        "top1_artist_share": 0.2,
+        "top3_artist_share": 0.4,
+        "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+        "recorded_at": "2026-10-04T07:14:32.748438Z",
+        "info_recorded_at": "2026-10-04T07:14:32.396636Z",
+        "reused": true,
+        "info_success": true,
+        "tracks_success": true
+      },
+      "decision_reasons": [
+        "requested_sample_below_20",
+        "valid_unique_tracks_below_15"
+      ],
+      "warnings": []
+    },
+    {
+      "lastfm_tag": "dark",
+      "category": "mood",
+      "retrieval_status": "insufficient_evidence",
+      "retrieval_policy_version": 1,
+      "semantic_review": "metadata_reviewed_no_audio_certification",
+      "human_review": "not_performed",
+      "evidence": {
+        "reach": 22832,
+        "total": 102781,
+        "taggings": null,
+        "sample_requested": 10,
+        "sample_received": 10,
+        "valid_received": 10,
+        "invalid_received": 0,
+        "valid_unique_tracks": 10,
+        "duplicate_ratio": 0,
+        "unique_artists": 9,
+        "max_tracks_per_artist": 2,
+        "top1_artist_share": 0.2,
+        "top3_artist_share": 0.4,
+        "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+        "recorded_at": "2026-10-04T07:14:33.514632Z",
+        "info_recorded_at": "2026-10-04T07:14:33.31221Z",
+        "reused": true,
+        "info_success": true,
+        "tracks_success": true
+      },
+      "decision_reasons": [
+        "requested_sample_below_20",
+        "valid_unique_tracks_below_15"
+      ],
+      "warnings": []
+    },
+    {
+      "lastfm_tag": "dreamy",
+      "category": "mood",
+      "retrieval_status": "eligible",
+      "retrieval_policy_version": 1,
+      "semantic_review": "metadata_reviewed_no_audio_certification",
+      "human_review": "not_performed",
+      "evidence": {
+        "reach": 13161,
+        "total": 65267,
+        "taggings": null,
+        "sample_requested": 50,
+        "sample_received": 50,
+        "valid_received": 50,
+        "invalid_received": 0,
+        "valid_unique_tracks": 50,
+        "duplicate_ratio": 0,
+        "unique_artists": 33,
+        "max_tracks_per_artist": 9,
+        "top1_artist_share": 0.18,
+        "top3_artist_share": 0.33999999999999997,
+        "source": "artifacts/lastfm-retrieval-live-20261004/evaluation.json (tracks); artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json (info)",
+        "recorded_at": "2026-10-04T07:54:05.898326Z",
+        "info_recorded_at": "2026-10-04T07:14:27.850635Z",
+        "reused": true,
+        "info_success": true,
+        "tracks_success": true
+      },
+      "decision_reasons": [
+        "reach_at_least_5000",
+        "artist_diversity_sufficient",
+        "requested_sample_at_least_20",
+        "valid_unique_tracks_at_least_15",
+        "duplicate_ratio_within_limit"
+      ],
+      "warnings": []
+    },
+    {
+      "lastfm_tag": "energetic",
+      "category": "mood",
+      "retrieval_status": "insufficient_evidence",
+      "retrieval_policy_version": 1,
+      "semantic_review": "metadata_reviewed_no_audio_certification",
+      "human_review": "not_performed",
+      "evidence": {
+        "reach": 6578,
+        "total": 38186,
+        "taggings": null,
+        "sample_requested": 10,
+        "sample_received": 10,
+        "valid_received": 10,
+        "invalid_received": 0,
+        "valid_unique_tracks": 10,
+        "duplicate_ratio": 0,
+        "unique_artists": 9,
+        "max_tracks_per_artist": 2,
+        "top1_artist_share": 0.2,
+        "top3_artist_share": 0.4,
+        "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+        "recorded_at": "2026-10-04T07:14:35.710994Z",
+        "info_recorded_at": "2026-10-04T07:14:35.518087Z",
+        "reused": true,
+        "info_success": true,
+        "tracks_success": true
+      },
+      "decision_reasons": [
+        "requested_sample_below_20",
+        "valid_unique_tracks_below_15"
+      ],
+      "warnings": []
+    },
+    {
+      "lastfm_tag": "happy",
+      "category": "mood",
+      "retrieval_status": "insufficient_evidence",
+      "retrieval_policy_version": 1,
+      "semantic_review": "metadata_reviewed_no_audio_certification",
+      "human_review": "not_performed",
+      "evidence": {
+        "reach": 18969,
+        "total": 79562,
+        "taggings": null,
+        "sample_requested": 10,
+        "sample_received": 10,
+        "valid_received": 10,
+        "invalid_received": 0,
+        "valid_unique_tracks": 10,
+        "duplicate_ratio": 0,
+        "unique_artists": 10,
+        "max_tracks_per_artist": 1,
+        "top1_artist_share": 0.1,
+        "top3_artist_share": 0.30000000000000004,
+        "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+        "recorded_at": "2026-10-04T07:14:30.248945Z",
+        "info_recorded_at": "2026-10-04T07:14:30.05534Z",
+        "reused": true,
+        "info_success": true,
+        "tracks_success": true
+      },
+      "decision_reasons": [
+        "requested_sample_below_20",
+        "valid_unique_tracks_below_15"
+      ],
+      "warnings": []
+    },
+    {
+      "lastfm_tag": "melancholic",
+      "category": "mood",
+      "retrieval_status": "insufficient_evidence",
+      "retrieval_policy_version": 1,
+      "semantic_review": "metadata_reviewed_no_audio_certification",
+      "human_review": "not_performed",
+      "evidence": {
+        "reach": 23034,
+        "total": 122360,
+        "taggings": null,
+        "sample_requested": 10,
+        "sample_received": 10,
+        "valid_received": 10,
+        "invalid_received": 0,
+        "valid_unique_tracks": 10,
+        "duplicate_ratio": 0,
+        "unique_artists": 9,
+        "max_tracks_per_artist": 2,
+        "top1_artist_share": 0.2,
+        "top3_artist_share": 0.4,
+        "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+        "recorded_at": "2026-10-04T07:14:28.775248Z",
+        "info_recorded_at": "2026-10-04T07:14:28.579959Z",
+        "reused": true,
+        "info_success": true,
+        "tracks_success": true
+      },
+      "decision_reasons": [
+        "requested_sample_below_20",
+        "valid_unique_tracks_below_15"
+      ],
+      "warnings": []
+    },
+    {
+      "lastfm_tag": "mellow",
+      "category": "mood",
+      "retrieval_status": "insufficient_evidence",
+      "retrieval_policy_version": 1,
+      "semantic_review": "metadata_reviewed_no_audio_certification",
+      "human_review": "not_performed",
+      "evidence": {
+        "reach": 37866,
+        "total": 241033,
+        "taggings": null,
+        "sample_requested": 10,
+        "sample_received": 10,
+        "valid_received": 10,
+        "invalid_received": 0,
+        "valid_unique_tracks": 10,
+        "duplicate_ratio": 0,
+        "unique_artists": 7,
+        "max_tracks_per_artist": 2,
+        "top1_artist_share": 0.2,
+        "top3_artist_share": 0.6000000000000001,
+        "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+        "recorded_at": "2026-10-04T07:14:31.765307Z",
+        "info_recorded_at": "2026-10-04T07:14:31.568761Z",
+        "reused": true,
+        "info_success": true,
+        "tracks_success": true
+      },
+      "decision_reasons": [
+        "requested_sample_below_20",
+        "valid_unique_tracks_below_15"
+      ],
+      "warnings": []
+    },
+    {
+      "lastfm_tag": "nostalgic",
+      "category": "mood",
+      "retrieval_status": "insufficient_evidence",
+      "retrieval_policy_version": 1,
+      "semantic_review": "metadata_reviewed_no_audio_certification",
+      "human_review": "not_performed",
+      "evidence": {
+        "reach": 4087,
+        "total": 16144,
+        "taggings": null,
+        "sample_requested": 10,
+        "sample_received": 10,
+        "valid_received": 10,
+        "invalid_received": 0,
+        "valid_unique_tracks": 10,
+        "duplicate_ratio": 0,
+        "unique_artists": 10,
+        "max_tracks_per_artist": 1,
+        "top1_artist_share": 0.1,
+        "top3_artist_share": 0.30000000000000004,
+        "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+        "recorded_at": "2026-10-04T07:14:34.991179Z",
+        "info_recorded_at": "2026-10-04T07:14:34.794481Z",
+        "reused": true,
+        "info_success": true,
+        "tracks_success": true
+      },
+      "decision_reasons": [
+        "requested_sample_below_20",
+        "valid_unique_tracks_below_15"
+      ],
+      "warnings": []
+    },
+    {
+      "lastfm_tag": "peaceful",
+      "category": "mood",
+      "retrieval_status": "insufficient_evidence",
+      "retrieval_policy_version": 1,
+      "semantic_review": "metadata_reviewed_no_audio_certification",
+      "human_review": "not_performed",
+      "evidence": {
+        "reach": 3373,
+        "total": 14926,
+        "taggings": null,
+        "sample_requested": 10,
+        "sample_received": 10,
+        "valid_received": 10,
+        "invalid_received": 0,
+        "valid_unique_tracks": 10,
+        "duplicate_ratio": 0,
+        "unique_artists": 10,
+        "max_tracks_per_artist": 1,
+        "top1_artist_share": 0.1,
+        "top3_artist_share": 0.30000000000000004,
+        "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+        "recorded_at": "2026-10-04T07:14:36.559788Z",
+        "info_recorded_at": "2026-10-04T07:14:36.360784Z",
+        "reused": true,
+        "info_success": true,
+        "tracks_success": true
+      },
+      "decision_reasons": [
+        "requested_sample_below_20",
+        "valid_unique_tracks_below_15"
+      ],
+      "warnings": []
+    },
+    {
+      "lastfm_tag": "romantic",
+      "category": "mood",
+      "retrieval_status": "insufficient_evidence",
+      "retrieval_policy_version": 1,
+      "semantic_review": "metadata_reviewed_no_audio_certification",
+      "human_review": "not_performed",
+      "evidence": {
+        "reach": 24793,
+        "total": 118705,
+        "taggings": null,
+        "sample_requested": 10,
+        "sample_received": 10,
+        "valid_received": 10,
+        "invalid_received": 0,
+        "valid_unique_tracks": 10,
+        "duplicate_ratio": 0,
+        "unique_artists": 8,
+        "max_tracks_per_artist": 2,
+        "top1_artist_share": 0.2,
+        "top3_artist_share": 0.5,
+        "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+        "recorded_at": "2026-10-04T07:14:34.275837Z",
+        "info_recorded_at": "2026-10-04T07:14:34.077074Z",
+        "reused": true,
+        "info_success": true,
+        "tracks_success": true
+      },
+      "decision_reasons": [
+        "requested_sample_below_20",
+        "valid_unique_tracks_below_15"
+      ],
+      "warnings": []
+    },
+    {
+      "lastfm_tag": "sad",
+      "category": "mood",
+      "retrieval_status": "insufficient_evidence",
+      "retrieval_policy_version": 1,
+      "semantic_review": "not_performed",
+      "human_review": "not_performed",
+      "evidence": {
+        "reach": 23041,
+        "total": 117668,
+        "taggings": null,
+        "sample_requested": 10,
+        "sample_received": 10,
+        "valid_received": 10,
+        "invalid_received": 0,
+        "valid_unique_tracks": 10,
+        "duplicate_ratio": 0,
+        "unique_artists": 9,
+        "max_tracks_per_artist": 2,
+        "top1_artist_share": 0.2,
+        "top3_artist_share": 0.4,
+        "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+        "recorded_at": "2026-10-04T07:14:29.537382Z",
+        "info_recorded_at": "2026-10-04T07:14:29.301767Z",
+        "reused": true,
+        "info_success": true,
+        "tracks_success": true
+      },
+      "decision_reasons": [
+        "requested_sample_below_20",
+        "valid_unique_tracks_below_15"
+      ],
+      "warnings": []
+    },
+    {
+      "lastfm_tag": "uplifting",
+      "category": "mood",
+      "retrieval_status": "insufficient_evidence",
+      "retrieval_policy_version": 1,
+      "semantic_review": "metadata_reviewed_no_audio_certification",
+      "human_review": "not_performed",
+      "evidence": {
+        "reach": 5319,
+        "total": 27628,
+        "taggings": null,
+        "sample_requested": 10,
+        "sample_received": 10,
+        "valid_received": 10,
+        "invalid_received": 0,
+        "valid_unique_tracks": 10,
+        "duplicate_ratio": 0,
+        "unique_artists": 7,
+        "max_tracks_per_artist": 3,
+        "top1_artist_share": 0.3,
+        "top3_artist_share": 0.6,
+        "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+        "recorded_at": "2026-10-04T07:14:30.971394Z",
+        "info_recorded_at": "2026-10-04T07:14:30.773649Z",
+        "reused": true,
+        "info_success": true,
+        "tracks_success": true
+      },
+      "decision_reasons": [
+        "requested_sample_below_20",
+        "valid_unique_tracks_below_15"
+      ],
+      "warnings": []
+    }
+  ]
+}

@@ -1,0 +1,913 @@
+{
+  "version": 1,
+  "taxonomy_source": "internal/music/taxonomy.json (derived snapshot; original remains the canonical source)",
+  "validation_scope": "Metadata-semantic retrieval evidence only; not audio certification, genre purity or recommendation-quality guarantee.",
+  "genres": [
+    {
+      "canonical_genre_id": "pop",
+      "exact_tag": {
+        "tag": "pop",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 234243,
+        "total": 2091301,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 234243,
+          "total": 2091301,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 8,
+          "top1_artist_share": 0.2,
+          "top3_artist_share": 0.5,
+          "max_tracks_per_artist": 2,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Coherent mainstream pop artists and titles; accessible broad pop retrieval."
+        }
+      },
+      "aliases": [],
+      "status": "validated"
+    },
+    {
+      "canonical_genre_id": "indie-pop",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "dream-pop",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "synth-pop",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "acoustic-pop",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "chamber-pop",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "folk-pop",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "bedroom-pop",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "alternative-pop",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "rock",
+      "exact_tag": {
+        "tag": "rock",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 403391,
+        "total": 4076597,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 403391,
+          "total": 4076597,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 9,
+          "top1_artist_share": 0.2,
+          "top3_artist_share": 0.4,
+          "max_tracks_per_artist": 2,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Broad rock metadata, e.g. Foo Fighters/Paramore/Linkin Park; diverse popular crossover, not strict genre purity."
+        }
+      },
+      "aliases": [],
+      "status": "validated"
+    },
+    {
+      "canonical_genre_id": "indie-rock",
+      "exact_tag": {
+        "tag": "indie rock",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 137771,
+        "total": 934890,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 137771,
+          "total": 934890,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 4,
+          "top1_artist_share": 0.7,
+          "top3_artist_share": 0.9,
+          "max_tracks_per_artist": 7,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [
+            "artist concentration \u003e=50%; manual review needed",
+            "artist concentration \u003e=40%; genre purity/quality not implied"
+          ],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Arctic Monkeys/Strokes/The 1975; coherent indie rock, Arctic Monkeys 7/10."
+        }
+      },
+      "aliases": [],
+      "status": "validated"
+    },
+    {
+      "canonical_genre_id": "alternative-rock",
+      "exact_tag": {
+        "tag": "alternative rock",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "subgenre",
+        "reach": 170561,
+        "total": 1237789,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 170561,
+          "total": 1237789,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 6,
+          "top1_artist_share": 0.5,
+          "top3_artist_share": 0.7,
+          "max_tracks_per_artist": 5,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [
+            "artist concentration \u003e=50%; manual review needed",
+            "artist concentration \u003e=40%; genre purity/quality not implied"
+          ],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Radiohead/Muse/Foo Fighters/Smashing Pumpkins; coherent alt-rock, Radiohead 5/10."
+        }
+      },
+      "aliases": [],
+      "status": "validated"
+    },
+    {
+      "canonical_genre_id": "soft-rock",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "post-rock",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "blues-rock",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "shoegaze",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "r\u0026b",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "alternative-r\u0026b",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "neo-soul",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "soul",
+      "exact_tag": {
+        "tag": "soul",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 102252,
+        "total": 698449,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 102252,
+          "total": 698449,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 6,
+          "top1_artist_share": 0.4,
+          "top3_artist_share": 0.7,
+          "max_tracks_per_artist": 4,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [
+            "artist concentration \u003e=40%; genre purity/quality not implied"
+          ],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Sade/Marvin Gaye/Stevie Wonder/Amy Winehouse; coherent soul/R\u0026B crossover."
+        }
+      },
+      "aliases": [],
+      "status": "validated"
+    },
+    {
+      "canonical_genre_id": "funk",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "electronic",
+      "exact_tag": {
+        "tag": "electronic",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 262839,
+        "total": 2508909,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 262839,
+          "total": 2508909,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 8,
+          "top1_artist_share": 0.3,
+          "top3_artist_share": 0.5,
+          "max_tracks_per_artist": 3,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Daft Punk/Kavinsky/Crystal Castles/Depeche Mode; coherent electronic with pop crossover."
+        }
+      },
+      "aliases": [],
+      "status": "validated"
+    },
+    {
+      "canonical_genre_id": "ambient",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "downtempo",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "house",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "synthwave",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "chillout",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "chillwave",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "drone",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "trip-hop",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "electronica",
+      "exact_tag": {
+        "tag": "electronica",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 102613,
+        "total": 639877,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 102613,
+          "total": 639877,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 6,
+          "top1_artist_share": 0.4,
+          "top3_artist_share": 0.7,
+          "max_tracks_per_artist": 4,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [
+            "artist concentration \u003e=40%; genre purity/quality not implied"
+          ],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Daft Punk/Aphex Twin/Air/Crystal Castles; coherent broad electronica with electropop crossover."
+        }
+      },
+      "aliases": [],
+      "status": "validated"
+    },
+    {
+      "canonical_genre_id": "hip-hop",
+      "exact_tag": {
+        "tag": "Hip-Hop",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 131667,
+        "total": 923775,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 131667,
+          "total": 923775,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 5,
+          "top1_artist_share": 0.6,
+          "top3_artist_share": 0.8,
+          "max_tracks_per_artist": 6,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [
+            "artist concentration \u003e=50%; manual review needed",
+            "artist concentration \u003e=40%; genre purity/quality not implied"
+          ],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Kanye West/Kendrick Lamar/OutKast/A$AP Rocky; coherent hip-hop but Kanye occupies 6/10."
+        }
+      },
+      "aliases": [
+        {
+          "tag": "hip hop",
+          "mapping_type": "orthographic_alias",
+          "status": "validated",
+          "category": "genre",
+          "reach": 80704,
+          "total": 467161,
+          "evidence": {
+            "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+            "prior_evidence_reused": true,
+            "reach": 80704,
+            "total": 467161,
+            "taggings": null,
+            "sample_size": 10,
+            "sample_tracks": null,
+            "unique_artist_count": 5,
+            "top1_artist_share": 0.6,
+            "top3_artist_share": 0.8,
+            "max_tracks_per_artist": 6,
+            "mbid_missing_count": 0,
+            "duplicate_count": 0,
+            "api_calls": 0,
+            "warnings": [
+              "artist concentration \u003e=50%; manual review needed",
+              "artist concentration \u003e=40%; genre purity/quality not implied"
+            ],
+            "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Kanye/Kendrick/Madvillain/J Cole; coherent broad hip-hop, Kanye 6/10. Space and hyphen forms kept separate."
+          }
+        }
+      ],
+      "status": "validated"
+    },
+    {
+      "canonical_genre_id": "lo-fi-hip-hop",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "chill-hop",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "trap",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "acoustic",
+      "exact_tag": {
+        "tag": "acoustic",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "style",
+        "reach": 111917,
+        "total": 487037,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 111917,
+          "total": 487037,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 9,
+          "top1_artist_share": 0.2,
+          "top3_artist_share": 0.4,
+          "max_tracks_per_artist": 2,
+          "mbid_missing_count": 1,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [
+            "missing track MBID 1/10"
+          ],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Plain White Ts/Jack Johnson/Elliott Smith/Passenger; coherent acoustic-oriented songs, not instrument-only."
+        }
+      },
+      "aliases": [],
+      "status": "validated"
+    },
+    {
+      "canonical_genre_id": "folk",
+      "exact_tag": {
+        "tag": "folk",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 151604,
+        "total": 962571,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 151604,
+          "total": 962571,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 7,
+          "top1_artist_share": 0.3,
+          "top3_artist_share": 0.6,
+          "max_tracks_per_artist": 3,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Peter Paul \u0026 Mary/Nick Drake/Sufjan Stevens with contemporary folk-pop/Taylor Swift; broad folk only."
+        }
+      },
+      "aliases": [],
+      "status": "validated"
+    },
+    {
+      "canonical_genre_id": "indie-folk",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "singer-songwriter",
+      "exact_tag": {
+        "tag": "singer-songwriter",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "style",
+        "reach": 110192,
+        "total": 860607,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 110192,
+          "total": 860607,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 5,
+          "top1_artist_share": 0.5,
+          "top3_artist_share": 0.8,
+          "max_tracks_per_artist": 5,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [
+            "artist concentration \u003e=50%; manual review needed",
+            "artist concentration \u003e=40%; genre purity/quality not implied"
+          ],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Jeff Buckley/Elliott Smith/Neil Young; coherent songwriter performers, Buckley 5/10."
+        }
+      },
+      "aliases": [],
+      "status": "validated"
+    },
+    {
+      "canonical_genre_id": "americana",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "jazz",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "smooth-jazz",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "acoustic-jazz",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "bossa-nova",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "jazz-fusion",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "classical",
+      "exact_tag": {
+        "tag": "Classical",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 75045,
+        "total": 581633,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 75045,
+          "total": 581633,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 8,
+          "top1_artist_share": 0.2,
+          "top3_artist_share": 0.5,
+          "max_tracks_per_artist": 2,
+          "mbid_missing_count": 1,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [
+            "missing track MBID 1/10"
+          ],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Satie/Debussy/Beethoven/Holst; strong classical identity; work naming/version duplicates remain."
+        }
+      },
+      "aliases": [],
+      "status": "validated"
+    },
+    {
+      "canonical_genre_id": "neo-classical",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "chamber-classical",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "cinematic",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "soundtrack",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "cinematic-ambient",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "orchestral",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "k-pop",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "k-indie",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "korean-ballad",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "korean-r\u0026b",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "city-pop",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "retro-pop",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "disco",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "other",
+      "aliases": [],
+      "status": "unmapped"
+    },
+    {
+      "canonical_genre_id": "unknown",
+      "aliases": [],
+      "status": "unmapped"
+    }
+  ],
+  "families": [
+    {
+      "family": "pop",
+      "primary": {
+        "tag": "pop",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 234243,
+        "total": 2091301,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 234243,
+          "total": 2091301,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 8,
+          "top1_artist_share": 0.2,
+          "top3_artist_share": 0.5,
+          "max_tracks_per_artist": 2,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Coherent mainstream pop artists and titles; accessible broad pop retrieval."
+        }
+      },
+      "reason": "explicit broad-family representative reused from metadata-reviewed prior audit"
+    },
+    {
+      "family": "rock",
+      "primary": {
+        "tag": "rock",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 403391,
+        "total": 4076597,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 403391,
+          "total": 4076597,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 9,
+          "top1_artist_share": 0.2,
+          "top3_artist_share": 0.4,
+          "max_tracks_per_artist": 2,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Broad rock metadata, e.g. Foo Fighters/Paramore/Linkin Park; diverse popular crossover, not strict genre purity."
+        }
+      },
+      "reason": "explicit broad-family representative reused from metadata-reviewed prior audit"
+    },
+    {
+      "family": "rnb-soul",
+      "primary": {
+        "tag": "soul",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 102252,
+        "total": 698449,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 102252,
+          "total": 698449,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 6,
+          "top1_artist_share": 0.4,
+          "top3_artist_share": 0.7,
+          "max_tracks_per_artist": 4,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [
+            "artist concentration \u003e=40%; genre purity/quality not implied"
+          ],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Sade/Marvin Gaye/Stevie Wonder/Amy Winehouse; coherent soul/R\u0026B crossover."
+        }
+      },
+      "reason": "explicit broad-family representative reused from metadata-reviewed prior audit"
+    },
+    {
+      "family": "electronic",
+      "primary": {
+        "tag": "electronic",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 262839,
+        "total": 2508909,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 262839,
+          "total": 2508909,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 8,
+          "top1_artist_share": 0.3,
+          "top3_artist_share": 0.5,
+          "max_tracks_per_artist": 3,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Daft Punk/Kavinsky/Crystal Castles/Depeche Mode; coherent electronic with pop crossover."
+        }
+      },
+      "reason": "explicit broad-family representative reused from metadata-reviewed prior audit"
+    },
+    {
+      "family": "hip-hop",
+      "primary": {
+        "tag": "Hip-Hop",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 131667,
+        "total": 923775,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 131667,
+          "total": 923775,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 5,
+          "top1_artist_share": 0.6,
+          "top3_artist_share": 0.8,
+          "max_tracks_per_artist": 6,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [
+            "artist concentration \u003e=50%; manual review needed",
+            "artist concentration \u003e=40%; genre purity/quality not implied"
+          ],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Kanye West/Kendrick Lamar/OutKast/A$AP Rocky; coherent hip-hop but Kanye occupies 6/10."
+        }
+      },
+      "reason": "explicit broad-family representative reused from metadata-reviewed prior audit"
+    },
+    {
+      "family": "acoustic-folk",
+      "primary": {
+        "tag": "folk",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 151604,
+        "total": 962571,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 151604,
+          "total": 962571,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 7,
+          "top1_artist_share": 0.3,
+          "top3_artist_share": 0.6,
+          "max_tracks_per_artist": 3,
+          "mbid_missing_count": 0,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Peter Paul \u0026 Mary/Nick Drake/Sufjan Stevens with contemporary folk-pop/Taylor Swift; broad folk only."
+        }
+      },
+      "reason": "explicit broad-family representative reused from metadata-reviewed prior audit"
+    },
+    {
+      "family": "jazz",
+      "reason": "no explicitly validated primary provider fallback"
+    },
+    {
+      "family": "classical",
+      "primary": {
+        "tag": "Classical",
+        "mapping_type": "exact",
+        "status": "validated",
+        "category": "genre",
+        "reach": 75045,
+        "total": 581633,
+        "evidence": {
+          "source": "artifacts/lastfm-reviewed-20261004/lastfm_tag_audit.json",
+          "prior_evidence_reused": true,
+          "reach": 75045,
+          "total": 581633,
+          "taggings": null,
+          "sample_size": 10,
+          "sample_tracks": null,
+          "unique_artist_count": 8,
+          "top1_artist_share": 0.2,
+          "top3_artist_share": 0.5,
+          "max_tracks_per_artist": 2,
+          "mbid_missing_count": 1,
+          "duplicate_count": 0,
+          "api_calls": 0,
+          "warnings": [
+            "missing track MBID 1/10"
+          ],
+          "review_notes": "Seed category is provisional; status is not semantic certification. Review: Offline metadata-semantic review by Codex; human listening pending. Satie/Debussy/Beethoven/Holst; strong classical identity; work naming/version duplicates remain."
+        }
+      },
+      "reason": "explicit broad-family representative reused from metadata-reviewed prior audit"
+    },
+    {
+      "family": "cinematic",
+      "reason": "no explicitly validated primary provider fallback"
+    },
+    {
+      "family": "korean",
+      "reason": "no explicitly validated primary provider fallback"
+    },
+    {
+      "family": "city-retro",
+      "reason": "no explicitly validated primary provider fallback"
+    },
+    {
+      "family": "other",
+      "reason": "no explicitly validated primary provider fallback"
+    }
+  ]
+}

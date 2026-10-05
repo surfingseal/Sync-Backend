@@ -1,0 +1,164 @@
+{
+  "version": 1,
+  "scope": "Draft identity mappings from explicitly reviewed Last.fm concepts only; no Gemini schema changes. Metadata evidence, human audio review pending.",
+  "mappings": [
+    {
+      "canonical": "rock",
+      "type": "genre",
+      "primary": "rock",
+      "aliases": []
+    },
+    {
+      "canonical": "electronic",
+      "type": "genre",
+      "primary": "electronic",
+      "aliases": []
+    },
+    {
+      "canonical": "pop",
+      "type": "genre",
+      "primary": "pop",
+      "aliases": []
+    },
+    {
+      "canonical": "metal",
+      "type": "genre",
+      "primary": "metal",
+      "aliases": []
+    },
+    {
+      "canonical": "alternative-rock",
+      "type": "subgenre",
+      "primary": "alternative rock",
+      "aliases": []
+    },
+    {
+      "canonical": "folk",
+      "type": "genre",
+      "primary": "folk",
+      "aliases": []
+    },
+    {
+      "canonical": "indie-rock",
+      "type": "genre",
+      "primary": "indie rock",
+      "aliases": []
+    },
+    {
+      "canonical": "hip-hop",
+      "type": "genre",
+      "primary": "Hip-Hop",
+      "aliases": []
+    },
+    {
+      "canonical": "punk",
+      "type": "subgenre",
+      "primary": "punk",
+      "aliases": []
+    },
+    {
+      "canonical": "black-metal",
+      "type": "subgenre",
+      "primary": "black metal",
+      "aliases": []
+    },
+    {
+      "canonical": "singer-songwriter",
+      "type": "style",
+      "primary": "singer-songwriter",
+      "aliases": []
+    },
+    {
+      "canonical": "dance",
+      "type": "genre",
+      "primary": "dance",
+      "aliases": []
+    },
+    {
+      "canonical": "progressive-rock",
+      "type": "subgenre",
+      "primary": "Progressive rock",
+      "aliases": []
+    },
+    {
+      "canonical": "heavy-metal",
+      "type": "subgenre",
+      "primary": "heavy metal",
+      "aliases": []
+    },
+    {
+      "canonical": "soul",
+      "type": "genre",
+      "primary": "soul",
+      "aliases": []
+    },
+    {
+      "canonical": "electronica",
+      "type": "genre",
+      "primary": "electronica",
+      "aliases": []
+    },
+    {
+      "canonical": "rap",
+      "type": "genre",
+      "primary": "rap",
+      "aliases": []
+    },
+    {
+      "canonical": "classical",
+      "type": "genre",
+      "primary": "Classical",
+      "aliases": []
+    },
+    {
+      "canonical": "acoustic",
+      "type": "style",
+      "primary": "acoustic",
+      "aliases": []
+    },
+    {
+      "canonical": "hip-hop-096aef",
+      "type": "genre",
+      "primary": "hip hop",
+      "aliases": []
+    },
+    {
+      "canonical": "dreamy",
+      "type": "mood",
+      "primary": "dreamy",
+      "aliases": []
+    },
+    {
+      "canonical": "melancholic",
+      "type": "mood",
+      "primary": "melancholic",
+      "aliases": []
+    },
+    {
+      "canonical": "happy",
+      "type": "mood",
+      "primary": "happy",
+      "aliases": []
+    },
+    {
+      "canonical": "mellow",
+      "type": "mood",
+      "primary": "mellow",
+      "aliases": []
+    }
+  ],
+  "unmapped": [
+    {
+      "canonical": "reflective",
+      "reason": "No validated exact semantic equivalence to mellow or melancholic; do not guess."
+    },
+    {
+      "canonical": "cinematic",
+      "reason": "Soundtrack samples include many vocal theme songs; cinematic instrumental equivalence not validated."
+    },
+    {
+      "canonical": "peaceful",
+      "reason": "Sample meaning/quality pending listening review."
+    }
+  ]
+}

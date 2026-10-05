@@ -1,0 +1,156 @@
+[
+  {
+    "id": "yosemite",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/yosemite.jpg",
+    "sha256": "37ab87b7ad1281158e0d1b1ce7ca1fc037de76a1dfb62c40bdc006f2424437bd",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "mountains",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/mountains.jpg",
+    "sha256": "2284e2a6590e7984cbb88ad3e362648b8867c418dea8bec94ed8c4e5cac4a6ab",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "lake",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/lake.jpg",
+    "sha256": "cd52f29485acb0f8f0b3ae3b565fff76de25ed4dfe682e02d63d7a5daa4aafd3",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "forest",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/forest.jpg",
+    "sha256": "63f750f1a5a010aaed4f76453cac0f30c5c8e7f8846928270e0bbc105216375f",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "ocean",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/ocean.jpg",
+    "sha256": "1ff2635aec8f76a6fd6b186677ca728ddfdbe3f27c51683c8328630b62880983",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "sunset",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/sunset.jpg",
+    "sha256": "a45182a83267367ac4a15a1947a4d64de0865f7f7cc746c213cbe5d7b8c8bf25",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "city-night",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/city-night.jpg",
+    "sha256": "0f9807babc394f98ac0306fbd5f1e1713652892ca26c490185a110eb9317d41e",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "city-day",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/city-day.jpg",
+    "sha256": "b1fd7f137538945b6b94f181f240ef57afbef4ccd2b72544b6fd1a2c5e36a79a",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "cafe",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/cafe.jpg",
+    "sha256": "f0325724e3bb51112a7184e9b87b5ccaf2924e1ff66e5e105aed7d266acdc64a",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "coffee",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/coffee.jpg",
+    "sha256": "ea01c8ea9b5d0b8d53854a326f35395377200c60756c82d0dda2bf38f7e32c52",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "canopy-portrait",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/rain.jpg",
+    "sha256": "1177b9b49a2204fe97e83aa9bcfba17ef846badc3ba5d30c12521b1080ec076e",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "flowers",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/flowers.jpg",
+    "sha256": "8c01aca7e61d13b8c0639f42288bbad273ece23567b24bba3cc13274b5a9f3e6",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "desert",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/desert.jpg",
+    "sha256": "a428bd4a69e140000930daa54f5932f69db82478d94496ed0c9bda1d9eeaa56d",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "snow",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/snow.jpg",
+    "sha256": "5b52c8a3aadd6606d09c7319a4278d0bcb9d3b9a1fd40c0e2aa335b4a35d0c88",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1418985991508-e47386d96a71?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "waterfall",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/waterfall.jpg",
+    "sha256": "0bb33fb5b695995e2266bfdff2de4efc62bc30fe3ad56f163e902c4d10bd36d4",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "turquoise-lake",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/colorful.jpg",
+    "sha256": "38c7f4abd1517ebd4d476267cdde4436d9520248d620a89f21d0d4a413a51b00",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "coast",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/coast.jpg",
+    "sha256": "3c979df04acaa5375621fc49084b38aaedb0545b0d59c29482e99bfd2856cc0f",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "mountain-sunrise",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/road.jpg",
+    "sha256": "b1fcd904208475bdfc5779dbc3459fe79fb1cde82c965e2b7e983597c12985c9",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "dusk",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/dusk.jpg",
+    "sha256": "89a1100eb0501bcb8a6898efb9cfff855b1d14e79a96b8fb5cda70b274ba4566",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "mountain-portrait",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/latency/images/river.jpg",
+    "sha256": "0f14d8f8ff857e78deb203f3a4aa927d85062ddd7c05e5675955ca6ceab54e55",
+    "enabled": true,
+    "provenance": "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=max&w=2400&q=90"
+  },
+  {
+    "id": "still-life-scones",
+    "path": "/Users/surfing_seal/Documents/Codex/2026-10-02/go-gin-sync-api-sync-ai/work/gemini-photos/scones.jpg",
+    "sha256": "74505cd7592b10bc2d4e9c4aa429866de73f403db11edd95b5b4004aea7e1376",
+    "enabled": true,
+    "provenance": "previous real photo experiment"
+  },
+  {
+    "id": "seoul-night-user",
+    "path": "/var/folders/n0/sqbsplq11w73n__bnvmkqhz00000gn/T/codex-clipboard-944761b6-a478-44c6-8279-12b5ee91b067.png",
+    "sha256": "e5f49ddd1155cd04cd1c144e4122eac0dc9c727c0ee6ece6c3d0f81fff9ebf99",
+    "enabled": true,
+    "provenance": "previous real photo experiment"
+  }
+]

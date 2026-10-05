@@ -1,0 +1,6 @@
+{
+  "scene": {"category": "ocean", "description": "sunset over a calm sea", "time_of_day": "sunset", "weather": "clear"},
+  "visual": {"brightness": 0.55, "color_temperature": "warm", "dominant_colors": ["orange", "blue"], "motion": "low"},
+  "mood": {"tags": ["calm", "warm", "nostalgic", "dreamy"], "energy": 0.3, "valence": 0.65},
+  "music_profile": {"tempo": "slow-medium", "energy": 0.35, "vocal_preference": "soft-vocal", "genres": ["indie-pop", "acoustic", "dream-pop"]}
+}

@@ -1,0 +1,11 @@
+{
+  "schema_success_min": 0.98,
+  "categorical_agreement_min": 0.90,
+  "mood_jaccard_min": 0.70,
+  "genre_jaccard_min": 0.60,
+  "numeric_abs_diff_max": 0.15,
+  "timeout_rate_max": 0.02,
+  "p50_vertex_ms_max": 8000,
+  "p95_vertex_ms_max": 15000,
+  "resolution_latency_gain_min": 0.15
+}

@@ -1,0 +1,49 @@
+{
+  "image": {
+    "filename": "large-photo.jpg",
+    "content_type": "image/jpeg",
+    "size": 3489618
+  },
+  "analysis": {
+    "scene": {
+      "category": "still life",
+      "description": "flat lay arrangement of blueberry scones, cups of coffee, fresh blueberries, and pink peony blossoms",
+      "time_of_day": "morning",
+      "weather": "unknown"
+    },
+    "visual": {
+      "brightness": 0.68,
+      "color_temperature": "neutral",
+      "dominant_colors": [
+        "white",
+        "berry purple",
+        "pink",
+        "dark teal",
+        "cream"
+      ],
+      "motion": "low"
+    },
+    "mood": {
+      "tags": [
+        "peaceful",
+        "romantic",
+        "calm",
+        "playful",
+        "dreamy"
+      ],
+      "energy": 0.35,
+      "valence": 0.8
+    },
+    "music_profile": {
+      "tempo": "slow-medium",
+      "energy": 0.38,
+      "vocal_preference": "soft-vocal",
+      "genres": [
+        "indie folk",
+        "acoustic",
+        "bossa nova",
+        "chamber pop"
+      ]
+    }
+  }
+}

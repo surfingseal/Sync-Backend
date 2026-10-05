@@ -1,0 +1,441 @@
+{
+  "version": 1,
+  "source": "internal/music/taxonomy.json (derived snapshot; original remains the canonical source)",
+  "families": [
+    {
+      "id": "pop",
+      "name": "Pop"
+    },
+    {
+      "id": "rock",
+      "name": "Rock"
+    },
+    {
+      "id": "rnb-soul",
+      "name": "R\u0026B / Soul"
+    },
+    {
+      "id": "electronic",
+      "name": "Electronic"
+    },
+    {
+      "id": "hip-hop",
+      "name": "Hip-hop"
+    },
+    {
+      "id": "acoustic-folk",
+      "name": "Acoustic / Folk"
+    },
+    {
+      "id": "jazz",
+      "name": "Jazz"
+    },
+    {
+      "id": "classical",
+      "name": "Classical"
+    },
+    {
+      "id": "cinematic",
+      "name": "Cinematic"
+    },
+    {
+      "id": "korean",
+      "name": "Korean-oriented"
+    },
+    {
+      "id": "city-retro",
+      "name": "City / Retro"
+    },
+    {
+      "id": "other",
+      "name": "Other / Unknown"
+    }
+  ],
+  "genres": [
+    {
+      "id": "pop",
+      "name": "Pop",
+      "family": "pop",
+      "aliases": []
+    },
+    {
+      "id": "indie-pop",
+      "name": "Indie Pop",
+      "family": "pop",
+      "aliases": []
+    },
+    {
+      "id": "dream-pop",
+      "name": "Dream Pop",
+      "family": "pop",
+      "aliases": []
+    },
+    {
+      "id": "synth-pop",
+      "name": "Synth Pop",
+      "family": "pop",
+      "aliases": []
+    },
+    {
+      "id": "acoustic-pop",
+      "name": "Acoustic Pop",
+      "family": "pop",
+      "aliases": []
+    },
+    {
+      "id": "chamber-pop",
+      "name": "Chamber Pop",
+      "family": "pop",
+      "aliases": []
+    },
+    {
+      "id": "folk-pop",
+      "name": "Folk Pop",
+      "family": "pop",
+      "aliases": []
+    },
+    {
+      "id": "bedroom-pop",
+      "name": "Bedroom Pop",
+      "family": "pop",
+      "aliases": []
+    },
+    {
+      "id": "alternative-pop",
+      "name": "Alternative Pop",
+      "family": "pop",
+      "aliases": []
+    },
+    {
+      "id": "rock",
+      "name": "Rock",
+      "family": "rock",
+      "aliases": []
+    },
+    {
+      "id": "indie-rock",
+      "name": "Indie Rock",
+      "family": "rock",
+      "aliases": []
+    },
+    {
+      "id": "alternative-rock",
+      "name": "Alternative Rock",
+      "family": "rock",
+      "aliases": []
+    },
+    {
+      "id": "soft-rock",
+      "name": "Soft Rock",
+      "family": "rock",
+      "aliases": []
+    },
+    {
+      "id": "post-rock",
+      "name": "Post Rock",
+      "family": "rock",
+      "aliases": []
+    },
+    {
+      "id": "blues-rock",
+      "name": "Blues Rock",
+      "family": "rock",
+      "aliases": []
+    },
+    {
+      "id": "shoegaze",
+      "name": "Shoegaze",
+      "family": "rock",
+      "aliases": []
+    },
+    {
+      "id": "r\u0026b",
+      "name": "R\u0026B",
+      "family": "rnb-soul",
+      "aliases": [
+        "rnb",
+        "r and b"
+      ]
+    },
+    {
+      "id": "alternative-r\u0026b",
+      "name": "Alternative R\u0026B",
+      "family": "rnb-soul",
+      "aliases": [
+        "alternative rnb"
+      ]
+    },
+    {
+      "id": "neo-soul",
+      "name": "Neo Soul",
+      "family": "rnb-soul",
+      "aliases": []
+    },
+    {
+      "id": "soul",
+      "name": "Soul",
+      "family": "rnb-soul",
+      "aliases": []
+    },
+    {
+      "id": "funk",
+      "name": "Funk",
+      "family": "rnb-soul",
+      "aliases": []
+    },
+    {
+      "id": "electronic",
+      "name": "Electronic",
+      "family": "electronic",
+      "aliases": []
+    },
+    {
+      "id": "ambient",
+      "name": "Ambient",
+      "family": "electronic",
+      "aliases": []
+    },
+    {
+      "id": "downtempo",
+      "name": "Downtempo",
+      "family": "electronic",
+      "aliases": []
+    },
+    {
+      "id": "house",
+      "name": "House",
+      "family": "electronic",
+      "aliases": []
+    },
+    {
+      "id": "synthwave",
+      "name": "Synthwave",
+      "family": "electronic",
+      "aliases": []
+    },
+    {
+      "id": "chillout",
+      "name": "Chillout",
+      "family": "electronic",
+      "aliases": []
+    },
+    {
+      "id": "chillwave",
+      "name": "Chillwave",
+      "family": "electronic",
+      "aliases": []
+    },
+    {
+      "id": "drone",
+      "name": "Drone",
+      "family": "electronic",
+      "aliases": []
+    },
+    {
+      "id": "trip-hop",
+      "name": "Trip Hop",
+      "family": "electronic",
+      "aliases": []
+    },
+    {
+      "id": "electronica",
+      "name": "Electronica",
+      "family": "electronic",
+      "aliases": []
+    },
+    {
+      "id": "hip-hop",
+      "name": "Hip-hop",
+      "family": "hip-hop",
+      "aliases": []
+    },
+    {
+      "id": "lo-fi-hip-hop",
+      "name": "Lo-fi Hip-hop",
+      "family": "hip-hop",
+      "aliases": [
+        "lo-fi",
+        "lo-fi beats",
+        "lofi"
+      ]
+    },
+    {
+      "id": "chill-hop",
+      "name": "Chill Hop",
+      "family": "hip-hop",
+      "aliases": []
+    },
+    {
+      "id": "trap",
+      "name": "Trap",
+      "family": "hip-hop",
+      "aliases": []
+    },
+    {
+      "id": "acoustic",
+      "name": "Acoustic",
+      "family": "acoustic-folk",
+      "aliases": []
+    },
+    {
+      "id": "folk",
+      "name": "Folk",
+      "family": "acoustic-folk",
+      "aliases": [
+        "acoustic folk"
+      ]
+    },
+    {
+      "id": "indie-folk",
+      "name": "Indie Folk",
+      "family": "acoustic-folk",
+      "aliases": []
+    },
+    {
+      "id": "singer-songwriter",
+      "name": "Singer-songwriter",
+      "family": "acoustic-folk",
+      "aliases": []
+    },
+    {
+      "id": "americana",
+      "name": "Americana",
+      "family": "acoustic-folk",
+      "aliases": []
+    },
+    {
+      "id": "jazz",
+      "name": "Jazz",
+      "family": "jazz",
+      "aliases": [
+        "urban jazz"
+      ]
+    },
+    {
+      "id": "smooth-jazz",
+      "name": "Smooth Jazz",
+      "family": "jazz",
+      "aliases": []
+    },
+    {
+      "id": "acoustic-jazz",
+      "name": "Acoustic Jazz",
+      "family": "jazz",
+      "aliases": []
+    },
+    {
+      "id": "bossa-nova",
+      "name": "Bossa Nova",
+      "family": "jazz",
+      "aliases": []
+    },
+    {
+      "id": "jazz-fusion",
+      "name": "Jazz Fusion",
+      "family": "jazz",
+      "aliases": []
+    },
+    {
+      "id": "classical",
+      "name": "Classical",
+      "family": "classical",
+      "aliases": []
+    },
+    {
+      "id": "neo-classical",
+      "name": "Neo-classical",
+      "family": "classical",
+      "aliases": [
+        "modern classical"
+      ]
+    },
+    {
+      "id": "chamber-classical",
+      "name": "Chamber Classical",
+      "family": "classical",
+      "aliases": []
+    },
+    {
+      "id": "cinematic",
+      "name": "Cinematic",
+      "family": "cinematic",
+      "aliases": []
+    },
+    {
+      "id": "soundtrack",
+      "name": "Soundtrack",
+      "family": "cinematic",
+      "aliases": [
+        "western soundtrack"
+      ]
+    },
+    {
+      "id": "cinematic-ambient",
+      "name": "Cinematic Ambient",
+      "family": "cinematic",
+      "aliases": []
+    },
+    {
+      "id": "orchestral",
+      "name": "Orchestral",
+      "family": "cinematic",
+      "aliases": []
+    },
+    {
+      "id": "k-pop",
+      "name": "K-pop",
+      "family": "korean",
+      "aliases": []
+    },
+    {
+      "id": "k-indie",
+      "name": "K-indie",
+      "family": "korean",
+      "aliases": []
+    },
+    {
+      "id": "korean-ballad",
+      "name": "Korean Ballad",
+      "family": "korean",
+      "aliases": []
+    },
+    {
+      "id": "korean-r\u0026b",
+      "name": "Korean R\u0026B",
+      "family": "korean",
+      "aliases": [
+        "korean rnb"
+      ]
+    },
+    {
+      "id": "city-pop",
+      "name": "City Pop",
+      "family": "city-retro",
+      "aliases": []
+    },
+    {
+      "id": "retro-pop",
+      "name": "Retro Pop",
+      "family": "city-retro",
+      "aliases": []
+    },
+    {
+      "id": "disco",
+      "name": "Disco",
+      "family": "city-retro",
+      "aliases": []
+    },
+    {
+      "id": "other",
+      "name": "Other",
+      "family": "other",
+      "aliases": []
+    },
+    {
+      "id": "unknown",
+      "name": "Unknown",
+      "family": "other",
+      "aliases": []
+    }
+  ]
+}

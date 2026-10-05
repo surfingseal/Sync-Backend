@@ -1,0 +1,11 @@
+{
+  "workers": 2,
+  "repetitions": 2,
+  "profiles": [
+    {"id":"baseline","model":"gemini-3.8-flash","thinking":"MEDIUM","dimension":1920,"timeout_seconds":20,"attempts":3,"retry_mode":"sdk"},
+    {"id":"raw-medium","model":"gemini-3.8-flash","thinking":"MEDIUM","dimension":1920,"timeout_seconds":45,"attempts":1,"retry_mode":"sdk"},
+    {"id":"low-1920","model":"gemini-3.8-flash","thinking":"LOW","dimension":1920,"timeout_seconds":20,"attempts":3,"retry_mode":"sdk"},
+    {"id":"low-1280","model":"gemini-3.8-flash","thinking":"LOW","dimension":1280,"timeout_seconds":20,"attempts":3,"retry_mode":"sdk"},
+    {"id":"lite-1280","model":"gemini-3.5-flash-lite","thinking":"MINIMAL","dimension":1280,"timeout_seconds":20,"attempts":3,"retry_mode":"sdk"}
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "analysis_summary": "The image features an artisanal morning breakfast flat lay: warm, freshly baked blueberry scones scattered on jam-stained parchment paper, fresh blueberries, cups of black and creamy coffee, and soft pink peonies. The visual mood is sweet, comforting, and leisurely, evoking the tactile joys of slow living, home baking, and bright morning sun. Musically, this calls for warm acoustic folk, gentle morning jazz, soft bossa nova, and breezy, soulful singer-songwriter melodies.",
+  "tracks": [
+    {
+      "artist": "Norah Jones",
+      "title": "Sunrise",
+      "fit_score": 0.95,
+      "reason": "Its warm acoustic guitar, gentle piano, and soothing vocal delivery perfectly mirror the slow, cozy ritual of morning coffee and freshly baked pastries.",
+      "gemini_rank": 1
+    },
+    {
+      "artist": "Jack Johnson",
+      "title": "Banana Pancakes",
+      "fit_score": 0.92,
+      "reason": "The quintessential relaxed breakfast anthem, capturing the easygoing domestic comfort and sweetness of spending a peaceful morning at home.",
+      "gemini_rank": 2
+    },
+    {
+      "artist": "Kings of Convenience",
+      "title": "Mrs. Cold",
+      "fit_score": 0.88,
+      "reason": "Delicate acoustic fingerpicking and breezy harmonies bring an effortlessly charming cafe ambiance that complements the rustic, handcrafted scene.",
+      "gemini_rank": 3
+    },
+    {
+      "artist": "Melody Gardot",
+      "title": "Morning Sun",
+      "fit_score": 0.85,
+      "reason": "Soulful, lush, and glowing with gentle optimism, fitting the soft pink peonies and dappled morning light of the table setting.",
+      "gemini_rank": 4
+    },
+    {
+      "artist": "Corinne Bailey Rae",
+      "title": "Put Your Records On",
+      "fit_score": 0.82,
+      "reason": "Bright, uplifting, and sweet, matching the berry tones, floral accents, and carefree spirit inscribed on the silver spoon.",
+      "gemini_rank": 5
+    },
+    {
+      "artist": "Stan Getz \u0026 Astrud Gilberto",
+      "title": "Corcovado (Quiet Nights of Quiet Stars)",
+      "fit_score": 0.8,
+      "reason": "Classic bossa nova warmth and velvety saxophone create an intimate, sophisticated backdrop for sipping coffee and savoring pastries.",
+      "gemini_rank": 6
+    },
+    {
+      "artist": "Nick Drake",
+      "title": "Northern Sky",
+      "fit_score": 0.77,
+      "reason": "Tender instrumentation and poetic warmth evoke the pastoral, handcrafted beauty and heartfelt intimacy captured in the composition.",
+      "gemini_rank": 7
+    }
+  ]
+}

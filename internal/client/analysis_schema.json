@@ -1,0 +1,236 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scene",
+    "visual",
+    "mood",
+    "music_profile",
+    "schema_version"
+  ],
+  "properties": {
+    "scene": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category",
+        "description",
+        "time_of_day",
+        "weather"
+      ],
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "time_of_day": {
+          "type": "string"
+        },
+        "weather": {
+          "type": "string"
+        }
+      }
+    },
+    "visual": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brightness",
+        "color_temperature",
+        "dominant_colors",
+        "motion",
+        "contrast",
+        "saturation"
+      ],
+      "properties": {
+        "brightness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "color_temperature": {
+          "type": "string",
+          "enum": [
+            "warm",
+            "neutral",
+            "cool"
+          ]
+        },
+        "dominant_colors": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "string"
+          }
+        },
+        "motion": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "contrast": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "saturation": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      }
+    },
+    "mood": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tags",
+        "energy",
+        "valence",
+        "primary",
+        "secondary"
+      ],
+      "properties": {
+        "tags": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "string"
+          }
+        },
+        "energy": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "valence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "primary": {
+          "type": "string"
+        },
+        "secondary": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 3,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "music_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tempo",
+        "energy",
+        "genres",
+        "genre_candidates"
+      ],
+      "properties": {
+        "tempo": {
+          "type": "string",
+          "enum": [
+            "slow",
+            "slow-medium",
+            "medium",
+            "medium-fast",
+            "fast"
+          ]
+        },
+        "energy": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "genres": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "type": "string"
+          }
+        },
+        "genre_candidates": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "category",
+              "name",
+              "score"
+            ],
+            "properties": {
+              "category": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "raw_label": {
+                "type": "string",
+                "maxLength": 80
+              }
+            }
+          }
+        }
+      }
+    },
+    "schema_version": {
+      "type": "string",
+      "enum": [
+        "3"
+      ]
+    },
+    "confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mood",
+        "genre",
+        "tempo"
+      ],
+      "properties": {
+        "mood": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "genre": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "tempo": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  }
+}

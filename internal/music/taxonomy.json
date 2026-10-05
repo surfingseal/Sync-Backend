@@ -1,0 +1,500 @@
+{
+  "categories": [
+    {
+      "slug": "pop",
+      "display_name": "Pop",
+      "genres": [
+        {
+          "name": "pop",
+          "display_name": "Pop",
+          "query_tokens": "pop",
+          "aliases": []
+        },
+        {
+          "name": "indie-pop",
+          "display_name": "Indie Pop",
+          "query_tokens": "indie pop",
+          "aliases": []
+        },
+        {
+          "name": "dream-pop",
+          "display_name": "Dream Pop",
+          "query_tokens": "dream pop",
+          "aliases": []
+        },
+        {
+          "name": "synth-pop",
+          "display_name": "Synth Pop",
+          "query_tokens": "synth pop",
+          "aliases": []
+        },
+        {
+          "name": "acoustic-pop",
+          "display_name": "Acoustic Pop",
+          "query_tokens": "acoustic pop",
+          "aliases": []
+        },
+        {
+          "name": "chamber-pop",
+          "display_name": "Chamber Pop",
+          "query_tokens": "chamber pop",
+          "aliases": []
+        },
+        {
+          "name": "folk-pop",
+          "display_name": "Folk Pop",
+          "query_tokens": "folk pop",
+          "aliases": []
+        },
+        {
+          "name": "bedroom-pop",
+          "display_name": "Bedroom Pop",
+          "query_tokens": "bedroom pop",
+          "aliases": []
+        },
+        {
+          "name": "alternative-pop",
+          "display_name": "Alternative Pop",
+          "query_tokens": "alternative pop",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "slug": "rock",
+      "display_name": "Rock",
+      "genres": [
+        {
+          "name": "rock",
+          "display_name": "Rock",
+          "query_tokens": "rock",
+          "aliases": []
+        },
+        {
+          "name": "indie-rock",
+          "display_name": "Indie Rock",
+          "query_tokens": "indie rock",
+          "aliases": []
+        },
+        {
+          "name": "alternative-rock",
+          "display_name": "Alternative Rock",
+          "query_tokens": "alternative rock",
+          "aliases": []
+        },
+        {
+          "name": "soft-rock",
+          "display_name": "Soft Rock",
+          "query_tokens": "soft rock",
+          "aliases": []
+        },
+        {
+          "name": "post-rock",
+          "display_name": "Post Rock",
+          "query_tokens": "post rock",
+          "aliases": []
+        },
+        {
+          "name": "blues-rock",
+          "display_name": "Blues Rock",
+          "query_tokens": "blues rock",
+          "aliases": []
+        },
+        {
+          "name": "shoegaze",
+          "display_name": "Shoegaze",
+          "query_tokens": "shoegaze",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "slug": "rnb-soul",
+      "display_name": "R&B / Soul",
+      "genres": [
+        {
+          "name": "r&b",
+          "display_name": "R&B",
+          "query_tokens": "rnb",
+          "aliases": [
+            "rnb",
+            "r and b"
+          ]
+        },
+        {
+          "name": "alternative-r&b",
+          "display_name": "Alternative R&B",
+          "query_tokens": "alternative rnb",
+          "aliases": [
+            "alternative rnb"
+          ]
+        },
+        {
+          "name": "neo-soul",
+          "display_name": "Neo Soul",
+          "query_tokens": "neo soul",
+          "aliases": []
+        },
+        {
+          "name": "soul",
+          "display_name": "Soul",
+          "query_tokens": "soul",
+          "aliases": []
+        },
+        {
+          "name": "funk",
+          "display_name": "Funk",
+          "query_tokens": "funk",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "slug": "electronic",
+      "display_name": "Electronic",
+      "genres": [
+        {
+          "name": "electronic",
+          "display_name": "Electronic",
+          "query_tokens": "electronic",
+          "aliases": []
+        },
+        {
+          "name": "ambient",
+          "display_name": "Ambient",
+          "query_tokens": "ambient",
+          "aliases": []
+        },
+        {
+          "name": "downtempo",
+          "display_name": "Downtempo",
+          "query_tokens": "downtempo",
+          "aliases": []
+        },
+        {
+          "name": "house",
+          "display_name": "House",
+          "query_tokens": "house",
+          "aliases": []
+        },
+        {
+          "name": "synthwave",
+          "display_name": "Synthwave",
+          "query_tokens": "synthwave",
+          "aliases": []
+        },
+        {
+          "name": "chillout",
+          "display_name": "Chillout",
+          "query_tokens": "chillout",
+          "aliases": []
+        },
+        {
+          "name": "chillwave",
+          "display_name": "Chillwave",
+          "query_tokens": "chillwave",
+          "aliases": []
+        },
+        {
+          "name": "drone",
+          "display_name": "Drone",
+          "query_tokens": "drone",
+          "aliases": []
+        },
+        {
+          "name": "trip-hop",
+          "display_name": "Trip Hop",
+          "query_tokens": "trip hop",
+          "aliases": []
+        },
+        {
+          "name": "electronica",
+          "display_name": "Electronica",
+          "query_tokens": "electronica",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "slug": "hip-hop",
+      "display_name": "Hip-hop",
+      "genres": [
+        {
+          "name": "hip-hop",
+          "display_name": "Hip-hop",
+          "query_tokens": "hip hop",
+          "aliases": []
+        },
+        {
+          "name": "lo-fi-hip-hop",
+          "display_name": "Lo-fi Hip-hop",
+          "query_tokens": "lofi hip hop",
+          "aliases": [
+            "lo-fi",
+            "lo-fi beats",
+            "lofi"
+          ]
+        },
+        {
+          "name": "chill-hop",
+          "display_name": "Chill Hop",
+          "query_tokens": "chill hop",
+          "aliases": []
+        },
+        {
+          "name": "trap",
+          "display_name": "Trap",
+          "query_tokens": "trap",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "slug": "acoustic-folk",
+      "display_name": "Acoustic / Folk",
+      "genres": [
+        {
+          "name": "acoustic",
+          "display_name": "Acoustic",
+          "query_tokens": "acoustic",
+          "aliases": []
+        },
+        {
+          "name": "folk",
+          "display_name": "Folk",
+          "query_tokens": "folk",
+          "aliases": [
+            "acoustic folk"
+          ]
+        },
+        {
+          "name": "indie-folk",
+          "display_name": "Indie Folk",
+          "query_tokens": "indie folk",
+          "aliases": []
+        },
+        {
+          "name": "singer-songwriter",
+          "display_name": "Singer-songwriter",
+          "query_tokens": "singer songwriter",
+          "aliases": []
+        },
+        {
+          "name": "americana",
+          "display_name": "Americana",
+          "query_tokens": "americana",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "slug": "jazz",
+      "display_name": "Jazz",
+      "genres": [
+        {
+          "name": "jazz",
+          "display_name": "Jazz",
+          "query_tokens": "jazz",
+          "aliases": [
+            "urban jazz"
+          ]
+        },
+        {
+          "name": "smooth-jazz",
+          "display_name": "Smooth Jazz",
+          "query_tokens": "smooth jazz",
+          "aliases": []
+        },
+        {
+          "name": "acoustic-jazz",
+          "display_name": "Acoustic Jazz",
+          "query_tokens": "acoustic jazz",
+          "aliases": []
+        },
+        {
+          "name": "bossa-nova",
+          "display_name": "Bossa Nova",
+          "query_tokens": "bossa nova",
+          "aliases": []
+        },
+        {
+          "name": "jazz-fusion",
+          "display_name": "Jazz Fusion",
+          "query_tokens": "jazz fusion",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "slug": "classical",
+      "display_name": "Classical",
+      "genres": [
+        {
+          "name": "classical",
+          "display_name": "Classical",
+          "query_tokens": "classical",
+          "aliases": []
+        },
+        {
+          "name": "neo-classical",
+          "display_name": "Neo-classical",
+          "query_tokens": "neo classical",
+          "aliases": [
+            "modern classical"
+          ]
+        },
+        {
+          "name": "chamber-classical",
+          "display_name": "Chamber Classical",
+          "query_tokens": "chamber classical",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "slug": "cinematic",
+      "display_name": "Cinematic",
+      "genres": [
+        {
+          "name": "cinematic",
+          "display_name": "Cinematic",
+          "query_tokens": "cinematic",
+          "aliases": []
+        },
+        {
+          "name": "soundtrack",
+          "display_name": "Soundtrack",
+          "query_tokens": "soundtrack",
+          "aliases": [
+            "western soundtrack"
+          ]
+        },
+        {
+          "name": "cinematic-ambient",
+          "display_name": "Cinematic Ambient",
+          "query_tokens": "cinematic ambient",
+          "aliases": []
+        },
+        {
+          "name": "orchestral",
+          "display_name": "Orchestral",
+          "query_tokens": "orchestral",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "slug": "korean",
+      "display_name": "Korean-oriented",
+      "genres": [
+        {
+          "name": "k-pop",
+          "display_name": "K-pop",
+          "query_tokens": "k pop",
+          "aliases": []
+        },
+        {
+          "name": "k-indie",
+          "display_name": "K-indie",
+          "query_tokens": "korean indie",
+          "aliases": []
+        },
+        {
+          "name": "korean-ballad",
+          "display_name": "Korean Ballad",
+          "query_tokens": "korean ballad",
+          "aliases": []
+        },
+        {
+          "name": "korean-r&b",
+          "display_name": "Korean R&B",
+          "query_tokens": "korean rnb",
+          "aliases": [
+            "korean rnb"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "city-retro",
+      "display_name": "City / Retro",
+      "genres": [
+        {
+          "name": "city-pop",
+          "display_name": "City Pop",
+          "query_tokens": "city pop",
+          "aliases": []
+        },
+        {
+          "name": "retro-pop",
+          "display_name": "Retro Pop",
+          "query_tokens": "retro pop",
+          "aliases": []
+        },
+        {
+          "name": "disco",
+          "display_name": "Disco",
+          "query_tokens": "disco",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "slug": "other",
+      "display_name": "Other / Unknown",
+      "genres": [
+        {
+          "name": "other",
+          "display_name": "Other",
+          "query_tokens": "",
+          "aliases": []
+        },
+        {
+          "name": "unknown",
+          "display_name": "Unknown",
+          "query_tokens": "",
+          "aliases": []
+        }
+      ]
+    }
+  ],
+  "moods": [
+    "calm",
+    "dreamy",
+    "nostalgic",
+    "warm",
+    "bright",
+    "energetic",
+    "uplifting",
+    "romantic",
+    "melancholic",
+    "moody",
+    "peaceful",
+    "playful",
+    "dramatic",
+    "mysterious",
+    "intimate",
+    "hopeful",
+    "lonely",
+    "serene",
+    "powerful",
+    "cinematic",
+    "cozy",
+    "dark",
+    "ethereal",
+    "reflective"
+  ],
+  "mood_aliases": {
+    "cheerful": "bright",
+    "atmospheric": "dreamy",
+    "bustling": "energetic",
+    "focused": "calm",
+    "grand": "powerful",
+    "majestic": "powerful",
+    "expansive": "cinematic",
+    "modern": "moody",
+    "timeless": "nostalgic",
+    "urban": "moody",
+    "vintage": "nostalgic"
+  }
+}

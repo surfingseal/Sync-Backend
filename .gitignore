@@ -1,0 +1,24 @@
+.env
+.env.*
+!.env.example
+/bin/
+/coverage.out
+*.test
+.DS_Store
+
+# Service account keys; retain normal JSON schemas and fixtures.
+*.service-account.json
+*-service-account.json
+service-account*.json
+credentials*.json
+
+# Local experiment caches
+/.cache/
+
+# Local reports and captured experiments; required offline JSON lives in testdata.
+/artifacts/
+/benchmark-results/
+
+# Generated Python bytecode
+__pycache__/
+*.py[cod]
