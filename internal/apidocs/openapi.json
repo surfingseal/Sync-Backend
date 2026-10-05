@@ -67,7 +67,7 @@
           "Direct MVP"
         ],
         "summary": "Image → verified recommendations",
-        "description": "No bearer required. Registered route != enabled engine. Normal cmd/server uses legacy New and retains readiness guard, so Direct returns503 unless explicit permitted local development injection. Final<=5; language is model classification. Album lookup is optional enrichment. UI image: album_artwork_url → youtube_thumbnail_url → local placeholder. Checkpoint is process-local one-hour capability, not user authorization.",
+        "description": "No bearer required. Registered route != enabled engine. cmd/server defaults to legacy. Explicit gemini_direct enables this separate route after live-mode, configuration and dependency initialization checks; absent dependencies return503. Final<=5; language is model classification. Album lookup is optional enrichment. UI image: album_artwork_url → youtube_thumbnail_url → local placeholder. Checkpoint is process-local one-hour capability, not user authorization.",
         "operationId": "post__api_v1_recommend_direct",
         "responses": {
           "200": {

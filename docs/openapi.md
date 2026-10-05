@@ -6,7 +6,7 @@
 
 Swagger UI uses pinned `swagger-ui-dist@5.17.14` CDN assets. The JSON spec itself is local and works without CDN access. UI is read-only (`supportedSubmitMethods: []`), remote validator disabled, authorization persistence disabled. No secret/API key/OAuth token or actual recommendation ID is in examples. Download JSON to Android/client tooling as needed. CDN access is necessary for the visual UI; no spec or credentials are sent to a validator service.
 
-Documentation is exposed in development and production: existing routes are public contract, docs contain no credentials, and read-only UI cannot submit playlist/OAuth requests. This is a documentation exposure choice only. Production readiness/default engine, all API auth checks, and handlers remain unchanged. Deploying docs does not activate Gemini Direct. Ordinary `cmd/server` still uses the guarded legacy wiring; the registered Direct/checkpoint playlist variants can return503.
+Documentation is exposed in development and production: existing routes are public contract, docs contain no credentials, and read-only UI cannot submit playlist/OAuth requests. This is a documentation exposure choice only. Production readiness/default engine, all API auth checks, and handlers remain unchanged. Deploying docs does not activate Gemini Direct. `cmd/server` defaults to legacy. Explicit gemini_direct activates Direct/checkpoint wiring after prerequisite checks; without Direct dependencies these variants can return503.
 
 ## Android contract notes
 
@@ -24,7 +24,7 @@ Documentation is exposed in development and production: existing routes are publ
 
 ## Validation / maintenance
 
-`internal/router/openapi_test.go` checks exact route/spec coverage in development and production, DTO response fields, nullable artwork and auth/multipart, Swagger/health responses and unchanged Direct503 guard. `go test ./...` sends no real provider calls.
+`internal/router/openapi_test.go` checks exact route/spec coverage in development and production, DTO response fields, nullable artwork and auth/multipart, Swagger/health responses and Direct503 response when dependencies are absent. `go test ./...` sends no real provider calls.
 
 When handlers/DTOs change, update this static spec and tests. JSON Schema enum/type correctness cannot prove actual model lyrics or metadata identity. Optional standard validator:
 

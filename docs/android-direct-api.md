@@ -13,7 +13,7 @@ Android does not generate ImageAnalysis/taxonomy/queries or re-search artist/tit
 Canonical track identity originates in Gemini and is checked against YouTube metadata by resolver v2.2; this is metadata evidence, not audio fingerprint verification.
 Normal Direct limits remain 20 candidates / 10 final / 2 per artist. No tuning in this milestone.
 
-`cmd/server` keeps the `legacy` default and rejects production `gemini_direct` startup through the existing readiness guard. Its new Direct route returns 503 until enabled through explicit local dependency injection. `router.NewWithDirect` accepts Direct dependencies only for `APP_ENV=development` and the typed `gemini_direct` engine; ordinary `router.New` never enables them.
+`cmd/server` keeps the `legacy` default. Explicit `RECOMMENDATION_ENGINE=gemini_direct` enables the separate multipart route in production after live-mode, credential configuration and dependency initialization checks. The legacy JSON route is preserved. Ordinary `router.New` without Direct dependencies still returns 503 for Direct. See [production activation](direct-production-activation.md).
 Each request must get a fresh Direct runner/resolver because call counters are mutable. Cache and the thread-safe checkpoint store may be shared. The normal Direct runner must use `directmusic.DefaultConfig()`.
 
 The new runnable local mechanism is **offline**, not another live experiment:
@@ -337,4 +337,4 @@ Client-side size check using OpenableColumns.SIZE is optional since some provide
 - [ ] Open playlist.url only for a real nonempty returned URL.
 - [ ] Handle checkpoint expiry/restart explicitly; no automatic image rerun after ambiguous writes.
 
-OpenAPI/Swagger source was not found in the current project/workspace outputs; no new Swagger framework was introduced. Full production activation still requires the existing readiness gate and real Android App Link configuration and device validation.
+OpenAPI/Swagger source was not found in the current project/workspace outputs; no new Swagger framework was introduced. Direct production activation is documented separately. Android App Link configuration and device validation remain required for native OAuth handoff.

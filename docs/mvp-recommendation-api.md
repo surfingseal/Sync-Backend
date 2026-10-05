@@ -1,6 +1,6 @@
 # Direct MVP recommendation contract
 
-API contract prepared; production Direct guard/default remain unchanged. No live
+Direct supports explicit production activation with runtime prerequisite guards; default remains legacy. No live
 Gemini, YouTube, Google OAuth, playlist or iTunes call was used in this milestone.
 Mobile OAuth files and resolver identity implementation remain unchanged.
 

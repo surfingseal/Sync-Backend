@@ -31,7 +31,7 @@ func run() error {
 	if err != nil {
 		return err
 	}
-	if err := config.ValidateServerEngine(cfg.RecommendationEngine); err != nil {
+	if err := config.ValidateDirectStartup(cfg); err != nil {
 		return err
 	}
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
@@ -80,7 +80,11 @@ func run() error {
 	if !oauth.Configured() {
 		log.Print("Google OAuth disabled: configuration is missing or invalid")
 	}
-	server := newHTTPServer(cfg, router.New(cfg, images, recommendations, oauth))
+	direct, playlists, err := buildDirect(ctx, cfg, processor, oauth)
+	if err != nil {
+		return err
+	}
+	server := newHTTPServer(cfg, router.NewWithDirect(cfg, images, recommendations, oauth, direct, playlists))
 	serverErr := make(chan error, 1)
 	go func() {
 		log.Printf("starting sync server on %s (env=%s)", server.Addr, cfg.AppEnv)

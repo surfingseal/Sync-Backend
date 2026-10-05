@@ -27,10 +27,10 @@ func New(cfg config.Config, images *service.ImageService, recommendations *servi
 	return newRouter(cfg, images, recommendations, oauth, nil, nil)
 }
 
-// NewWithDirect is explicit local/test dependency injection. The normal server
-// still calls New, defaults to legacy, and keeps ValidateServerEngine intact.
+// NewWithDirect injects the dedicated multipart API and checkpoint store.
+// Legacy routing remains unchanged; selecting legacy disables Direct injection.
 func NewWithDirect(cfg config.Config, images *service.ImageService, recommendations *service.RecommendationService, oauth *auth.GoogleOAuthService, direct *directapi.Recommender, playlists *directapi.Playlists) *gin.Engine {
-	if cfg.AppEnv != "development" || cfg.RecommendationEngine != config.DirectEngine {
+	if cfg.RecommendationEngine != config.DirectEngine {
 		direct = nil
 		playlists = nil
 	}

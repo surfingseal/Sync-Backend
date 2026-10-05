@@ -173,7 +173,7 @@ func TestDirectErrorsAndReadiness(t *testing.T) {
 			t.Fatal(w.Code, w.Body.String())
 		}
 	}
-	for _, cfg := range []config.Config{{AppEnv: "production", RecommendationEngine: config.DirectEngine}, {AppEnv: "development", RecommendationEngine: config.LegacyEngine}} {
+	for _, cfg := range []config.Config{{AppEnv: "production", RecommendationEngine: config.LegacyEngine}, {AppEnv: "development", RecommendationEngine: config.LegacyEngine}} {
 		s, calls := directFixture(t, 5, nil)
 		r := router.NewWithDirect(cfg, nil, nil, nil, s, nil)
 		w := httptest.NewRecorder()
@@ -183,8 +183,8 @@ func TestDirectErrorsAndReadiness(t *testing.T) {
 		}
 	}
 	engine, err := config.ParseRecommendationEngine("")
-	if err != nil || engine != config.LegacyEngine || config.ValidateServerEngine(config.DirectEngine) == nil {
-		t.Fatal("production guard changed")
+	if err != nil || engine != config.LegacyEngine || config.ValidateServerEngine(config.DirectEngine) != nil {
+		t.Fatal("default engine changed")
 	}
 }
 
@@ -279,5 +279,23 @@ func TestDirectRequestIDAndDuplicateImage(t *testing.T) {
 		if tc.status != 200 && calls.Load() != 0 {
 			t.Fatal("invalid request called runner")
 		}
+	}
+}
+
+func TestProductionDirectAndLegacyContracts(t *testing.T) {
+	s, calls := directFixture(t, 5, nil)
+	cfg := config.Config{AppEnv: "production", RecommendationEngine: config.DirectEngine}
+	r := router.NewWithDirect(cfg, nil, nil, nil, s, nil)
+	w := httptest.NewRecorder()
+	r.ServeHTTP(w, imageRequest(t, validPNG(t), "image"))
+	if w.Code != 200 || calls.Load() != 1 {
+		t.Fatalf("Direct not active: %d", w.Code)
+	}
+	req := httptest.NewRequest("POST", "/api/v1/recommend", strings.NewReader("{}"))
+	req.Header.Set("Content-Type", "application/json")
+	w = httptest.NewRecorder()
+	r.ServeHTTP(w, req)
+	if w.Code != 400 || calls.Load() != 1 {
+		t.Fatalf("legacy was replaced: %d", w.Code)
 	}
 }

@@ -18,7 +18,7 @@ func TestEngineSelection(t *testing.T) {
 	if ValidateServerEngine(LegacyEngine) != nil {
 		t.Fatal("legacy rejected")
 	}
-	if ValidateServerEngine(DirectEngine) == nil {
-		t.Fatal("direct enabled before readiness")
+	if ValidateServerEngine(DirectEngine) != nil {
+		t.Fatal("direct engine rejected")
 	}
 }
