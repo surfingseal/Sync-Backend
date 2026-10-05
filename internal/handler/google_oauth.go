@@ -7,16 +7,24 @@ import (
 	"time"
 
 	"example.com/sync/internal/auth"
+	"example.com/sync/internal/mobileauth"
 	"github.com/gin-gonic/gin"
 )
 
 const stateCookie = "sync_oauth_state"
 const sessionCookie = "sync_session"
 
-type GoogleOAuthHandler struct{ oauth *auth.GoogleOAuthService }
+type GoogleOAuthHandler struct {
+	oauth  *auth.GoogleOAuthService
+	mobile *mobileauth.Service
+}
 
-func NewGoogleOAuthHandler(oauth *auth.GoogleOAuthService) *GoogleOAuthHandler {
-	return &GoogleOAuthHandler{oauth}
+func NewGoogleOAuthHandler(oauth *auth.GoogleOAuthService, mobile ...*mobileauth.Service) *GoogleOAuthHandler {
+	h := &GoogleOAuthHandler{oauth: oauth}
+	if len(mobile) > 0 {
+		h.mobile = mobile[0]
+	}
+	return h
 }
 func (h *GoogleOAuthHandler) ready(c *gin.Context) bool {
 	c.Header("Cache-Control", "no-store")
@@ -57,13 +65,30 @@ func (h *GoogleOAuthHandler) Callback(c *gin.Context) {
 	cookie := cookieValue(c, stateCookie)
 	h.cookie(c, stateCookie, "", -time.Second)
 	if upstreamError := c.Query("error"); upstreamError != "" {
-		h.oauth.Cancel(state, cookie)
+		if h.mobile.IsMobile(state) {
+			h.mobile.Cancel(state, cookie)
+		} else {
+			h.oauth.Cancel(state, cookie)
+		}
 		if upstreamError == "access_denied" {
 			writeError(c, 400, "OAUTH_ACCESS_DENIED", "Google OAuth access was denied")
 		} else {
 			writeError(c, 400, "OAUTH_AUTHORIZATION_FAILED", "Google OAuth authorization failed")
 		}
 		log.Print("OAuth authorization declined or failed")
+		return
+	}
+	if h.mobile.IsMobile(state) {
+		location, err := h.mobile.Complete(c.Request.Context(), state, cookie, c.Query("code"))
+		if err != nil {
+			if errors.Is(err, mobileauth.ErrInvalid) || errors.Is(err, mobileauth.ErrUnavailable) || errors.Is(err, mobileauth.ErrCapacity) {
+				mobileError(c, err)
+			} else {
+				h.fail(c, err)
+			}
+			return
+		}
+		c.Redirect(http.StatusFound, location)
 		return
 	}
 	id, connection, err := h.oauth.Complete(c.Request.Context(), state, cookie, c.Query("code"))
@@ -78,7 +103,7 @@ func (h *GoogleOAuthHandler) Status(c *gin.Context) {
 	if !h.ready(c) {
 		return
 	}
-	connection, err := h.oauth.Status(c.Request.Context(), cookieValue(c, sessionCookie))
+	connection, err := h.oauth.Status(c.Request.Context(), credentialReference(c))
 	if err != nil {
 		h.fail(c, err)
 		return
@@ -92,10 +117,11 @@ func (h *GoogleOAuthHandler) Disconnect(c *gin.Context) {
 	if !h.ready(c) {
 		return
 	}
-	if err := h.oauth.Disconnect(c.Request.Context(), cookieValue(c, sessionCookie)); err != nil {
+	if err := h.oauth.Disconnect(c.Request.Context(), credentialReference(c)); err != nil {
 		h.fail(c, err)
 		return
 	}
+	h.mobile.RevokeReference(credentialReference(c))
 	h.oauth.Cancel(cookieValue(c, stateCookie), cookieValue(c, stateCookie))
 	h.cookie(c, stateCookie, "", -time.Second)
 	h.cookie(c, sessionCookie, "", -time.Second)

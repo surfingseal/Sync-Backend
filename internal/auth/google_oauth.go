@@ -368,3 +368,39 @@ func (s *writeTokenSource) Token() (*oauth2.Token, error) {
 	}
 	return token, nil
 }
+
+// BindBrowser attaches the real browser's existing session before a mobile
+// transaction redirects to Google. Native clients cannot set browser cookies.
+func (s *GoogleOAuthService) BindBrowser(ctx context.Context, state, previousSession string) error {
+	if !s.Configured() {
+		return ErrConfiguration
+	}
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	flow, ok := s.pending[state]
+	if !ok || !time.Now().Before(flow.expires) {
+		return ErrStateInvalid
+	}
+	flow.previousSession = previousSession
+	s.pending[state] = flow
+	return nil
+}
+
+// SessionExists checks only local credential storage, never refreshes a token or
+// calls YouTube. Expired access tokens may still have valid refresh credentials.
+func (s *GoogleOAuthService) SessionExists(ctx context.Context, id string) (bool, error) {
+	if !s.Configured() {
+		return false, ErrConfiguration
+	}
+	if id == "" {
+		return false, nil
+	}
+	_, err := s.store.Get(ctx, id)
+	if errors.Is(err, ErrSessionNotFound) {
+		return false, nil
+	}
+	return err == nil, err
+}

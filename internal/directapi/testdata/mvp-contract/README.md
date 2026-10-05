@@ -1,0 +1,1 @@
+Synthetic offline UI contract fixture. All artists, songs and video metadata are invented test values, NOT live evidence. Never use these IDs in a real playlist. No actual lyric classification or YouTube validation is claimed.

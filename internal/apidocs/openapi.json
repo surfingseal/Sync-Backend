@@ -1,0 +1,2788 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Sync Backend — Actual API Contract",
+    "version": "1.0.0",
+    "description": "Source-based contract; registered APIs may be disabled by readiness/config guards. Documentation is read-only. No production activation implied."
+  },
+  "servers": [
+    {
+      "url": "/",
+      "description": "Current host (local or deployed)"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Health"
+    },
+    {
+      "name": "Direct MVP"
+    },
+    {
+      "name": "Mobile Auth"
+    },
+    {
+      "name": "Browser OAuth"
+    },
+    {
+      "name": "Account"
+    },
+    {
+      "name": "Playlists"
+    },
+    {
+      "name": "Legacy"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Health check",
+        "description": "No auth.",
+        "operationId": "get__health",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Health"
+                },
+                "example": {
+                  "status": "ok"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/v1/recommend/direct": {
+      "post": {
+        "tags": [
+          "Direct MVP"
+        ],
+        "summary": "Image → verified recommendations",
+        "description": "No bearer required. Registered route != enabled engine. Normal cmd/server uses legacy New and retains readiness guard, so Direct returns503 unless explicit permitted local development injection. Final<=5; language is model classification. Album lookup is optional enrichment. UI image: album_artwork_url → youtube_thumbnail_url → local placeholder. Checkpoint is process-local one-hour capability, not user authorization.",
+        "operationId": "post__api_v1_recommend_direct",
+        "responses": {
+          "200": {
+            "description": "May be partial or empty; 0 verified tracks still200. Artwork null is not an eligibility failure.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DirectapiResponse"
+                },
+                "examples": {
+                  "partial": {
+                    "value": {
+                      "recommendation_id": "rec_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                      "scene": {
+                        "description": "비 내리는 날 카페 창가 작업 공간"
+                      },
+                      "playlist": {
+                        "title": "Rainy Cafe Focus"
+                      },
+                      "target_track_count": 5,
+                      "partial": true,
+                      "language_policy": {
+                        "required_korean_tracks": 2,
+                        "actual_korean_tracks": 1,
+                        "satisfied": false
+                      },
+                      "tracks": [
+                        {
+                          "rank": 1,
+                          "artist": "Example Artist",
+                          "track_title": "Example Song",
+                          "lyric_language": "ko",
+                          "korean_eligible": true,
+                          "album_title": null,
+                          "album_artwork_url": null,
+                          "video_id": "exampleVideo",
+                          "youtube_title": "Example Artist - Example Song",
+                          "thumbnail_url": "https://example.com/youtube-thumbnail.jpg",
+                          "youtube_thumbnail_url": "https://example.com/youtube-thumbnail.jpg",
+                          "fit_score": 0.9
+                        }
+                      ]
+                    }
+                  },
+                  "zeroVerified": {
+                    "value": {
+                      "recommendation_id": "rec_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                      "scene": {
+                        "description": "비 내리는 날 카페 창가 작업 공간"
+                      },
+                      "playlist": {
+                        "title": "Rainy Cafe Focus"
+                      },
+                      "target_track_count": 5,
+                      "partial": true,
+                      "language_policy": {
+                        "required_korean_tracks": 2,
+                        "actual_korean_tracks": 0,
+                        "satisfied": false
+                      },
+                      "tracks": []
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Only present when request_id supplied."
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "no-store"
+              }
+            }
+          },
+          "400": {
+            "description": "IMAGE_REQUIRED / INVALID_IMAGE / INVALID_REQUEST: malformed upload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "IMAGE_REQUIRED",
+                    "message": "image file is required"
+                  }
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "REQUEST_CANCELED: canceled",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "REQUEST_CANCELED",
+                    "message": "request was canceled"
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "IMAGE_TOO_LARGE: image10MiB, whole multipart10MiB+64KiB",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "IMAGE_TOO_LARGE",
+                    "message": "image must be 10MB or smaller"
+                  }
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "UNSUPPORTED_CONTENT_TYPE / UNSUPPORTED_IMAGE_TYPE: multipart JPEG/PNG/WebP only",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "UNSUPPORTED_CONTENT_TYPE",
+                    "message": "multipart/form-data is required"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR: preprocessing failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "INTERNAL_ERROR",
+                    "message": "internal server error"
+                  }
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "INVALID_RECOMMENDATION_RESPONSE / DIRECT_RECOMMENDATION_FAILED: upstream/invalid result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "INVALID_RECOMMENDATION_RESPONSE",
+                    "message": "invalid recommendation response"
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DIRECT_RECOMMENDATION_UNAVAILABLE / CHECKPOINT_CAPACITY_EXCEEDED / YOUTUBE_QUOTA_EXCEEDED / YOUTUBE_SEARCH_BUDGET_EXCEEDED: disabled/capacity/budget",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "DIRECT_RECOMMENDATION_UNAVAILABLE",
+                    "message": "Direct recommendation is not enabled"
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "RECOMMENDATION_TIMEOUT: deadline",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "RECOMMENDATION_TIMEOUT",
+                    "message": "recommendation timed out"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Exactly one JPEG/PNG/WebP image, content-sniffed; max10MiB."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_-]{1,64}$",
+                    "description": "Optional correlation value, echoed as X-Request-ID; NOT an idempotency key."
+                  }
+                },
+                "required": [
+                  "image"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/google/mobile/start": {
+      "post": {
+        "tags": [
+          "Mobile Auth"
+        ],
+        "summary": "Start PKCE mobile handoff",
+        "description": "PKCE S256. Open returned authorization_url in browser; do not embed Google login in API client. Requires configured base URL/package/SHA/OAuth;503 otherwise.",
+        "operationId": "post__api_v1_auth_google_mobile_start",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MobileauthStartResponse"
+                },
+                "example": {
+                  "authorization_url": "https://example.com/api/v1/auth/google/mobile/authorize?transaction=EXAMPLE_ONLY",
+                  "expires_in": 300
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "MOBILE_CHALLENGE_INVALID / MOBILE_HANDOFF_INVALID / INVALID_REQUEST: invalid, expired or consumed input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "MOBILE_CHALLENGE_INVALID",
+                    "message": "a valid S256 challenge is required"
+                  }
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "UNSUPPORTED_CONTENT_TYPE: JSON required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "UNSUPPORTED_CONTENT_TYPE",
+                    "message": "multipart/form-data is required"
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "MOBILE_AUTH_UNAVAILABLE / MOBILE_AUTH_CAPACITY: configuration/capacity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "MOBILE_AUTH_UNAVAILABLE",
+                    "message": "mobile authorization is not configured"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR: failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "INTERNAL_ERROR",
+                    "message": "internal server error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MobileStartRequest"
+              },
+              "example": {
+                "code_challenge": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "code_challenge_method": "S256"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/google/mobile/authorize": {
+      "get": {
+        "tags": [
+          "Mobile Auth"
+        ],
+        "summary": "Browser entry for mobile transaction",
+        "description": "Browser flow; sets HttpOnly sync_oauth_state cookie, redirects to Google. Transaction expires5min and must be usable.",
+        "operationId": "get__api_v1_auth_google_mobile_authorize",
+        "responses": {
+          "302": {
+            "description": "Browser redirect. Do not treat as a JSON API.",
+            "headers": {
+              "Location": {
+                "description": "Authorization or mobile completion URL; may contain transient sensitive handoff parameters.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "MOBILE_CHALLENGE_INVALID / MOBILE_HANDOFF_INVALID / INVALID_REQUEST: invalid, expired or consumed input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "MOBILE_CHALLENGE_INVALID",
+                    "message": "a valid S256 challenge is required"
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "MOBILE_AUTH_UNAVAILABLE / MOBILE_AUTH_CAPACITY: configuration/capacity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "MOBILE_AUTH_UNAVAILABLE",
+                    "message": "mobile authorization is not configured"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR: failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "INTERNAL_ERROR",
+                    "message": "internal server error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "name": "transaction",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Single-use transaction from authorization_url."
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/google/callback": {
+      "get": {
+        "tags": [
+          "Browser OAuth"
+        ],
+        "summary": "Google browser callback",
+        "description": "Browser redirect flow, not Android token exchange. Mobile state:302 to /auth/android/complete?code=... (handoff expires120sec); browser state:200 Connection and HttpOnly sync_session cookie. Requires matching sync_oauth_state cookie and one-time state. Google tokens/code/secret never returned in JSON. Open externally, preserve browser cookies; callback redirect URI must match configured URI.",
+        "operationId": "get__api_v1_auth_google_callback",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthConnection"
+                }
+              }
+            }
+          },
+          "302": {
+            "description": "Browser redirect. Do not treat as a JSON API.",
+            "headers": {
+              "Location": {
+                "description": "Authorization or mobile completion URL; may contain transient sensitive handoff parameters.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "OAUTH_STATE_INVALID / OAUTH_CODE_MISSING / OAUTH_ACCESS_DENIED / OAUTH_AUTHORIZATION_FAILED: flow rejected",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "OAUTH_STATE_INVALID",
+                    "message": "OAuth state is invalid or expired"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "OAUTH_SESSION_NOT_FOUND: absent session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "OAUTH_SESSION_NOT_FOUND",
+                    "message": "OAuth session was not found"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "OAUTH_CONFIGURATION_ERROR / INTERNAL_ERROR: configuration/failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "OAUTH_CONFIGURATION_ERROR",
+                    "message": "Google OAuth is not configured"
+                  }
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "OAUTH_TOKEN_EXCHANGE_FAILED / YOUTUBE_AUTH_FAILED: provider failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "OAUTH_TOKEN_EXCHANGE_FAILED",
+                    "message": "failed to connect Google account"
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "MOBILE_AUTH_UNAVAILABLE / MOBILE_AUTH_CAPACITY: configuration/capacity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "MOBILE_AUTH_UNAVAILABLE",
+                    "message": "mobile authorization is not configured"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "name": "state",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "CSRF state from browser flow"
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Google authorization code, sensitive; no examples/logging."
+          },
+          {
+            "name": "error",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Provider denial, e.g. access_denied"
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/mobile/exchange": {
+      "post": {
+        "tags": [
+          "Mobile Auth"
+        ],
+        "summary": "Exchange one-time handoff + verifier",
+        "description": "Single-use120sec handoff, not Google code. Returns Sync session_token for Authorization: Bearer; expires24h, in-memory. Never a Google OAuth token. Sensitive response has no-store.",
+        "operationId": "post__api_v1_auth_mobile_exchange",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MobileauthExchangeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "MOBILE_CHALLENGE_INVALID / MOBILE_HANDOFF_INVALID / INVALID_REQUEST: invalid, expired or consumed input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "MOBILE_CHALLENGE_INVALID",
+                    "message": "a valid S256 challenge is required"
+                  }
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "UNSUPPORTED_CONTENT_TYPE: JSON required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "UNSUPPORTED_CONTENT_TYPE",
+                    "message": "multipart/form-data is required"
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "MOBILE_AUTH_UNAVAILABLE / MOBILE_AUTH_CAPACITY: configuration/capacity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "MOBILE_AUTH_UNAVAILABLE",
+                    "message": "mobile authorization is not configured"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR: failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "INTERNAL_ERROR",
+                    "message": "internal server error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MobileExchangeRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/google/status": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "YouTube connection status",
+        "description": "Bearer OR browser cookie accepted. With neither, connected:false200. Explicit bad bearer never falls back to cookie. Both live identities must agree. Calls channels.list(mine=true) when connected; channel may be null. Browser config absent gives500.",
+        "operationId": "get__api_v1_auth_google_status",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthConnection"
+                },
+                "example": {
+                  "connected": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "OAUTH_STATE_INVALID / OAUTH_CODE_MISSING / OAUTH_ACCESS_DENIED / OAUTH_AUTHORIZATION_FAILED: flow rejected",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "OAUTH_STATE_INVALID",
+                    "message": "OAuth state is invalid or expired"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "OAUTH_CONFIGURATION_ERROR / INTERNAL_ERROR: configuration/failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "OAUTH_CONFIGURATION_ERROR",
+                    "message": "Google OAuth is not configured"
+                  }
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "OAUTH_TOKEN_EXCHANGE_FAILED / YOUTUBE_AUTH_FAILED: provider failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "OAUTH_TOKEN_EXCHANGE_FAILED",
+                    "message": "failed to connect Google account"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MOBILE_SESSION_INVALID / OAUTH_SESSION_NOT_FOUND / YOUTUBE_NOT_CONNECTED: invalid/expired session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "MOBILE_SESSION_INVALID",
+                    "message": "a mobile bearer session is required"
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "AUTH_IDENTITY_CONFLICT: explicit bearer and live browser cookie refer to different sessions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "AUTH_IDENTITY_CONFLICT",
+                    "message": "browser and mobile sessions conflict"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {},
+          {
+            "SyncBearer": []
+          },
+          {
+            "BrowserSession": []
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/mobile/session": {
+      "delete": {
+        "tags": [
+          "Mobile Auth"
+        ],
+        "summary": "Logout mobile session",
+        "description": "Requires explicit Sync bearer. Revokes local mobile session, not Google OAuth grant.",
+        "operationId": "delete__api_v1_auth_mobile_session",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoggedOut"
+                },
+                "example": {
+                  "logged_out": true
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "MOBILE_AUTH_UNAVAILABLE / MOBILE_AUTH_CAPACITY: configuration/capacity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "MOBILE_AUTH_UNAVAILABLE",
+                    "message": "mobile authorization is not configured"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR: failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "INTERNAL_ERROR",
+                    "message": "internal server error"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MOBILE_SESSION_INVALID / OAUTH_SESSION_NOT_FOUND / YOUTUBE_NOT_CONNECTED: invalid/expired session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "MOBILE_SESSION_INVALID",
+                    "message": "a mobile bearer session is required"
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "AUTH_IDENTITY_CONFLICT: explicit bearer and live browser cookie refer to different sessions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "AUTH_IDENTITY_CONFLICT",
+                    "message": "browser and mobile sessions conflict"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "SyncBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/google": {
+      "get": {
+        "tags": [
+          "Legacy"
+        ],
+        "summary": "Start browser-cookie OAuth",
+        "description": "Browser-only Google OAuth redirect. HttpOnly/Lax state cookie; Secure follows config. offline access; no JSON token response.",
+        "operationId": "get__api_v1_auth_google",
+        "responses": {
+          "302": {
+            "description": "Browser redirect. Do not treat as a JSON API.",
+            "headers": {
+              "Location": {
+                "description": "Authorization or mobile completion URL; may contain transient sensitive handoff parameters.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "OAUTH_STATE_INVALID / OAUTH_CODE_MISSING / OAUTH_ACCESS_DENIED / OAUTH_AUTHORIZATION_FAILED: flow rejected",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "OAUTH_STATE_INVALID",
+                    "message": "OAuth state is invalid or expired"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "OAUTH_SESSION_NOT_FOUND: absent session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "OAUTH_SESSION_NOT_FOUND",
+                    "message": "OAuth session was not found"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "OAUTH_CONFIGURATION_ERROR / INTERNAL_ERROR: configuration/failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "OAUTH_CONFIGURATION_ERROR",
+                    "message": "Google OAuth is not configured"
+                  }
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "OAUTH_TOKEN_EXCHANGE_FAILED / YOUTUBE_AUTH_FAILED: provider failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "OAUTH_TOKEN_EXCHANGE_FAILED",
+                    "message": "failed to connect Google account"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Disconnect account",
+        "description": "Deletes local token/session, revokes related mobile sessions, clears browser cookies; does not implement Google grant revocation.",
+        "operationId": "delete__api_v1_auth_google",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthConnection"
+                },
+                "example": {
+                  "connected": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "OAUTH_STATE_INVALID / OAUTH_CODE_MISSING / OAUTH_ACCESS_DENIED / OAUTH_AUTHORIZATION_FAILED: flow rejected",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "OAUTH_STATE_INVALID",
+                    "message": "OAuth state is invalid or expired"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "OAUTH_CONFIGURATION_ERROR / INTERNAL_ERROR: configuration/failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "OAUTH_CONFIGURATION_ERROR",
+                    "message": "Google OAuth is not configured"
+                  }
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "OAUTH_TOKEN_EXCHANGE_FAILED / YOUTUBE_AUTH_FAILED: provider failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "OAUTH_TOKEN_EXCHANGE_FAILED",
+                    "message": "failed to connect Google account"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MOBILE_SESSION_INVALID / OAUTH_SESSION_NOT_FOUND / YOUTUBE_NOT_CONNECTED: invalid/expired session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "MOBILE_SESSION_INVALID",
+                    "message": "a mobile bearer session is required"
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "AUTH_IDENTITY_CONFLICT: explicit bearer and live browser cookie refer to different sessions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "AUTH_IDENTITY_CONFLICT",
+                    "message": "browser and mobile sessions conflict"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "SyncBearer": []
+          },
+          {
+            "BrowserSession": []
+          }
+        ]
+      }
+    },
+    "/api/v1/playlists": {
+      "post": {
+        "tags": [
+          "Playlists"
+        ],
+        "summary": "Create playlist from checkpoint or legacy video IDs",
+        "description": "Bearer OR sync_session cookie required. recommendation_id field selects strict checkpoint variant: private only, stored verified order, title required, cannot send tracks or alter order. Checkpoint lost on restart; empty checkpoint409. Same session+checkpoint dedup/retry state is process-local; changed payload409; ambiguous write502, no blind retry. Normal server checkpoint handler can503 under unchanged Direct guard. Legacy variant is existing raw tracks1..20, supports private(default)/unlisted/public; not equivalent to verified checkpoint contract. Explicit cross-site/Origin mismatch is rejected even with bearer.",
+        "operationId": "post__api_v1_playlists",
+        "responses": {
+          "201": {
+            "description": "Created playlist or partial item failure. Already-written playlist/items never rolled back. Do not blindly retry ambiguous writes.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelCreatePlaylistResponse"
+                },
+                "example": {
+                  "playlist": {
+                    "id": "EXAMPLE_PLAYLIST",
+                    "title": "Rainy Cafe Focus",
+                    "privacy_status": "private",
+                    "url": "https://www.youtube.com/playlist?list=EXAMPLE_PLAYLIST"
+                  },
+                  "submitted_count": 1,
+                  "requested_count": 1,
+                  "added_count": 1,
+                  "failed_count": 0,
+                  "partial": false,
+                  "items": [
+                    {
+                      "video_id": "exampleVideo",
+                      "status": "added",
+                      "attempted": true,
+                      "playlist_item_id": "EXAMPLE_ITEM"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_REQUEST / INVALID_RECOMMENDATION_ID / PLAYLIST_TOO_MANY_TRACKS: invalid payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "INVALID_REQUEST",
+                    "message": "invalid multipart request"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "YOUTUBE_NOT_CONNECTED / YOUTUBE_AUTH_EXPIRED / MOBILE_SESSION_INVALID: reconnect",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "YOUTUBE_NOT_CONNECTED",
+                    "message": "YouTube account is not connected"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "INVALID_REQUEST_ORIGIN: explicit cross-site/wrong Origin rejected",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "INVALID_REQUEST_ORIGIN",
+                    "message": "same-origin request is required"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "RECOMMENDATION_NOT_FOUND: missing checkpoint",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "RECOMMENDATION_NOT_FOUND",
+                    "message": "recommendation not found"
+                  }
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "REQUEST_CANCELED: canceled",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "REQUEST_CANCELED",
+                    "message": "request was canceled"
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "NO_VERIFIED_TRACKS / PLAYLIST_REQUEST_CONFLICT / AUTH_IDENTITY_CONFLICT: empty/conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "NO_VERIFIED_TRACKS",
+                    "message": "recommendation contains no verified tracks"
+                  }
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "RECOMMENDATION_EXPIRED: checkpoint expired",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "RECOMMENDATION_EXPIRED",
+                    "message": "recommendation has expired"
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "REQUEST_TOO_LARGE: JSON cap32KiB",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "REQUEST_TOO_LARGE",
+                    "message": "recommendation request is too large"
+                  }
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "UNSUPPORTED_CONTENT_TYPE: JSON required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "UNSUPPORTED_CONTENT_TYPE",
+                    "message": "multipart/form-data is required"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "OAUTH_CONFIGURATION_ERROR: not configured",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "OAUTH_CONFIGURATION_ERROR",
+                    "message": "Google OAuth is not configured"
+                  }
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "PLAYLIST_CREATE_FAILED / PLAYLIST_CREATE_RESULT_UNKNOWN / YOUTUBE_SERVICE_UNAVAILABLE: upstream/unconfirmed write",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "PLAYLIST_CREATE_FAILED",
+                    "message": "request failed"
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DIRECT_RECOMMENDATION_UNAVAILABLE / CHECKPOINT_CAPACITY_EXCEEDED / YOUTUBE_QUOTA_EXCEEDED: disabled/quota",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "DIRECT_RECOMMENDATION_UNAVAILABLE",
+                    "message": "Direct recommendation is not enabled"
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "PLAYLIST_TIMEOUT: deadline",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "PLAYLIST_TIMEOUT",
+                    "message": "playlist request timed out"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "SyncBearer": []
+          },
+          {
+            "BrowserSession": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DirectapiPlaylistRequest"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ModelCreatePlaylistRequest"
+                  }
+                ]
+              },
+              "examples": {
+                "checkpoint": {
+                  "value": {
+                    "recommendation_id": "rec_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "title": "Rainy Cafe Focus",
+                    "privacy_status": "private"
+                  }
+                },
+                "legacy": {
+                  "value": {
+                    "title": "Example Playlist",
+                    "tracks": [
+                      {
+                        "video_id": "exampleVideo"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/analyze": {
+      "post": {
+        "tags": [
+          "Legacy"
+        ],
+        "summary": "Image analysis",
+        "description": "Existing standalone image analysis. multipart image JPEG/PNG/WebP max10MiB +64KiB envelope. Other non-image form fields ignored. No auth. Existing v2/v3 analysis schema fields preserved.",
+        "operationId": "post__api_v1_analyze",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelAnalyzeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_REQUEST / IMAGE_REQUIRED / IMAGE_READ_ERROR / IMAGE_DECODE_FAILED / IMAGE_DIMENSIONS_TOO_LARGE: upload/decoder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "INVALID_REQUEST",
+                    "message": "invalid multipart request"
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "IMAGE_TOO_LARGE: image cap",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "IMAGE_TOO_LARGE",
+                    "message": "image must be 10MB or smaller"
+                  }
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "UNSUPPORTED_IMAGE_TYPE: format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "UNSUPPORTED_IMAGE_TYPE",
+                    "message": "only JPEG, PNG and WebP images are supported"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "AI_CONFIGURATION_ERROR / IMAGE_PROCESSING_FAILED: configuration/processing",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "AI_CONFIGURATION_ERROR",
+                    "message": "image analysis service configuration error"
+                  }
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "INVALID_AI_RESPONSE / AI_SERVICE_ERROR: provider",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "INVALID_AI_RESPONSE",
+                    "message": "invalid image analysis response"
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "AI_RATE_LIMITED / AI_SERVICE_UNAVAILABLE: unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "AI_RATE_LIMITED",
+                    "message": "image analysis service is temporarily busy"
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "AI_TIMEOUT: timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "AI_TIMEOUT",
+                    "message": "image analysis timed out"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "image"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/recommend": {
+      "post": {
+        "tags": [
+          "Legacy"
+        ],
+        "summary": "Recommend from existing analysis",
+        "description": "Existing legacy ImageAnalysis/preference discovery. JSON cap64KiB. preferences optional(defaults languages ko/en, count configured10, vocal_mode mixed). Actual behavior depends on configured legacy data/query mode; separate from Direct MVP.",
+        "operationId": "post__api_v1_recommend",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelRecommendationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_REQUEST: invalid analysis/preferences",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "INVALID_REQUEST",
+                    "message": "invalid multipart request"
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "REQUEST_TOO_LARGE:64KiB",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "REQUEST_TOO_LARGE",
+                    "message": "recommendation request is too large"
+                  }
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "UNSUPPORTED_CONTENT_TYPE: JSON required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "UNSUPPORTED_CONTENT_TYPE",
+                    "message": "multipart/form-data is required"
+                  }
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "MUSIC_SEARCH_ERROR: provider error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "MUSIC_SEARCH_ERROR",
+                    "message": "failed to search music"
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "MUSIC_SEARCH_UNAVAILABLE / YOUTUBE_LIVE_SEARCH_DISABLED / YOUTUBE_SEARCH_BUDGET_EXCEEDED / YOUTUBE_QUOTA_EXCEEDED: unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "MUSIC_SEARCH_UNAVAILABLE",
+                    "message": "music search is unavailable"
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "RECOMMENDATION_TIMEOUT: timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "RECOMMENDATION_TIMEOUT",
+                    "message": "recommendation timed out"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModelRecommendationRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/assetlinks.json": {
+      "get": {
+        "tags": [
+          "Mobile Auth"
+        ],
+        "summary": "Configured Android App Link association",
+        "description": "Returns configured values only;503 when mobile settings missing. No fake Android package/signing data supplied by docs.",
+        "operationId": "get___well-known_assetlinks_json",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetLinks"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "MOBILE_AUTH_UNAVAILABLE / MOBILE_AUTH_CAPACITY: configuration/capacity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "MOBILE_AUTH_UNAVAILABLE",
+                    "message": "mobile authorization is not configured"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/auth/android/complete": {
+      "get": {
+        "tags": [
+          "Mobile Auth"
+        ],
+        "summary": "App Link completion landing page",
+        "description": "Browser/app-link transport page with one-time code query from mobile callback. HTML fallback; no Google token returned. Android must extract handoff and call exchange. Device App Link verification is deployment-dependent.",
+        "operationId": "get__auth_android_complete",
+        "responses": {
+          "200": {
+            "description": "Minimal browser completion HTML",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "MOBILE_AUTH_UNAVAILABLE / MOBILE_AUTH_CAPACITY: configuration/capacity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelErrorResponse"
+                },
+                "example": {
+                  "error": {
+                    "code": "MOBILE_AUTH_UNAVAILABLE",
+                    "message": "mobile authorization is not configured"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Mobile handoff carried by redirect, not consumed by this HTML handler."
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuthChannel": {
+        "properties": {
+          "channel_id": {
+            "nullable": true,
+            "type": "string",
+            "description": "null when no YouTube channel resource."
+          },
+          "channel_title": {
+            "nullable": true,
+            "type": "string",
+            "description": "null when no YouTube channel resource."
+          }
+        },
+        "required": [
+          "channel_id",
+          "channel_title"
+        ],
+        "type": "object"
+      },
+      "AuthConnection": {
+        "properties": {
+          "connected": {
+            "type": "boolean"
+          },
+          "youtube": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AuthChannel"
+              }
+            ],
+            "nullable": true,
+            "type": "object"
+          }
+        },
+        "required": [
+          "connected"
+        ],
+        "type": "object"
+      },
+      "DirectapiLanguagePolicy": {
+        "properties": {
+          "actual_korean_tracks": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "required_korean_tracks": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "satisfied": {
+            "type": "boolean",
+            "description": "actual_korean_tracks>=2 computed from final returned tracks; classification is model metadata, not independently verified lyrics."
+          }
+        },
+        "required": [
+          "required_korean_tracks",
+          "actual_korean_tracks",
+          "satisfied"
+        ],
+        "type": "object"
+      },
+      "DirectapiPlaylistRequest": {
+        "properties": {
+          "description": {
+            "type": "string",
+            "maxLength": 4000,
+            "description": "Optional, trimmed; no NUL."
+          },
+          "privacy_status": {
+            "type": "string",
+            "default": "private",
+            "enum": [
+              "private"
+            ]
+          },
+          "recommendation_id": {
+            "type": "string",
+            "pattern": "^rec_[A-Za-z0-9_-]{43}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "description": "Trimmed; nonempty; no NUL/newline."
+          }
+        },
+        "required": [
+          "title",
+          "recommendation_id"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "DirectapiResponse": {
+        "properties": {
+          "language_policy": {
+            "$ref": "#/components/schemas/DirectapiLanguagePolicy"
+          },
+          "partial": {
+            "type": "boolean",
+            "description": "true if returned count <5 OR actual model-classified Korean count <2. Shortage does not force empty tracks."
+          },
+          "playlist": {
+            "$ref": "#/components/schemas/ModelDirectPlaylist"
+          },
+          "recommendation_id": {
+            "type": "string",
+            "pattern": "^rec_[A-Za-z0-9_-]{43}$",
+            "description": "Opaque checkpoint capability. In-memory, one-hour TTL; lost on restart. Do not log/share; playlist consumes stored verified order."
+          },
+          "scene": {
+            "$ref": "#/components/schemas/ModelDirectScene"
+          },
+          "target_track_count": {
+            "format": "int64",
+            "type": "integer",
+            "enum": [
+              5
+            ]
+          },
+          "tracks": {
+            "items": {
+              "$ref": "#/components/schemas/DirectapiTrack"
+            },
+            "type": "array",
+            "maxItems": 5,
+            "description": "Verified, eligible tracks; may be empty. Never padded."
+          }
+        },
+        "required": [
+          "scene",
+          "playlist",
+          "language_policy",
+          "recommendation_id",
+          "partial",
+          "target_track_count",
+          "tracks"
+        ],
+        "type": "object"
+      },
+      "DirectapiTrack": {
+        "properties": {
+          "album_artwork_url": {
+            "nullable": true,
+            "type": "string",
+            "description": "Actual iTunes metadata or null. Lookup failure does not remove the track."
+          },
+          "album_title": {
+            "nullable": true,
+            "type": "string",
+            "description": "Actual iTunes metadata or null. Lookup failure does not remove the track."
+          },
+          "artist": {
+            "type": "string"
+          },
+          "fit_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "korean_eligible": {
+            "type": "boolean",
+            "description": "true for model-classified ko/ko_en only. Artist nationality does not determine this."
+          },
+          "lyric_language": {
+            "type": "string",
+            "enum": [
+              "ko",
+              "en",
+              "ko_en",
+              "instrumental",
+              "unknown"
+            ],
+            "description": "Model-classified lyrics, not verified lyric metadata. unknown excluded from final selection."
+          },
+          "rank": {
+            "format": "int64",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "thumbnail_url": {
+            "type": "string",
+            "description": "Backward-compatible YouTube thumbnail alias; preserved alongside youtube_thumbnail_url."
+          },
+          "track_title": {
+            "type": "string"
+          },
+          "video_id": {
+            "type": "string"
+          },
+          "youtube_thumbnail_url": {
+            "type": "string"
+          },
+          "youtube_title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "lyric_language",
+          "korean_eligible",
+          "album_title",
+          "album_artwork_url",
+          "youtube_thumbnail_url",
+          "rank",
+          "artist",
+          "track_title",
+          "video_id",
+          "youtube_title",
+          "thumbnail_url",
+          "fit_score"
+        ],
+        "type": "object"
+      },
+      "MobileauthExchangeResponse": {
+        "properties": {
+          "expires_in": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "session_token": {
+            "type": "string",
+            "description": "Sensitive opaque Sync bearer session, NOT Google OAuth access/refresh token. No token example included; store securely."
+          },
+          "token_type": {
+            "type": "string",
+            "enum": [
+              "Bearer"
+            ]
+          }
+        },
+        "required": [
+          "session_token",
+          "token_type",
+          "expires_in"
+        ],
+        "type": "object"
+      },
+      "MobileauthStartResponse": {
+        "properties": {
+          "authorization_url": {
+            "type": "string"
+          },
+          "expires_in": {
+            "format": "int64",
+            "type": "integer",
+            "example": 300,
+            "description": "Seconds; transaction lifetime5min."
+          }
+        },
+        "required": [
+          "authorization_url",
+          "expires_in"
+        ],
+        "type": "object"
+      },
+      "ModelAPIError": {
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object"
+      },
+      "ModelAnalysisConfidence": {
+        "properties": {
+          "genre": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "mood": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "tempo": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "mood",
+          "genre",
+          "tempo"
+        ],
+        "type": "object"
+      },
+      "ModelAnalyzeResponse": {
+        "properties": {
+          "analysis": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ModelImageAnalysis"
+              }
+            ],
+            "nullable": true,
+            "type": "object"
+          },
+          "image": {
+            "$ref": "#/components/schemas/ModelImageInfo"
+          }
+        },
+        "required": [
+          "image",
+          "analysis"
+        ],
+        "type": "object"
+      },
+      "ModelCreatePlaylistRequest": {
+        "properties": {
+          "description": {
+            "type": "string",
+            "maxLength": 4000,
+            "description": "Optional, trimmed; no NUL."
+          },
+          "privacy_status": {
+            "type": "string",
+            "default": "private",
+            "enum": [
+              "private",
+              "unlisted",
+              "public"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "description": "Trimmed; nonempty; no NUL/newline."
+          },
+          "tracks": {
+            "items": {
+              "$ref": "#/components/schemas/ModelPlaylistTrack"
+            },
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 20,
+            "description": "Legacy raw-video variant; dedup preserves first appearance. Not the checkpoint contract."
+          }
+        },
+        "required": [
+          "title",
+          "tracks"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ModelCreatePlaylistResponse": {
+        "properties": {
+          "added_count": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "failed_count": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ModelPlaylistItemResult"
+            },
+            "type": "array"
+          },
+          "partial": {
+            "type": "boolean"
+          },
+          "playlist": {
+            "$ref": "#/components/schemas/ModelPlaylistResult"
+          },
+          "requested_count": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "submitted_count": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "playlist",
+          "submitted_count",
+          "requested_count",
+          "added_count",
+          "failed_count",
+          "partial",
+          "items"
+        ],
+        "type": "object"
+      },
+      "ModelDirectPlaylist": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Generated short English title; client can pass it as playlist request title."
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "type": "object"
+      },
+      "ModelDirectScene": {
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Short Korean observable-scene noun phrase, e.g. 비 내리는 날 카페 창가 작업 공간; no unsupported location/emotion guesses."
+          }
+        },
+        "required": [
+          "description"
+        ],
+        "type": "object"
+      },
+      "ModelErrorResponse": {
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ModelAPIError"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "type": "object"
+      },
+      "ModelGenreCandidate": {
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "raw_label": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "category",
+          "name",
+          "score"
+        ],
+        "type": "object"
+      },
+      "ModelImageAnalysis": {
+        "properties": {
+          "confidence": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ModelAnalysisConfidence"
+              }
+            ],
+            "nullable": true,
+            "type": "object"
+          },
+          "mood": {
+            "$ref": "#/components/schemas/ModelMoodAnalysis"
+          },
+          "music_profile": {
+            "$ref": "#/components/schemas/ModelMusicProfile"
+          },
+          "scene": {
+            "$ref": "#/components/schemas/ModelSceneAnalysis"
+          },
+          "schema_version": {
+            "type": "string"
+          },
+          "visual": {
+            "$ref": "#/components/schemas/ModelVisualAnalysis"
+          }
+        },
+        "required": [
+          "scene",
+          "visual",
+          "mood",
+          "music_profile"
+        ],
+        "type": "object"
+      },
+      "ModelImageInfo": {
+        "properties": {
+          "content_type": {
+            "type": "string"
+          },
+          "filename": {
+            "type": "string"
+          },
+          "size": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "filename",
+          "content_type",
+          "size"
+        ],
+        "type": "object"
+      },
+      "ModelMoodAnalysis": {
+        "properties": {
+          "energy": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "primary": {
+            "type": "string"
+          },
+          "secondary": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "valence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "tags",
+          "energy",
+          "valence"
+        ],
+        "type": "object"
+      },
+      "ModelMusicPreferences": {
+        "properties": {
+          "count": {
+            "format": "int64",
+            "type": "integer",
+            "minimum": 5,
+            "maximum": 20,
+            "description": "Defaults to configured RECOMMENDATION_COUNT, normally10."
+          },
+          "excluded_artists": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "instrumental_only": {
+            "type": "boolean"
+          },
+          "languages": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "default": [
+              "ko",
+              "en"
+            ],
+            "minItems": 1,
+            "maxItems": 5
+          },
+          "preferred_genres": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "vocal_mode": {
+            "type": "string",
+            "enum": [
+              "mixed",
+              "vocal-first",
+              "instrumental-first",
+              "instrumental-only"
+            ],
+            "default": "mixed"
+          }
+        },
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ModelMusicProfile": {
+        "properties": {
+          "energy": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "genre_candidates": {
+            "items": {
+              "$ref": "#/components/schemas/ModelGenreCandidate"
+            },
+            "type": "array"
+          },
+          "genres": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "instrumental_preference": {
+            "nullable": true,
+            "type": "number"
+          },
+          "tempo": {
+            "type": "string"
+          },
+          "vocal_preference": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "tempo",
+          "energy",
+          "genres"
+        ],
+        "type": "object"
+      },
+      "ModelPlaylistItemResult": {
+        "properties": {
+          "attempted": {
+            "type": "boolean"
+          },
+          "error_code": {
+            "type": "string"
+          },
+          "playlist_item_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "added",
+              "failed"
+            ]
+          },
+          "video_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "video_id",
+          "status",
+          "attempted"
+        ],
+        "type": "object"
+      },
+      "ModelPlaylistResult": {
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "privacy_status": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "privacy_status",
+          "url"
+        ],
+        "type": "object"
+      },
+      "ModelPlaylistTrack": {
+        "properties": {
+          "video_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "video_id"
+        ],
+        "type": "object"
+      },
+      "ModelRecommendationRequest": {
+        "properties": {
+          "analysis": {
+            "$ref": "#/components/schemas/ModelImageAnalysis"
+          },
+          "preferences": {
+            "$ref": "#/components/schemas/ModelMusicPreferences"
+          }
+        },
+        "required": [
+          "analysis"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ModelRecommendationResponse": {
+        "properties": {
+          "data_mode": {
+            "type": "string"
+          },
+          "partial": {
+            "type": "boolean"
+          },
+          "requested_count": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "returned_count": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "tracks": {
+            "items": {
+              "$ref": "#/components/schemas/ModelRecommendedTrack"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "tracks",
+          "requested_count",
+          "returned_count",
+          "partial"
+        ],
+        "type": "object"
+      },
+      "ModelRecommendedTrack": {
+        "properties": {
+          "artist": {
+            "type": "string"
+          },
+          "channel_title": {
+            "type": "string"
+          },
+          "duration_seconds": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "fit_score": {
+            "nullable": true,
+            "type": "number"
+          },
+          "match_reasons": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "match_score": {
+            "type": "number"
+          },
+          "rank": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "thumbnail_url": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "track_title": {
+            "type": "string"
+          },
+          "video_id": {
+            "type": "string"
+          },
+          "youtube_url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "video_id",
+          "title",
+          "channel_title",
+          "thumbnail_url",
+          "duration_seconds",
+          "match_score",
+          "match_reasons",
+          "youtube_url"
+        ],
+        "type": "object"
+      },
+      "ModelSceneAnalysis": {
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "time_of_day": {
+            "type": "string"
+          },
+          "weather": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "category",
+          "description",
+          "time_of_day",
+          "weather"
+        ],
+        "type": "object"
+      },
+      "ModelVisualAnalysis": {
+        "properties": {
+          "brightness": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "color_temperature": {
+            "type": "string"
+          },
+          "contrast": {
+            "type": "string"
+          },
+          "dominant_colors": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "motion": {
+            "type": "string"
+          },
+          "saturation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "brightness",
+          "color_temperature",
+          "dominant_colors",
+          "motion"
+        ],
+        "type": "object"
+      },
+      "Health": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "MobileStartRequest": {
+        "type": "object",
+        "properties": {
+          "code_challenge": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{43}$",
+            "description": "base64url SHA256(code_verifier), without padding."
+          },
+          "code_challenge_method": {
+            "type": "string",
+            "enum": [
+              "S256"
+            ]
+          }
+        },
+        "required": [
+          "code_challenge",
+          "code_challenge_method"
+        ],
+        "additionalProperties": false
+      },
+      "MobileExchangeRequest": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{43}$",
+            "description": "Single-use mobile handoff code, not Google authorization code."
+          },
+          "code_verifier": {
+            "type": "string",
+            "minLength": 43,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9._~-]+$"
+          }
+        },
+        "required": [
+          "code",
+          "code_verifier"
+        ],
+        "additionalProperties": false
+      },
+      "LoggedOut": {
+        "type": "object",
+        "properties": {
+          "logged_out": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "logged_out"
+        ]
+      },
+      "AssetLinks": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "relation": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "target": {
+              "type": "object",
+              "properties": {
+                "namespace": {
+                  "type": "string"
+                },
+                "package_name": {
+                  "type": "string"
+                },
+                "sha256_cert_fingerprints": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "SyncBearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "Opaque Sync mobile session (not JWT or Google token)",
+        "description": "Obtained from mobile/exchange; no actual token example."
+      },
+      "BrowserSession": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "sync_session",
+        "description": "HttpOnly browser cookie set by browser OAuth callback; Android should use SyncBearer."
+      }
+    }
+  }
+}

@@ -1,8 +1,10 @@
 package router
 
 import (
+	"example.com/sync/internal/apidocs"
 	"example.com/sync/internal/auth"
 	"example.com/sync/internal/directapi"
+	"example.com/sync/internal/mobileauth"
 	"fmt"
 	"io"
 	"log"
@@ -55,7 +57,18 @@ func newRouter(cfg config.Config, images *service.ImageService, recommendations 
 	// No reverse proxy is configured at this stage.
 	_ = r.SetTrustedProxies(nil)
 	r.GET("/health", handler.Health)
-	registerV1(r.Group("/api/v1"), handler.NewAnalyzeHandler(images), handler.NewRecommendHandler(recommendations, cfg.RecommendationCount), handler.NewGoogleOAuthHandler(oauth), handler.NewPlaylistHandler(service.NewPlaylistService(oauth, client.NewYouTubePlaylistClient, service.DefaultPlaylistTimeout), cfg.GoogleOAuthRedirectURL, playlists))
+	apidocs.Register(r)
+	mobile := mobileauth.New(mobileauth.Settings{BaseURL: cfg.MobileAppLinkBaseURL, PackageName: cfg.AndroidPackageName, SigningSHA256: cfg.AndroidAppSigningSHA256, OAuthRedirectURL: cfg.GoogleOAuthRedirectURL}, oauth, mobileauth.NewMemoryStore(mobileauth.DefaultCapacity))
+	googleHandler := handler.NewGoogleOAuthHandler(oauth, mobile)
+	mobileHandler := handler.NewMobileAuthHandler(mobile, googleHandler)
+	authentication := handler.Authenticate(mobile, oauth)
+	r.GET("/.well-known/assetlinks.json", mobileHandler.AssetLinks)
+	r.GET("/auth/android/complete", mobileHandler.Completion)
+	r.POST("/api/v1/auth/google/mobile/start", mobileHandler.Start)
+	r.GET("/api/v1/auth/google/mobile/authorize", mobileHandler.Authorize)
+	r.POST("/api/v1/auth/mobile/exchange", mobileHandler.Exchange)
+	r.DELETE("/api/v1/auth/mobile/session", authentication, mobileHandler.Logout)
+	registerV1(r.Group("/api/v1"), handler.NewAnalyzeHandler(images), handler.NewRecommendHandler(recommendations, cfg.RecommendationCount), googleHandler, handler.NewPlaylistHandler(service.NewPlaylistService(oauth, client.NewYouTubePlaylistClient, service.DefaultPlaylistTimeout), cfg.GoogleOAuthRedirectURL, playlists), authentication)
 	r.POST("/api/v1/recommend/direct", handler.NewDirectHandler(direct).Recommend)
 	r.NoRoute(func(c *gin.Context) {
 		c.JSON(http.StatusNotFound, model.ErrorResponse{
@@ -65,14 +78,14 @@ func newRouter(cfg config.Config, images *service.ImageService, recommendations 
 	return r
 }
 
-func registerV1(v1 *gin.RouterGroup, analyze *handler.AnalyzeHandler, recommend *handler.RecommendHandler, oauth *handler.GoogleOAuthHandler, playlist *handler.PlaylistHandler) {
+func registerV1(v1 *gin.RouterGroup, analyze *handler.AnalyzeHandler, recommend *handler.RecommendHandler, oauth *handler.GoogleOAuthHandler, playlist *handler.PlaylistHandler, authentication gin.HandlerFunc) {
 	// Add implemented handlers here when the corresponding features are ready:
 	v1.POST("/analyze", analyze.Analyze)
 	v1.POST("/recommend", recommend.Recommend)
 	google := v1.Group("/auth/google")
 	google.GET("", oauth.Start)
 	google.GET("/callback", oauth.Callback)
-	google.GET("/status", oauth.Status)
-	google.DELETE("", oauth.Disconnect)
-	v1.POST("/playlists", playlist.Create)
+	google.GET("/status", authentication, oauth.Status)
+	google.DELETE("", authentication, oauth.Disconnect)
+	v1.POST("/playlists", authentication, playlist.Create)
 }

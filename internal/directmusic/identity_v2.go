@@ -22,15 +22,15 @@ type TitleAlias struct {
 	EvidenceText   string `json:"evidence_text"`
 }
 
-var leadingBareLabel = regexp.MustCompile(`(?i)^\s*(?:official music video|official video|official audio|lyric video|visualizer)\s*[:\-]?\s+`)
+var leadingBareLabel = regexp.MustCompile(`(?i)^\s*(?:official music video|official video|official audio|music video|m/v|mv|lyric video|visualizer)\s*[:\-]?\s+`)
 var releaseYear = regexp.MustCompile(`\s*\((?:19|20)[0-9]{2}\)\s*$`)
 var harmlessHQ = regexp.MustCompile(`(?i)\s+(?:hq|hd|4k)$`)
 
 var leadingLabel = regexp.MustCompile(`(?i)^\s*[\[(](?:mv|official video|official music video|official audio|audio|lyric video|lyrics|visualizer)[\])]\s*`)
-var trailingLabel = regexp.MustCompile(`(?i)\s*[\[(](?:official video|official music video|music video|official audio|audio|lyrics? video|lyrics|visualizer|mv)[\])]\s*$`)
-var trailingBareLabel = regexp.MustCompile(`(?i)\s+(?:official music video|music video|official video|official audio|lyrics? video|visualizer|mv)$`)
+var trailingLabel = regexp.MustCompile(`(?i)\s*[\[(](?:official video|official music video|music video|official audio|audio|lyrics? video|lyrics|visualizer|m/v|mv)[\])]\s*$`)
+var trailingBareLabel = regexp.MustCompile(`(?i)\s+(?:official music video|music video|official video|official audio|lyrics? video|visualizer|m/v|mv)$`)
 var creditSeparators = regexp.MustCompile(`(?i)\s*(?:,|&|\s+and\s+|\s+feat\.?\s+|\s+ft\.?\s+|\s+featuring\s+)\s*`)
-var delimiter = regexp.MustCompile(`\s+[-–—]\s+`)
+var delimiter = regexp.MustCompile(`\s+[-–—_]\s+`)
 
 func NormalizeVideoTitle(s string) string {
 	s = Normalize(s)
@@ -78,11 +78,14 @@ func ClassifyOfficiality(t model.DirectTrack, v model.YouTubeVideo) (string, str
 	if strings.ReplaceAll(ch, " ", "") == strings.ReplaceAll(a, " ", "")+"vevo" {
 		return "vevo", "named_channel_heuristic"
 	}
-	if v.LicensedContent {
-		return "licensed", "provider_licensed_flag_not_owner_proof"
-	}
 	if ch == a || ch == a+" official" {
 		return "official_artist", "name_consistency_only_not_oac_verified"
+	}
+	if releaseMetadataEvidence(t, v) && (copyrightChannelEvidence(v) || distributionChannelEvidence(v)) {
+		return "release_channel", "self_reported_release_channel_not_ownership_proof"
+	}
+	if v.LicensedContent {
+		return "licensed", "provider_licensed_flag_not_owner_proof"
 	}
 	if ch != "" {
 		return "ordinary_channel", "no_stronger_evidence"
@@ -140,7 +143,7 @@ func CheckTextIdentity(t model.DirectTrack, v model.YouTubeVideo, aliases []Titl
 	e.Officiality, e.OfficialityConfidence = ClassifyOfficiality(t, v)
 	raw := NormalizeVideoTitle(v.Title)
 	vt, title := matchKey(raw), matchKey(t.Title)
-	a, ch := artistKey(t.Artist), artistKey(v.ChannelTitle)
+	a := artistKey(t.Artist)
 	if a == "" || title == "" {
 		return e, "EMPTY_IDENTITY"
 	}
@@ -154,22 +157,32 @@ func CheckTextIdentity(t model.DirectTrack, v model.YouTubeVideo, aliases []Titl
 			versionMismatch = true
 		}
 	}
-	candidateArtistPrefix := artistKey(raw)
-	artistExact := phrase(candidateArtistPrefix, a) || ch == a || ch == a+" topic" || ch == a+" official" || strings.ReplaceAll(ch, " ", "") == strings.ReplaceAll(a, " ", "")+"vevo"
 	comparisonTitle := func(s string) string {
 		return matchKey(harmlessHQ.ReplaceAllString(releaseYear.ReplaceAllString(s, ""), ""))
 	}
-	titlePrefix := comparisonTitle(raw) == title || comparisonTitle(raw) == matchKey(t.Artist)+" "+title
-	// A different credited artist before a delimiter must not be accepted merely
-	// because it mentions the requested artist in its title or channel.
-	parts := delimiter.Split(raw, 2)
-	if len(parts) == 2 {
-		titlePrefix = comparisonTitle(parts[1]) == title
-		left := artistKey(parts[0])
-		artistExact = left == a
-
+	credit, segment, hasCredit := splitMusicCredit(raw, t.Artist)
+	artistExact := artistChannelMatch(t.Artist, v.ChannelTitle)
+	if hasCredit {
+		// An explicit conflicting credit always overrides channel/description hints.
+		artistExact = creditedArtistMatch(t.Artist, credit)
+		if artistExact && artistKey(credit) != a && !StrongOfficialEvidence(e) &&
+			!artistChannelMatch(t.Artist, v.ChannelTitle) && !releaseMetadataEvidence(t, v) {
+			artistExact = false
+		}
 	}
-	if titlePrefix {
+	titlePrefix := comparisonTitle(segment) == title
+	parts := []string{raw}
+	if hasCredit {
+		parts = []string{credit, segment}
+	}
+	if !titlePrefix && artistExact && localizedTitleMatch(segment, t.Title) &&
+		releaseMetadataEvidence(t, v) && phrase(matchKey(v.Description), matchKey(segment)) {
+		titlePrefix = true
+		e.TitleMatch = "localized_parenthetical_exact"
+		e.Signals = append(e.Signals, "whole_parenthetical_title_and_release_evidence")
+	}
+
+	if titlePrefix && e.TitleMatch == "none" {
 		e.TitleMatch = "exact_title_boundary"
 	}
 	if artistExact {

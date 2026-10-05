@@ -16,13 +16,15 @@ import (
 )
 
 type fakeGenerator struct {
-	tracks []model.DirectTrack
-	err    error
-	calls  int
+	tracks    []model.DirectTrack
+	err       error
+	calls     int
+	requested int
 }
 
-func (f *fakeGenerator) RecommendTracks(ctx context.Context, _ []byte, _ string, _ int) (*model.DirectMusicRecommendation, error) {
+func (f *fakeGenerator) RecommendTracks(ctx context.Context, _ []byte, _ string, count int) (*model.DirectMusicRecommendation, error) {
 	f.calls++
+	f.requested = count
 	if e := ctx.Err(); e != nil {
 		return nil, e
 	}
@@ -51,10 +53,10 @@ func (f *fakeSearch) SearchMusic(ctx context.Context, q model.MusicSearchQuery) 
 	}
 	id := q.Text
 	v := validVideo()
-	parts := strings.Split(q.Text, `"`)
-	if len(parts) >= 4 {
-		v.Title = parts[1] + " - " + parts[3] + " (Official Audio)"
-		v.ChannelTitle = parts[1] + " - Topic"
+	// Synthetic identities generated in these service tests use Song N titles.
+	if at := strings.Index(strings.ToLower(q.Text), " song "); at >= 0 {
+		v.Title = q.Text[:at] + " - " + q.Text[at+1:] + " (Official Audio)"
+		v.ChannelTitle = q.Text[:at] + " - Topic"
 	}
 	v.VideoID = id
 	if f.videos == nil {
@@ -153,7 +155,7 @@ func TestServiceOrderingDiversityAndEarlyStop(t *testing.T) {
 		t.Fatal(r.Diagnostics)
 	}
 	for _, q := range f.queries {
-		if !strings.HasPrefix(q.Text, `"`) || q.RelevanceLanguage != "" || q.Order != "relevance" {
+		if strings.Contains(q.Text, `"`) || q.RelevanceLanguage != "" || q.Order != "relevance" {
 			t.Fatal("broad or biased search", q)
 		}
 	}
@@ -245,7 +247,7 @@ func TestCacheRevalidationPersistenceExpiryAndKeys(t *testing.T) {
 	f.omit = true
 	r = &Resolver{Client: f, Cache: cache, Config: cfg}
 	out, e = r.Resolve(context.Background(), candidate())
-	if e != nil || IsResolved(out.Status) || r.Stats.SearchCalls != 2 {
+	if e != nil || IsResolved(out.Status) || r.Stats.SearchCalls != 1 {
 		t.Fatal(out, e)
 	}
 }
@@ -261,5 +263,98 @@ func TestGeneratorFailureAndStableScores(t *testing.T) {
 	r, e = s.Run(context.Background(), nil, "image/png")
 	if e != nil || !reflect.DeepEqual(r.Final[0].Gemini.FitScore, g.tracks[0].FitScore) {
 		t.Fatal(r, e)
+	}
+}
+
+func TestMVPCandidatePoolKeepsResolverAndTwelveLimit(t *testing.T) {
+	tracks := []model.DirectTrack{}
+	for i := 0; i < 12; i++ {
+		tr := candidate()
+		tr.Artist = fmt.Sprintf("Artist %d", i)
+		tr.Title = fmt.Sprintf("Song %d", i)
+		tr.LyricLanguage = model.LyricKO
+		if i == 0 {
+			tr.LyricLanguage = model.LyricUnknown
+		}
+		tracks = append(tracks, tr)
+	}
+	f := &fakeSearch{}
+	s := newService(t, tracks, f)
+	result, err := s.RunMVP(context.Background(), []byte("fixture"), "image/png")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if s.Generator.(*fakeGenerator).requested != 12 {
+		t.Fatal("wrong requested pool count")
+	}
+	if result.Diagnostics.Generated != 12 || result.Resolutions[0].Reason != "MVP_LANGUAGE_INELIGIBLE" || result.Resolutions[0].Attempted {
+		t.Fatal(result.Diagnostics)
+	}
+	if s.Config.CandidateCount != 20 || s.Config.FinalCount != 10 {
+		t.Fatal("historical default mutated")
+	}
+}
+
+func TestMVPSearchBudgetAndEarlyStop(t *testing.T) {
+	for _, tc := range []struct {
+		name                    string
+		koreanAt                int
+		omit                    bool
+		wantCalls, wantVerified int
+	}{
+		{"stop-with-two-korean", 0, false, 5, 5},
+		{"keep-going-until-korean-minimum", 5, false, 7, 7},
+		{"no-korean-search-cap", 12, false, 10, 10},
+		{"unresolved-search-cap", 12, true, 10, 0},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			tracks := []model.DirectTrack{}
+			for i := 0; i < MVPCandidateCount; i++ {
+				tracks = append(tracks, model.DirectTrack{Artist: fmt.Sprintf("Artist %d", i), Title: fmt.Sprintf("Song %d", i), FitScore: 1 - float64(i)/100, LyricLanguage: model.LyricEN})
+				if i == tc.koreanAt || i == tc.koreanAt+1 {
+					tracks[i].LyricLanguage = model.LyricKO
+				}
+			}
+			f := &fakeSearch{omit: tc.omit}
+			s := newService(t, tracks, f)
+			result, err := s.RunMVP(context.Background(), []byte("fixture"), "image/png")
+			if tc.wantCalls == MVPMaxSearchCalls {
+				if !errors.Is(err, ErrSearchBudget) {
+					t.Fatal("missing budget stop", err)
+				}
+			} else if err != nil {
+				t.Fatal(err)
+			}
+			if len(f.queries) != tc.wantCalls || len(result.Final) != tc.wantVerified || s.Generator.(*fakeGenerator).requested != 12 {
+				t.Fatal(result.Diagnostics, len(f.queries))
+			}
+			for _, q := range f.queries {
+				if q.MaxResults > 5 || strings.Contains(q.Text, "\"") {
+					t.Fatal(q)
+				}
+			}
+			if result.Diagnostics.Calls.FallbackCalls != 0 || result.Diagnostics.Calls.SearchCalls > 10 {
+				t.Fatal(result.Diagnostics.Calls)
+			}
+			if s.Resolver.Config.MaxSearchCalls != 20 {
+				t.Fatal("caller resolver config mutated")
+			}
+		})
+	}
+}
+
+func TestMVPEarlyStopRespectsArtistCapacity(t *testing.T) {
+	pool := []VerifiedTrack{}
+	for i := 0; i < 5; i++ {
+		pool = append(pool, VerifiedTrack{Gemini: model.DirectTrack{Artist: "same", LyricLanguage: model.LyricKO}})
+	}
+	if mvpSelectionReady(pool, 2) {
+		t.Fatal("five videos from one artist cannot fill five slots")
+	}
+	for i := 0; i < 3; i++ {
+		pool = append(pool, VerifiedTrack{Gemini: model.DirectTrack{Artist: fmt.Sprint("other", i), LyricLanguage: model.LyricEN}})
+	}
+	if !mvpSelectionReady(pool, 2) || mvpSelectionReady(pool, 1) {
+		t.Fatal("artist-aware Korean capacity incorrect")
 	}
 }

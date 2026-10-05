@@ -44,11 +44,15 @@ func directFixture(t *testing.T, n int, err error) (*directapi.Recommender, *ato
 		t.Fatal(e)
 	}
 	// Synthetic metadata clones are contract fixtures, never live evidence.
-	result := &directmusic.Result{Normalized: []model.DirectTrack{}, Resolutions: []directmusic.Resolution{}, Final: []directmusic.VerifiedTrack{}}
+	result := &directmusic.Result{Generated: &model.DirectMusicRecommendation{Scene: model.DirectScene{Description: "가을 밤 불꽃놀이 중인 공원"}, Playlist: model.DirectPlaylist{Title: "Autumn Fireworks"}}, Normalized: []model.DirectTrack{}, Resolutions: []directmusic.Resolution{}, Final: []directmusic.VerifiedTrack{}}
 	for i := 0; i < n; i++ {
 		track := base.Final[0]
 		track.Gemini.Artist = fmt.Sprint("mock artist ", i)
 		track.Gemini.Title = fmt.Sprint("mock song ", i)
+		track.Gemini.LyricLanguage = model.LyricEN
+		if i < 2 {
+			track.Gemini.LyricLanguage = model.LyricKO
+		}
 		track.VideoID = fmt.Sprint("mock-video-", i)
 		track.VideoTitle = fmt.Sprint("mock YouTube title ", i)
 		rr := base.Resolutions[0]
@@ -105,17 +109,17 @@ func TestDirectVariableContract(t *testing.T) {
 			if err := json.Unmarshal(w.Body.Bytes(), &response); err != nil {
 				t.Fatal(err)
 			}
-			if response.RecommendationID == "" || response.TargetTrackCount != 10 || len(response.Tracks) != n || response.Partial != (n < 10) || calls.Load() != 1 {
+			if response.RecommendationID == "" || response.TargetTrackCount != 5 || len(response.Tracks) != min(n, 5) || response.Partial != (n < 5) || calls.Load() != 1 {
 				t.Fatal(response, calls.Load())
 			}
 			if n > 0 && (response.Tracks[0].TrackTitle == response.Tracks[0].YouTubeTitle || response.Tracks[0].Rank != 1) {
 				t.Fatal(response)
 			}
-			if strings.Contains(w.Body.String(), `"title":`) || strings.Contains(w.Body.String(), "access_token") {
+			if response.Playlist.Title == "" || response.Scene.Description == "" || strings.Contains(w.Body.String(), "access_token") {
 				t.Fatal("field meaning or secret")
 			}
 			cp, err := s.Store.Get(context.Background(), response.RecommendationID)
-			if err != nil || len(cp.Response.Tracks) != n {
+			if err != nil || len(cp.Response.Tracks) != min(n, 5) {
 				t.Fatal(cp, err)
 			}
 		})

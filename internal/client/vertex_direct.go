@@ -11,7 +11,7 @@ import (
 	"google.golang.org/genai"
 )
 
-const DirectPromptVersion = "direct_music_prompt_v1"
+const DirectPromptVersion = "direct_music_prompt_v3_mvp"
 const DirectMusicPrompt = `You are selecting music for a playlist inspired by this image.
 Analyze only its visual atmosphere. Do not infer the user's actual emotions,
 personality, mental state, identity or intentions. Descriptions refer to the image.
@@ -20,7 +20,29 @@ energy, intimacy/openness, nostalgia/modernity, cinematic feeling and stillness.
 Choose music someone would want to hear while viewing this image. Do not restrict
 your reasoning to a genre taxonomy. Select a coherent but diverse playlist, not
 merely a list of famous hits. Prefer at most two tracks by the same artist.
-No language, country or era quotas. Rank candidates by image fit, strongest first.
+This MVP selects at most five final tracks after verification. Generate a pool of
+12 real candidates when requested, not just five. Aim for at
+least six Korean-eligible candidates when image fit supports them. Do not damage
+musical coherence to force a ratio. Rank candidates by image fit, strongest first.
+Return model-classified lyric_language: ko, en, ko_en, instrumental, or unknown.
+ko is Korean-dominant with English phrases/hooks allowed; en is English-dominant;
+ko_en has meaningful Korean AND English lyrics. Instrumental has no meaningful
+vocal lyrics. Unknown means uncertain or a different dominant language (Japanese,
+Spanish, French, etc.). Do not mislabel other languages, use artist nationality,
+invent lyric percentages or claim verified lyric metadata. Korean eligibility
+is only ko/ko_en; English-only songs by Korean artists are en.
+Also return scene.description and playlist.title. scene.description is a concise
+Korean noun phrase, one line, usually 10–25 characters, up to 30, no final period.
+Prioritize observable scene facts, general location/environment, clear activity/event,
+then visually supported time/season; restrained atmosphere is optional.
+Example: 가을 밤 불꽃놀이 중인 공원
+Do not use 사진 속, 사진에는, 장면은, 보인다, 느껴진다, 분위기다, 모습이다.
+Avoid speculative emotion, poetic copywriting and unsupported season/time.
+Do not generate specific place names such as 한강공원, 서울숲, 해운대, 광안리,
+제주도 without clear landmark/sign/metadata evidence. Prefer general places:
+공원, 강변 공원, 해변, 카페, 거리. Do not infer people's emotions or intentions.
+playlist.title is a short English playlist name (e.g. Autumn Fireworks, Quiet Focus).
+scene.description describes the image, not musical fit; reasons explain music.
 Recommend only real, officially released tracks you are reasonably confident exist.
 Do not invent artists, titles, collaborations, remixes or alternate versions.
 If uncertain a track exists, omit it. Return canonical artist and track names.
@@ -44,8 +66,10 @@ type VertexDirectRecommender struct {
 
 func DirectMusicSchema(count int) map[string]any {
 	str := func(n int) map[string]any { return map[string]any{"type": "string", "maxLength": n} }
-	return map[string]any{"type": "object", "additionalProperties": false, "required": []string{"analysis_summary", "tracks"}, "properties": map[string]any{
-		"analysis_summary": str(1500), "tracks": map[string]any{"type": "array", "minItems": 1, "maxItems": count, "items": map[string]any{"type": "object", "additionalProperties": false, "required": []string{"artist", "title", "fit_score", "reason"}, "properties": map[string]any{"artist": str(200), "title": str(200), "reason": str(400), "fit_score": map[string]any{"type": "number", "minimum": 0, "maximum": 1}}}}}}
+	return map[string]any{"type": "object", "additionalProperties": false, "required": []string{"analysis_summary", "scene", "playlist", "tracks"}, "properties": map[string]any{
+		"analysis_summary": str(1500),
+		"scene":            map[string]any{"type": "object", "additionalProperties": false, "required": []string{"description"}, "properties": map[string]any{"description": str(30)}},
+		"playlist":         map[string]any{"type": "object", "additionalProperties": false, "required": []string{"title"}, "properties": map[string]any{"title": str(100)}}, "tracks": map[string]any{"type": "array", "minItems": 1, "maxItems": count, "items": map[string]any{"type": "object", "additionalProperties": false, "required": []string{"artist", "title", "fit_score", "reason", "lyric_language"}, "properties": map[string]any{"lyric_language": map[string]any{"type": "string", "enum": []string{"ko", "en", "ko_en", "instrumental", "unknown"}}, "artist": str(200), "title": str(200), "reason": str(400), "fit_score": map[string]any{"type": "number", "minimum": 0, "maximum": 1}}}}}}
 }
 func NewVertexDirectRecommender(ctx context.Context, cfg config.Config) (*VertexDirectRecommender, error) {
 	if cfg.GoogleCloudProject == "" || cfg.GoogleCloudLocation == "" || cfg.VertexModel == "" || cfg.VertexTimeout <= 0 {

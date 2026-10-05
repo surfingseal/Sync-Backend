@@ -1503,3 +1503,15 @@ for the health check. The server honors OS `PORT` on all interfaces.
 See [Render setup and exact environment requirements](docs/render-deploy.md).
 Legacy remains the default engine; the production Direct readiness guard stays
 in place. Real ADC configuration is required before the server starts.
+
+### Android native authentication
+
+[Android OAuth handoff contract](docs/android-mobile-auth.md) describes the optional
+S256-bound one-time browser-to-app handoff and Sync-owned Bearer sessions. Existing
+Web OAuth and production recommendation guards remain unchanged. Actual Android
+package/signing values are required; mobile auth is unavailable until configured.
+In-memory authentication is single-process and is lost on server restart.
+
+### Swagger / OpenAPI contract
+
+Swagger UI는 `/swagger`, OpenAPI 3.0.3 JSON은 `/swagger/openapi.json`에서 제공합니다. [Android contract 및 배포 주의사항](docs/openapi.md)을 참고하세요. 비밀값 없는 열람용 문서이며 production readiness guard와 인증/API 동작은 변경하지 않습니다.

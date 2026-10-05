@@ -11,6 +11,11 @@ import (
 	"example.com/sync/internal/model"
 )
 
+const MVPCandidateCount = 12
+const MVPFinalCount = 5
+const MVPRequiredKoreanTracks = 2
+const MVPMaxSearchCalls = 10
+
 type VerifiedTrack struct {
 	Gemini             model.DirectTrack `json:"gemini"`
 	VideoID            string            `json:"video_id"`
@@ -65,7 +70,26 @@ type Service struct {
 	Config    Config
 }
 
-func (s *Service) Run(ctx context.Context, image []byte, mime string) (result *Result, resultErr error) {
+// RunMVP uses twelve candidates and at most ten searches; final selection happens at the API boundary.
+// Historical experiment Run keeps its configuration and diversity behavior.
+func (s *Service) RunMVP(ctx context.Context, image []byte, mime string) (*Result, error) {
+	copy := *s
+	copy.Config.CandidateCount = MVPCandidateCount
+	copy.Config.FinalCount = MVPFinalCount
+	copy.Config.EarlyStop = true
+	copy.Config.MaxSearchCalls = min(copy.Config.MaxSearchCalls, MVPMaxSearchCalls)
+	if s.Resolver != nil {
+		resolver := *s.Resolver
+		resolver.Config.MaxSearchCalls = min(resolver.Config.MaxSearchCalls, copy.Config.MaxSearchCalls)
+		resolver.Stats = CallStats{}
+		copy.Resolver = &resolver
+	}
+	return copy.run(ctx, image, mime, true)
+}
+func (s *Service) Run(ctx context.Context, image []byte, mime string) (*Result, error) {
+	return s.run(ctx, image, mime, false)
+}
+func (s *Service) run(ctx context.Context, image []byte, mime string, mvp bool) (result *Result, resultErr error) {
 	if err := s.Config.Validate(); err != nil {
 		return nil, err
 	}
@@ -143,14 +167,19 @@ func (s *Service) Run(ctx context.Context, image []byte, mime string) (result *R
 			d.Unattempted++
 			continue
 		}
-		if s.Config.EarlyStop && len(result.Final) >= s.Config.FinalCount {
+		if s.Config.EarlyStop && ((!mvp && len(result.Final) >= s.Config.FinalCount) || (mvp && mvpSelectionReady(result.Final, s.Config.MaxPerArtist))) {
 			stopReason = "FINAL_TARGET_REACHED"
 			result.Resolutions = append(result.Resolutions, Resolution{Candidate: candidate, Status: "NOT_ATTEMPTED", Reason: stopReason})
 			d.Unattempted++
 			continue
 		}
+		if mvp && !candidate.LyricLanguage.Allowed() {
+			result.Resolutions = append(result.Resolutions, Resolution{Candidate: candidate, Status: "NOT_ATTEMPTED", Reason: "MVP_LANGUAGE_INELIGIBLE"})
+			d.Unattempted++
+			continue
+		}
 		artist := NormalizeKey(candidate.Artist)
-		if artists[artist] >= s.Config.MaxPerArtist {
+		if !mvp && artists[artist] >= s.Config.MaxPerArtist {
 			result.Resolutions = append(result.Resolutions, Resolution{Candidate: candidate, Status: "NOT_ATTEMPTED", Reason: "ARTIST_DIVERSITY_LIMIT"})
 			d.Unattempted++
 			continue
@@ -183,7 +212,7 @@ func (s *Service) Run(ctx context.Context, image []byte, mime string) (result *R
 				d.Warnings = append(d.Warnings, "duplicate_resolved_video")
 				continue
 			}
-			if len(result.Final) >= s.Config.FinalCount {
+			if !mvp && len(result.Final) >= s.Config.FinalCount {
 				continue
 			}
 			v := resolution.Video
@@ -197,4 +226,27 @@ func (s *Service) Run(ctx context.Context, image []byte, mime string) (result *R
 		return result, fmt.Errorf("no nonblank candidates")
 	}
 	return result, resultErr
+}
+
+// Respect artist capacity when deciding whether the final policy can select five
+// unique verified tracks including two Korean-eligible tracks. The pool already
+// excludes duplicate video IDs and ineligible languages.
+func mvpSelectionReady(pool []VerifiedTrack, maxPerArtist int) bool {
+	counts, korean := map[string]int{}, map[string]int{}
+	for _, track := range pool {
+		if !track.Gemini.LyricLanguage.Allowed() {
+			continue
+		}
+		artist := NormalizeKey(track.Gemini.Artist)
+		counts[artist]++
+		if track.Gemini.LyricLanguage.KoreanEligible() {
+			korean[artist]++
+		}
+	}
+	total, ko := 0, 0
+	for artist, count := range counts {
+		total += min(count, maxPerArtist)
+		ko += min(korean[artist], maxPerArtist)
+	}
+	return total >= MVPFinalCount && ko >= MVPRequiredKoreanTracks
 }

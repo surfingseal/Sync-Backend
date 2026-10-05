@@ -1,0 +1,67 @@
+{
+  "analysis_summary": "Synthetic MVP contract fixture, not actual AI output",
+  "scene": {
+    "description": "가을 밤 불꽃놀이 중인 공원"
+  },
+  "playlist": {
+    "title": "Autumn Fireworks"
+  },
+  "tracks": [
+    {
+      "artist": "Fixture Artist 1",
+      "title": "Fixture Song 1",
+      "fit_score": 0.98,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "ko"
+    },
+    {
+      "artist": "Fixture Artist 2",
+      "title": "Fixture Song 2",
+      "fit_score": 0.94,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "ko_en"
+    },
+    {
+      "artist": "Fixture Artist 3",
+      "title": "Fixture Song 3",
+      "fit_score": 0.9,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "ko"
+    },
+    {
+      "artist": "Fixture Artist 4",
+      "title": "Fixture Song 4",
+      "fit_score": 0.86,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "ko_en"
+    },
+    {
+      "artist": "Fixture Artist 5",
+      "title": "Fixture Song 5",
+      "fit_score": 0.82,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "en"
+    },
+    {
+      "artist": "Fixture Artist 6",
+      "title": "Fixture Song 6",
+      "fit_score": 0.78,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "en"
+    },
+    {
+      "artist": "Fixture Artist 7",
+      "title": "Fixture Song 7",
+      "fit_score": 0.74,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "instrumental"
+    },
+    {
+      "artist": "Fixture Artist 8",
+      "title": "Fixture Song 8",
+      "fit_score": 0.7,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "unknown"
+    }
+  ]
+}

@@ -1,0 +1,313 @@
+[
+  {
+    "artist": "Colde",
+    "title": "와르르",
+    "evidence": "",
+    "response": {
+      "resultCount": 1,
+      "results": [
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Colde",
+          "trackName": "WA-R-R",
+          "collectionName": "Love Part 1",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/91/b3/da/91b3da0c-ae68-ad50-b75f-1a51ee794abc/190296425417.jpg/100x100bb.jpg"
+        }
+      ]
+    },
+    "want": false
+  },
+  {
+    "artist": "offonoff",
+    "title": "bath",
+    "evidence": "",
+    "response": {
+      "resultCount": 1,
+      "results": [
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "offonoff",
+          "trackName": "Bath",
+          "collectionName": "Bath - Single",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/52/cc/e8/52cce81c-03a0-2c3c-3592-8855f8d59c56/80831727.jpg/100x100bb.jpg"
+        }
+      ]
+    },
+    "want": true
+  },
+  {
+    "artist": "wave to earth",
+    "title": "seasons",
+    "evidence": "",
+    "response": {
+      "resultCount": 10,
+      "results": [
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "wave to earth",
+          "trackName": "seasons",
+          "collectionName": "summer flows 0.02 - EP",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/fa/c5/61/fac561dc-8db4-b2e9-d3db-6e246da72bfa/5054197890017.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "wave to earth",
+          "trackName": "love.",
+          "collectionName": "0.1 flaws and all.",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/71/b6/82/71b6820b-97a2-9968-c5a8-b659103030b1/5054197659843.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "wave to earth",
+          "trackName": "bad",
+          "collectionName": "0.1 flaws and all.",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/71/b6/82/71b6820b-97a2-9968-c5a8-b659103030b1/5054197659843.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "wave to earth",
+          "trackName": "peach eyes",
+          "collectionName": "0.1 flaws and all.",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/71/b6/82/71b6820b-97a2-9968-c5a8-b659103030b1/5054197659843.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "wave to earth",
+          "trackName": "light",
+          "collectionName": "wave 0.01 - EP",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/4c/e1/03/4ce103f6-8ff7-9321-dc8d-3bf4527d1c65/191953061672.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "wave to earth",
+          "trackName": "wave",
+          "collectionName": "wave 0.01 - EP",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/4c/e1/03/4ce103f6-8ff7-9321-dc8d-3bf4527d1c65/191953061672.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "wave to earth",
+          "trackName": "homesick",
+          "collectionName": "0.1 flaws and all.",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/71/b6/82/71b6820b-97a2-9968-c5a8-b659103030b1/5054197659843.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "wave to earth",
+          "trackName": "bonfire",
+          "collectionName": "wave 0.01 - EP",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/4c/e1/03/4ce103f6-8ff7-9321-dc8d-3bf4527d1c65/191953061672.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "wave to earth",
+          "trackName": "sunny days",
+          "collectionName": "0.1 flaws and all.",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/71/b6/82/71b6820b-97a2-9968-c5a8-b659103030b1/5054197659843.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "wave to earth",
+          "trackName": "dried flower",
+          "collectionName": "0.1 flaws and all.",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/71/b6/82/71b6820b-97a2-9968-c5a8-b659103030b1/5054197659843.jpg/100x100bb.jpg"
+        }
+      ]
+    },
+    "want": true
+  },
+  {
+    "artist": "Tom Misch",
+    "title": "Movie",
+    "evidence": "",
+    "response": {
+      "resultCount": 10,
+      "results": [
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Tom Misch",
+          "trackName": "Movie",
+          "collectionName": "Geography",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/4c/f6/72/4cf672af-31a3-772a-f27d-4ebc4ddeafbf/5056167104650.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Tom Misch",
+          "trackName": "Deeper",
+          "collectionName": "Beat Tape 1",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/6e/8e/2f/6e8e2f30-3dbf-d163-5127-c8b3a138226c/5056167120469_1.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Tom Misch & Poppy Ajudha",
+          "trackName": "Disco Yes",
+          "collectionName": "Geography",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/4c/f6/72/4cf672af-31a3-772a-f27d-4ebc4ddeafbf/5056167104650.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Tom Misch",
+          "trackName": "It Runs Through Me (feat. De La Soul)",
+          "collectionName": "Geography",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/4c/f6/72/4cf672af-31a3-772a-f27d-4ebc4ddeafbf/5056167104650.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Tom Misch",
+          "trackName": "Lost In Paris (feat. GoldLink)",
+          "collectionName": "Geography",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/4c/f6/72/4cf672af-31a3-772a-f27d-4ebc4ddeafbf/5056167104650.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Tom Misch",
+          "trackName": "Watch Me Dance",
+          "collectionName": "Reverie - EP",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f1/e5/8e/f1e58eba-6944-d95e-ce18-82d9c7f0781a/5060454943327_1.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Tom Misch",
+          "trackName": "Beautiful Escape",
+          "collectionName": "Beat Tape 2",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/90/89/d6/9089d60f-69aa-7d97-dc36-887e62f25dc6/5060186929309_1.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Tom Misch & Yussef Dayes",
+          "trackName": "Tidal Wave",
+          "collectionName": "What Kinda Music",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/d1/f4/9b/d1f49b90-7f67-faf6-ac75-c522e2ddd3c2/20UMGIM06943.rgb.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Tom Misch",
+          "trackName": "Wonder",
+          "collectionName": "Beat Tape 1",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/6e/8e/2f/6e8e2f30-3dbf-d163-5127-c8b3a138226c/5056167120469_1.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Tom Misch",
+          "trackName": "In the Midst of It All (feat. Sam Wills)",
+          "collectionName": "Beat Tape 2",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/90/89/d6/9089d60f-69aa-7d97-dc36-887e62f25dc6/5060186929309_1.jpg/100x100bb.jpg"
+        }
+      ]
+    },
+    "want": true
+  },
+  {
+    "artist": "백예린",
+    "title": "Bye bye my blue",
+    "evidence": "Yerin Baek(백예린) \"Bye bye my blue\" M/V",
+    "response": {
+      "resultCount": 10,
+      "results": [
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Yerin Baek",
+          "trackName": "Bye bye my blue",
+          "collectionName": "Bye bye my blue - Single",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/22/8b/0e/228b0e06-d60c-2ec0-71d4-4078eb04f0c5/738676856453_Cover.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Yerin Baek",
+          "trackName": "His ocean",
+          "collectionName": "Bye bye my blue - Single",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/22/8b/0e/228b0e06-d60c-2ec0-71d4-4078eb04f0c5/738676856453_Cover.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Yerin Baek",
+          "trackName": "Zero",
+          "collectionName": "Bye bye my blue - Single",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/22/8b/0e/228b0e06-d60c-2ec0-71d4-4078eb04f0c5/738676856453_Cover.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "DEAN",
+          "trackName": "Come Over (feat. Yerin Baek)",
+          "collectionName": "Limbo - Single",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/c3/de/3f/c3de3f57-cdd2-fac1-08bd-b4d9cd17afd0/00602557460735.rgb.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Yerin Baek",
+          "trackName": "Square (2017)",
+          "collectionName": "Every letter I sent you.",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ca/58/77/ca5877d9-2e1e-0456-c3b2-7704e423dc70/Every_letter_I_sent_you_3000.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Yerin Baek",
+          "trackName": "Here I am Again",
+          "collectionName": "Crash Landing on You (Original Television Soundtrack)",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/8e/9d/67/8e9d67df-ec0b-a4e0-23b9-496918941f9c/8809704412261_Cover.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Yerin Baek",
+          "trackName": "Here I Am Again",
+          "collectionName": "Crash Landing on You, Pt. 4 (Original Television Soundtrack) - Single",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/c7/01/7e/c7017e58-7099-aa35-90c7-4e6b60265d63/8809704411776_Cover.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "pH-1",
+          "trackName": "Nerdy Love (feat. Yerin Baek)",
+          "collectionName": "Nerdy Love (feat. Yerin Baek) - Single",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/de/b8/ea/deb8eaf6-0e44-8286-37a4-a7ffe60e6d7e/8809704411707_Cover.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Yerin Baek",
+          "trackName": "Antifreeze",
+          "collectionName": "Love, Yerin - EP",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/4b/98/c2/4b98c269-4ca3-9fe6-e510-3dc70fca0968/8809634389206.jpg/100x100bb.jpg"
+        },
+        {
+          "wrapperType": "track",
+          "kind": "song",
+          "artistName": "Yerin Baek",
+          "trackName": "0310",
+          "collectionName": "Every letter I sent you.",
+          "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/ca/58/77/ca5877d9-2e1e-0456-c3b2-7704e423dc70/Every_letter_I_sent_you_3000.jpg/100x100bb.jpg"
+        }
+      ]
+    },
+    "want": true
+  }
+]

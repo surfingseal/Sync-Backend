@@ -1,8 +1,8 @@
 # Android Direct API contract — local milestone
 
-Status: **NEEDS_BACKEND_CONTRACT_FIX** for native Android OAuth-to-playlist E2E.
+Status: **NEEDS_EXTERNAL_ANDROID_VALUES** for native App Link validation. Production Direct readiness remains separately guarded.
 Direct upload/UI integration and checkpoint playlist mock integration are available.
-The missing piece is secure native app/session handoff after browser OAuth, not the recommendation algorithm.
+Secure native handoff is implemented; see [Android mobile authentication](android-mobile-auth.md). Real package/signing values and device verification remain external prerequisites.
 This milestone makes no live provider calls.
 
 ## 1. Architecture and availability
@@ -24,7 +24,7 @@ cd outputs/sync # relative to workspace root
 go run ./cmd/android-contract-server --port 8081
 ```
 
-It listens only on 127.0.0.1, responds with `X-Sync-Data-Mode: fixture`, validates/preprocesses uploads but replays the previously saved five-track E2E result regardless of the new image. It never instantiates Vertex, OAuth token exchange, YouTube search/metadata or write clients. Simulated playlist IDs are explicitly `simulation-only`, and no real playlist URL is returned. This is contract testing, not fresh analysis or OAuth validation. The fixture server's ordinary OAuth routes are unconfigured (configuration error); its mock write session is the fixed, non-secret `offline-session` cookie below. Never use that mock cookie for real authentication.
+It listens only on 127.0.0.1, responds with `X-Sync-Data-Mode: fixture`, validates/preprocesses uploads but replays the explicitly synthetic v2 MVP UI contract fixture regardless of the new image. It never instantiates Vertex, OAuth token exchange, YouTube search/metadata or write clients. Simulated playlist IDs are explicitly `simulation-only`, and no real playlist URL is returned. This is contract testing, not fresh analysis or OAuth validation. The fixture server's ordinary OAuth routes are unconfigured (configuration error); its mock write session is the fixed, non-secret `offline-session` cookie below. Never use that mock cookie for real authentication.
 
 Android emulator can use `adb reverse tcp:8081 tcp:8081` with `http://127.0.0.1:8081/` as its debug base URL. Android cleartext HTTP permission is debug-only; production needs HTTPS. No production deployment is enabled here.
 
@@ -63,23 +63,57 @@ HTTP 200, `Cache-Control: no-store`:
 ```json
 {
   "recommendation_id":"rec_<43 opaque base64url characters>",
+  "scene":{"description":"가을 밤 불꽃놀이 중인 공원"},
+  "playlist":{"title":"Autumn Fireworks"},
   "partial":true,
-  "target_track_count":10,
-  "tracks":[{
-    "rank":1,
-    "artist":"Norah Jones",
-    "track_title":"Sunrise",
-    "video_id":"cpqBhRymiEU",
-    "youtube_title":"Sunrise",
-    "thumbnail_url":"https://i.ytimg.com/vi/cpqBhRymiEU/hqdefault.jpg",
-    "fit_score":0.95
-  }]
+  "target_track_count":5,
+  "language_policy":{"required_korean_tracks":2,"actual_korean_tracks":2,"satisfied":true},
+  "tracks":[
+    {"rank":1,"artist":"Fixture Artist A","track_title":"Fixture Song A",
+     "lyric_language":"ko","korean_eligible":true,
+     "album_title":null,"album_artwork_url":null,
+     "video_id":"<verified ID>","youtube_title":"<provider title>",
+     "thumbnail_url":"<YouTube thumbnail>","youtube_thumbnail_url":"<YouTube thumbnail>","fit_score":0.95},
+    {"rank":2,"artist":"Fixture Artist B","track_title":"Fixture Song B",
+     "lyric_language":"ko_en","korean_eligible":true,
+     "album_title":null,"album_artwork_url":null,
+     "video_id":"<verified ID>","youtube_title":"<provider title>",
+     "thumbnail_url":"<YouTube thumbnail>","youtube_thumbnail_url":"<YouTube thumbnail>","fit_score":0.90}
+  ]
 }
 ```
 
-Example only; response metadata comes from the resolver's provider result. `track_title` is canonical Gemini song title, `youtube_title` is real provider title. New response does not reuse legacy `title` for a different meaning. `rank` is final display order starting at1. An empty thumbnail is permitted. `fit_score` is numeric 0–1.
+This is an illustrative contract, not live metadata. Target is **5**, with 0–5
+verified tracks and ranks1..N. Reserve two Korean-eligible tracks, fill by model
+fit with max2 per artist, deduplicate video and canonical artist/title. No padding.
+Model-classified lyric language: ko, en, ko_en, instrumental, unknown. Only the
+first four are eligible; ko/ko_en count as Korean, not nationality or incidental
+Korean phrases in en. No lyrics database/percentages/scraping is used.
 
-Tracks may contain 0,3,5,8,10 items. No placeholders or duplicates are padded. `partial = tracks.size < target_track_count`, where target is10 for this contract. Five returned fixture tracks therefore have partial=true even though the earlier five-track E2E target was fulfilled. Partial usable provider results return200. A successful run with zero verified tracks returns200 with `tracks:[]`, partial=true; show an empty state and disable playlist creation. A provider failure with no verified tracks is an error, not an empty success.
+If fewer than two verified diverse Korean candidates exist, return the available
+eligible verified tracks with **partial=true, language_policy.satisfied=false**.
+Reserve up to two Korean tracks, then fill by fit and artist limits.
+RunMVP generates up to 12 candidates, guides at least six Korean-eligible candidates,
+and caps searches at 10. It may stop once five selectable verified tracks and two
+selectable Korean tracks exist; unknown languages and unresolved tracks never pad slots.
+Available Korean candidate count is retained in checkpoint diagnostics. With two
+Korean and only four total tracks, return four, partial=true. With five compliant
+tracks partial=false. Provider failure without usable verified tracks remains an
+error. Artwork failure alone never makes recommendation eligibility or partial fail.
+
+scene.description is a short Korean observable-scene noun phrase; playlist.title
+is a short generated English name reusable as the playlist request title. No new
+scene.title. Prompt excludes unsupported place/season/emotion claims; semantic
+quality is not claimed by mock tests. LanguagePolicy is additive so Android can
+explain a partial result without pretending the Korean minimum was satisfied.
+
+Album artwork uses matched Apple iTunes collectionName/artworkUrl100. Nullable
+album_title and album_artwork_url are never filled with YouTube imagery. UI order:
+**album_artwork_url → youtube_thumbnail_url → local default artwork**. Preserve
+thumbnail_url as the compatibility alias for youtube_thumbnail_url. Track names
+and video IDs preserve existing meanings; fit_score remains a model relevance
+signal in0..1, not probability. Canonical artist aliases/transliterations not safely
+matched by the artwork resolver may legitimately have no artwork.
 
 ## 5. Checkpoint lifecycle
 
@@ -102,7 +136,7 @@ Same `POST /api/v1/playlists` path, separate strict JSON variant:
 
 `title` required, trimmed, 1–100 Unicode characters; description optional ≤4,000. These names preserve existing repository conventions instead of introducing `name`/`privacy`. New checkpoint variant only allows private (default); legacy privacy options unchanged. `tracks`, `video_id`, `verified` and unknown client fields are rejected. Backend uses **all** checkpoint tracks in stored order, deduplicating video IDs by first appearance. Selection/reordering is not introduced in this milestone.
 
-Requires existing HttpOnly `sync_session` cookie and valid server TokenStore entry. Handler never handles tokens. Existing OAuth service builds persisted OAuth TokenSource, refreshes when needed without discarding an existing refresh token, then the existing playlist service creates and sequentially inserts. Partial failures preserve playlist and successful items. No rollback or write retry.
+Requires either existing HttpOnly `sync_session` cookie or a valid Sync-owned mobile Bearer session, resolving to a server TokenStore credential entry. Handler never handles tokens. Existing OAuth service builds persisted OAuth TokenSource, refreshes when needed without discarding an existing refresh token, then the existing playlist service creates and sequentially inserts. Partial failures preserve playlist and successful items. No rollback or write retry.
 
 HTTP201 (including partial and successful replay), existing response:
 
@@ -135,9 +169,13 @@ Actual endpoints:
 
 Existing authorization uses youtube scope, offline access, include_granted_scopes, crypto32-byte state, HttpOnly/Lax cookies, pending state expiry10minutes and PKCE. Pending state is consumed once; repeated callback/state is intentionally rejected400. Don't reopen or reuse callback URLs; after completion check status from the established browser session. Do not send authorization code to Android logs or diagnostics.
 
-**Current callback does not redirect to an Android deeplink/app link.** `sync_session` is set for the backend browser origin and HttpOnly. Chrome Custom Tabs use browser state/cookies ([official documentation](https://developer.chrome.com/docs/android/custom-tabs)); Retrofit/OkHttp has its own client/cookie store. Therefore opening Custom Tab does **not** by itself authenticate subsequent Retrofit status or playlist calls. This follows from the two separate HTTP clients. A cookie jar on OkHttp only preserves cookies received by OkHttp; it does not import Chrome cookies.
-
-Intended status → browser OAuth → app return → status → playlist flow remains blocked at browser→native session handoff. This milestone deliberately preserves OAuth semantics and does not invent an endpoint/deeplink, expose HttpOnly cookies/tokens, embed login in WebView or ask users to copy cookies. Full Android E2E requires a separately reviewed short-lived single-use app-session handoff (or another explicit native authorization design). Until that exists, real OAuth/playlist integration remains browser-only. A302 authorization redirect should be opened in the browser, not followed as Retrofit JSON.
+Mobile flows now use POST `/api/v1/auth/google/mobile/start`, browser bootstrap,
+the same Google callback, HTTPS App Link with one-time code, and POST
+`/api/v1/auth/mobile/exchange`. Native S256 binds the code to the app's original
+verifier. Exchange returns a Sync session_token; Android never receives Google
+tokens or browser cookies. Browser callback behavior remains unchanged. See
+[the full handoff contract](android-mobile-auth.md) for readiness, TTL, conflict,
+logout, secure storage and Manifest configuration.
 
 ## 8. Retry and state machine
 
@@ -147,7 +185,7 @@ IDLE → IMAGE_SELECTED → RECOMMENDING → RECOMMENDATION_READY
 errors: RECOMMENDATION_FAILED / AUTH_FAILED / PLAYLIST_FAILED
 ```
 
-Partial recommendations are ready states; zero tracks is an empty state. Persist ID in app state; do not assume exactly10 tracks. Android app return currently needs the missing handoff design.
+Partial recommendations are ready states; zero tracks is an empty state. Persist ID in app state; do not assume exactly5 tracks. Android app return requires configured and device-verified App Links.
 
 Recommendation retry can generate a new ID and incur fresh Gemini/resolver costs when live mode is later enabled. `request_id` doesn't deduplicate it. Playlist failure must **not** upload the image again. Retain recommendation_id and retry only the exact playlist body when safe.
 
@@ -202,12 +240,23 @@ interface SyncApi {
 
 data class DirectRecommendationResponse(
     @SerializedName("recommendation_id") val recommendationId: String,
+    val scene: SceneDescription,
+    val playlist: GeneratedPlaylist,
+    @SerializedName("language_policy") val languagePolicy: LanguagePolicy,
     val partial: Boolean,
     @SerializedName("target_track_count") val targetTrackCount: Int,
     val tracks: List<RecommendedTrack>
 )
+data class SceneDescription(val description: String)
+data class GeneratedPlaylist(val title: String)
+data class LanguagePolicy(@SerializedName("required_korean_tracks") val required: Int, @SerializedName("actual_korean_tracks") val actual: Int, val satisfied: Boolean)
 data class RecommendedTrack(
     val rank: Int, val artist: String,
+    @SerializedName("lyric_language") val lyricLanguage: String,
+    @SerializedName("korean_eligible") val koreanEligible: Boolean,
+    @SerializedName("album_title") val albumTitle: String?,
+    @SerializedName("album_artwork_url") val albumArtworkUrl: String?,
+    @SerializedName("youtube_thumbnail_url") val youtubeThumbnailUrl: String?,
     @SerializedName("track_title") val trackTitle: String,
     @SerializedName("video_id") val videoId: String,
     @SerializedName("youtube_title") val youtubeTitle: String?,
@@ -269,7 +318,7 @@ fun imagePart(resolver: ContentResolver, uri: Uri): MultipartBody.Part {
 }
 ```
 
-Client-side size check using OpenableColumns.SIZE is optional since some providers omit it; server remains authoritative and caps chunked uploads too. Don't manually set multipart Content-Type/boundary. Use read timeout above the server operation limit for debug (e.g.150s), no automatic retry of unconfirmed writes. Do not log request bodies, headers or cookies containing credentials. Debug fixture cookie, if used, must be restricted to the fixture host and never bundled in release builds. Real session provisioning for Retrofit is still pending.
+Client-side size check using OpenableColumns.SIZE is optional since some providers omit it; server remains authoritative and caps chunked uploads too. Don't manually set multipart Content-Type/boundary. Use read timeout above the server operation limit for debug (e.g.150s), no automatic retry of unconfirmed writes. Do not log request bodies, headers or cookies containing credentials. Debug fixture cookie, if used, must be restricted to the fixture host and never bundled in release builds. Real Retrofit session provisioning uses the mobile exchange contract above; device verification is pending.
 
 ## 12. Android handoff checklist
 
@@ -280,7 +329,7 @@ Client-side size check using OpenableColumns.SIZE is optional since some provide
 - [ ] Save recommendation_id and response; never re-search artist/title.
 - [ ] Check OAuth status with an authenticated app session.
 - [ ] Open the actual `/api/v1/auth/google` URL in Custom Tab/browser.
-- [ ] **Resolve backend app-return and secure browser/native session handoff first.**
+- [ ] **Provide actual Android package/signing values and verify the App Link on device.**
 - [ ] After handoff, recheck status; don't replay callback URL.
 - [ ] Send checkpoint playlist request; default private; no tracks or verified flags.
 - [ ] Handle partial playlist results and unconfirmed creation separately.
@@ -288,4 +337,4 @@ Client-side size check using OpenableColumns.SIZE is optional since some provide
 - [ ] Open playlist.url only for a real nonempty returned URL.
 - [ ] Handle checkpoint expiry/restart explicitly; no automatic image rerun after ambiguous writes.
 
-OpenAPI/Swagger source was not found in the current project/workspace outputs; no new Swagger framework was introduced. Full production activation still requires the existing readiness gate and the separate OAuth handoff design.
+OpenAPI/Swagger source was not found in the current project/workspace outputs; no new Swagger framework was introduced. Full production activation still requires the existing readiness gate and real Android App Link configuration and device validation.

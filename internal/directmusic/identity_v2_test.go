@@ -135,12 +135,12 @@ func (f *fallbackClient) GetVideos(_ context.Context, _ []string) ([]model.YouTu
 	f.videosCalls++
 	return []model.YouTubeVideo{validVideo()}, nil
 }
-func TestControlledFallbackAndAPIFailure(t *testing.T) {
+func TestSingleSearchAndAPIFailure(t *testing.T) {
 	cache, _ := NewCache("")
 	f := &fallbackClient{}
 	r := Resolver{Client: f, Cache: cache, Config: DefaultConfig()}
 	out, e := r.Resolve(context.Background(), candidate())
-	if e != nil || !IsResolved(out.Status) || len(f.queries) != 2 || f.queries[1] != "beach house space song" || r.Stats.PrimaryCalls != 1 || r.Stats.FallbackCalls != 1 || f.videosCalls != 1 {
+	if e != nil || IsResolved(out.Status) || len(f.queries) != 1 || f.queries[0] != "Beach House Space Song" || r.Stats.PrimaryCalls != 1 || r.Stats.FallbackCalls != 0 || f.videosCalls != 0 {
 		t.Fatal(out, e, f.queries, r.Stats)
 	}
 	cache, _ = NewCache("")

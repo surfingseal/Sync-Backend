@@ -22,3 +22,6 @@ credentials*.json
 # Generated Python bytecode
 __pycache__/
 *.py[cod]
+
+# Temporary local observation and validation helpers
+/work/

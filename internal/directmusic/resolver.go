@@ -5,14 +5,13 @@ import (
 	"errors"
 	"fmt"
 	"sort"
-	"strings"
 	"time"
 
 	"example.com/sync/internal/client"
 	"example.com/sync/internal/model"
 )
 
-const ResolverVersion = "exact_metadata_v2.2"
+const ResolverVersion = "exact_metadata_mvp_v3"
 const LegacyResolverVersion = "exact_metadata_v1"
 
 var ErrSearchBudget = errors.New("resolver search budget exhausted")
@@ -115,7 +114,7 @@ type SearchAttempt struct {
 	AcceptedCount int     `json:"accepted_count"`
 }
 
-// Resolve tries one primary identity query and only then one token query.
+// Resolve uses one artist/title query and at most five ranked candidates.
 // API errors never trigger a fallback or negative-cache entry.
 func (r *Resolver) Resolve(ctx context.Context, t model.DirectTrack) (out Resolution, err error) {
 	start := time.Now()
@@ -134,7 +133,7 @@ func (r *Resolver) Resolve(ctx context.Context, t model.DirectTrack) (out Resolu
 	entry, hit := r.Cache.Get(key)
 	legacyHit := false
 	if !hit {
-		for _, version := range []string{"exact_metadata_v2.1", "exact_metadata_v2", LegacyResolverVersion} {
+		for _, version := range []string{"exact_metadata_v2.2", "exact_metadata_v2.1", "exact_metadata_v2", LegacyResolverVersion} {
 			if old, ok := r.Cache.Get(policyCacheKey(t.Artist, t.Title, r.Config, version)); ok && !old.Negative {
 				entry = old
 				hit = true
@@ -177,17 +176,15 @@ func (r *Resolver) Resolve(ctx context.Context, t model.DirectTrack) (out Resolu
 		r.Stats.CacheMisses++
 	}
 	primary := IdentityPrimaryQuery(t)
-	fallback := IdentityTokenQuery(t)
 	known := map[string]model.YouTubeVideo{}
 	queried := map[string]bool{}
 	rawFound := false
 	versionFailure := false
-	for i, query := range []string{primary, fallback} {
+	{
+		query := primary
 		if r.Stats.SearchCalls >= r.Config.MaxSearchCalls {
-			if i == 0 {
-				out.Attempted = false
-				out.Status = "NOT_ATTEMPTED"
-			}
+			out.Attempted = false
+			out.Status = "NOT_ATTEMPTED"
 			out.Reason = "SEARCH_BUDGET_EXHAUSTED"
 			return out, ErrSearchBudget
 		}
@@ -195,27 +192,19 @@ func (r *Resolver) Resolve(ctx context.Context, t model.DirectTrack) (out Resolu
 		s := time.Now()
 		r.Stats.SearchCalls++
 		kind := "primary"
-		if i == 0 {
-			r.Stats.PrimaryCalls++
-		} else {
-			kind = "fallback"
-			r.Stats.FallbackCalls++
-		}
-		results, searchErr := r.Client.SearchMusic(ctxSearch, model.MusicSearchQuery{Text: query, Region: r.Config.Region, Order: "relevance", MaxResults: r.Config.SearchResults})
+		r.Stats.PrimaryCalls++
+		results, searchErr := r.Client.SearchMusic(ctxSearch, model.MusicSearchQuery{Text: query, Region: r.Config.Region, Order: "relevance", MaxResults: min(r.Config.SearchResults, 5)})
 		cancel()
 		ms := float64(time.Since(s)) / float64(time.Millisecond)
 		r.Stats.SearchMS += ms
-		if i == 0 {
-			r.Stats.PrimaryMS += ms
-		} else {
-			r.Stats.FallbackMS += ms
-		}
+		r.Stats.PrimaryMS += ms
 		out.Searches = append(out.Searches, SearchAttempt{Kind: kind, Query: query, Calls: 1, RawCount: len(results), LatencyMS: ms})
-		if i == 0 {
-			out.Query = query
-		}
+		out.Query = query
 		if searchErr != nil {
 			return out, searchErr
+		}
+		if len(results) > 5 {
+			results = results[:5]
 		}
 		rawFound = rawFound || len(results) > 0
 		ids := []string{}
@@ -249,7 +238,12 @@ func (r *Resolver) Resolve(ctx context.Context, t model.DirectTrack) (out Resolu
 			e Evidence
 		}
 		matches := []accepted{}
+		checked := map[string]bool{}
 		for _, result := range results {
+			if checked[result.VideoID] {
+				continue
+			}
+			checked[result.VideoID] = true
 			v, ok := known[result.VideoID]
 			if !ok {
 				continue
@@ -264,10 +258,16 @@ func (r *Resolver) Resolve(ctx context.Context, t model.DirectTrack) (out Resolu
 		out.Searches[len(out.Searches)-1].AcceptedCount = len(matches)
 		if len(matches) > 0 {
 			sort.SliceStable(matches, func(i, j int) bool {
-				if matches[i].e.IdentityConfidence != matches[j].e.IdentityConfidence {
-					return matches[i].e.IdentityConfidence > matches[j].e.IdentityConfidence
+				// Identity has already passed. Popularity never changes acceptance.
+				pi, pj := officialPriority(matches[i].e), officialPriority(matches[j].e)
+				if pi != pj {
+					return pi > pj
 				}
-				return officialPriority(matches[i].e) > officialPriority(matches[j].e)
+				ri, rj := releaseMetadataEvidence(t, matches[i].v), releaseMetadataEvidence(t, matches[j].v)
+				if ri != rj {
+					return ri
+				}
+				return matches[i].v.ViewCount > matches[j].v.ViewCount
 			})
 			out.Status = ResolvedStatus(matches[0].e)
 			out.Video = &matches[0].v
@@ -297,14 +297,10 @@ func videoCheck(v model.YouTubeVideo, e Evidence, reason string) VideoCheck {
 }
 func officialPriority(e Evidence) int {
 	switch e.Officiality {
-	case "topic":
-		return 5
-	case "vevo":
-		return 4
-	case "licensed":
-		return 3
-	case "official_artist":
+	case "topic", "vevo", "official_artist", "release_channel":
 		return 2
+	case "licensed":
+		return 1
 	case "ordinary_channel":
 		return 1
 	default:
@@ -328,8 +324,7 @@ func errorCode(e error) string {
 }
 
 func IdentityPrimaryQuery(t model.DirectTrack) string {
-	quote := func(s string) string { return `"` + strings.ReplaceAll(s, `"`, " ") + `"` }
-	return quote(t.Artist) + " " + quote(t.Title)
+	return Normalize(t.Artist) + " " + Normalize(t.Title)
 }
 func IdentityTokenQuery(t model.DirectTrack) string {
 	return matchKey(t.Artist) + " " + matchKey(t.Title)

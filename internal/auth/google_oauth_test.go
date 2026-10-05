@@ -53,3 +53,34 @@ func TestConfigurationAndCancellation(t *testing.T) {
 		t.Fatal("Start ignored cancellation")
 	}
 }
+
+func TestMobileBrowserBindingAndLocalCredentialLookup(t *testing.T) {
+	s := testOAuth()
+	ctx := context.Background()
+	state, _, err := s.Start(ctx, "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err = s.BindBrowser(ctx, state, "existing-browser-session"); err != nil {
+		t.Fatal(err)
+	}
+	if s.pending[state].previousSession != "existing-browser-session" {
+		t.Fatal("browser refresh preservation reference lost")
+	}
+	canceled, cancel := context.WithCancel(ctx)
+	cancel()
+	if !errors.Is(s.BindBrowser(canceled, state, ""), context.Canceled) {
+		t.Fatal("ignored cancellation")
+	}
+	if !errors.Is(s.BindBrowser(ctx, "unknown", ""), ErrStateInvalid) {
+		t.Fatal("accepted unknown state")
+	}
+	ok, err := s.SessionExists(ctx, "missing")
+	if err != nil || ok {
+		t.Fatal(ok, err)
+	}
+	// Local lookup does not refresh or contact an external provider.
+	if _, err = s.store.Get(ctx, "missing"); !errors.Is(err, ErrSessionNotFound) {
+		t.Fatal(err)
+	}
+}

@@ -11,6 +11,9 @@ import (
 const DefaultVertexModel = "gemini-3.8-flash"
 
 type Config struct {
+	MobileAppLinkBaseURL                string
+	AndroidPackageName                  string
+	AndroidAppSigningSHA256             string
 	RecommendationEngine                RecommendationEngine
 	RecommendationDataMode              string
 	RecommendationReplayPath            string
@@ -256,6 +259,9 @@ func Load() (Config, error) {
 			}
 		}
 	}
+	cfg.MobileAppLinkBaseURL = strings.TrimSpace(os.Getenv("MOBILE_APP_LINK_BASE_URL"))
+	cfg.AndroidPackageName = strings.TrimSpace(os.Getenv("ANDROID_PACKAGE_NAME"))
+	cfg.AndroidAppSigningSHA256 = strings.TrimSpace(os.Getenv("ANDROID_APP_SIGNING_SHA256"))
 	cfg.GoogleOAuthClientID = strings.TrimSpace(os.Getenv("GOOGLE_OAUTH_CLIENT_ID"))
 	cfg.GoogleOAuthClientSecret = strings.TrimSpace(os.Getenv("GOOGLE_OAUTH_CLIENT_SECRET"))
 	cfg.GoogleOAuthRedirectURL = "http://localhost:8080/api/v1/auth/google/callback"

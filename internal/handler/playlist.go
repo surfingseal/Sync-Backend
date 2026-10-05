@@ -77,7 +77,7 @@ func (h *PlaylistHandler) Create(c *gin.Context) {
 		}
 		return
 	}
-	session, _ := c.Cookie("sync_session")
+	session := credentialReference(c)
 	if session == "" {
 		writeError(c, 401, "YOUTUBE_NOT_CONNECTED", "YouTube account is not connected")
 		return
@@ -131,7 +131,7 @@ func (h *PlaylistHandler) createCheckpoint(c *gin.Context, data []byte) {
 		writeCheckpointError(c, err)
 		return
 	}
-	session, _ := c.Cookie("sync_session")
+	session := credentialReference(c)
 	if session == "" {
 		writeError(c, 401, "YOUTUBE_NOT_CONNECTED", "YouTube account is not connected")
 		return

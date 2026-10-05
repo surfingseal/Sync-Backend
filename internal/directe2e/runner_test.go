@@ -44,12 +44,12 @@ func (s *search) SearchMusic(_ context.Context, q model.MusicSearchQuery) ([]mod
 	if s.empty {
 		return []model.YouTubeSearchResult{}, nil
 	}
-	parts := strings.Split(q.Text, `"`)
-	if len(parts) < 4 {
+	parts := strings.SplitN(q.Text, " Song ", 2)
+	if len(parts) != 2 {
 		return nil, fmt.Errorf("broad query")
 	}
 	id := fmt.Sprint(s.calls)
-	s.videos[id] = model.YouTubeVideo{VideoID: id, Title: parts[1] + " - " + parts[3], ChannelTitle: parts[1] + " - Topic", Public: true, Embeddable: true, CategoryID: "10", DurationSeconds: 240}
+	s.videos[id] = model.YouTubeVideo{VideoID: id, Title: parts[0] + " - Song " + parts[1], ChannelTitle: parts[0] + " - Topic", Public: true, Embeddable: true, CategoryID: "10", DurationSeconds: 240}
 	return []model.YouTubeSearchResult{{VideoID: id}}, nil
 }
 func (s *search) GetVideos(_ context.Context, ids []string) ([]model.YouTubeVideo, error) {
@@ -118,7 +118,7 @@ func TestPartialBudgetAndDefaults(t *testing.T) {
 	r, _, s, im := setup(t)
 	s.empty = true
 	out, e := r.Run(context.Background(), im)
-	if e != nil || len(out.Tracks) != 0 || !out.Partial || s.calls != 9 {
+	if e != nil || len(out.Tracks) != 0 || !out.Partial || s.calls != 8 {
 		t.Fatal(out, e, s.calls)
 	}
 	if _, e := Load(r.Output); e != nil {

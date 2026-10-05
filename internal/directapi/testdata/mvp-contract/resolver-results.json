@@ -1,0 +1,202 @@
+[
+  {
+    "candidate": {
+      "artist": "Fixture Artist 1",
+      "title": "Fixture Song 1",
+      "fit_score": 0.98,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "ko"
+    },
+    "status": "RESOLVED_STRONG",
+    "attempted": true,
+    "video": {
+      "VideoID": "mock-video-1",
+      "Title": "Synthetic YouTube Title 1",
+      "ChannelTitle": "Fixture Channel",
+      "ThumbnailURL": "",
+      "DurationSeconds": 180
+    },
+    "evidence": {
+      "artist_match": "fixture",
+      "title_match": "fixture",
+      "playable": true,
+      "caveat": "Synthetic metadata, not a live YouTube verification"
+    },
+    "searches": []
+  },
+  {
+    "candidate": {
+      "artist": "Fixture Artist 2",
+      "title": "Fixture Song 2",
+      "fit_score": 0.94,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "ko_en"
+    },
+    "status": "RESOLVED_STRONG",
+    "attempted": true,
+    "video": {
+      "VideoID": "mock-video-2",
+      "Title": "Synthetic YouTube Title 2",
+      "ChannelTitle": "Fixture Channel",
+      "ThumbnailURL": "",
+      "DurationSeconds": 180
+    },
+    "evidence": {
+      "artist_match": "fixture",
+      "title_match": "fixture",
+      "playable": true,
+      "caveat": "Synthetic metadata, not a live YouTube verification"
+    },
+    "searches": []
+  },
+  {
+    "candidate": {
+      "artist": "Fixture Artist 3",
+      "title": "Fixture Song 3",
+      "fit_score": 0.9,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "ko"
+    },
+    "status": "RESOLVED_STRONG",
+    "attempted": true,
+    "video": {
+      "VideoID": "mock-video-3",
+      "Title": "Synthetic YouTube Title 3",
+      "ChannelTitle": "Fixture Channel",
+      "ThumbnailURL": "",
+      "DurationSeconds": 180
+    },
+    "evidence": {
+      "artist_match": "fixture",
+      "title_match": "fixture",
+      "playable": true,
+      "caveat": "Synthetic metadata, not a live YouTube verification"
+    },
+    "searches": []
+  },
+  {
+    "candidate": {
+      "artist": "Fixture Artist 4",
+      "title": "Fixture Song 4",
+      "fit_score": 0.86,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "ko_en"
+    },
+    "status": "RESOLVED_STRONG",
+    "attempted": true,
+    "video": {
+      "VideoID": "mock-video-4",
+      "Title": "Synthetic YouTube Title 4",
+      "ChannelTitle": "Fixture Channel",
+      "ThumbnailURL": "",
+      "DurationSeconds": 180
+    },
+    "evidence": {
+      "artist_match": "fixture",
+      "title_match": "fixture",
+      "playable": true,
+      "caveat": "Synthetic metadata, not a live YouTube verification"
+    },
+    "searches": []
+  },
+  {
+    "candidate": {
+      "artist": "Fixture Artist 5",
+      "title": "Fixture Song 5",
+      "fit_score": 0.82,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "en"
+    },
+    "status": "RESOLVED_STRONG",
+    "attempted": true,
+    "video": {
+      "VideoID": "mock-video-5",
+      "Title": "Synthetic YouTube Title 5",
+      "ChannelTitle": "Fixture Channel",
+      "ThumbnailURL": "",
+      "DurationSeconds": 180
+    },
+    "evidence": {
+      "artist_match": "fixture",
+      "title_match": "fixture",
+      "playable": true,
+      "caveat": "Synthetic metadata, not a live YouTube verification"
+    },
+    "searches": []
+  },
+  {
+    "candidate": {
+      "artist": "Fixture Artist 6",
+      "title": "Fixture Song 6",
+      "fit_score": 0.78,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "en"
+    },
+    "status": "RESOLVED_STRONG",
+    "attempted": true,
+    "video": {
+      "VideoID": "mock-video-6",
+      "Title": "Synthetic YouTube Title 6",
+      "ChannelTitle": "Fixture Channel",
+      "ThumbnailURL": "",
+      "DurationSeconds": 180
+    },
+    "evidence": {
+      "artist_match": "fixture",
+      "title_match": "fixture",
+      "playable": true,
+      "caveat": "Synthetic metadata, not a live YouTube verification"
+    },
+    "searches": []
+  },
+  {
+    "candidate": {
+      "artist": "Fixture Artist 7",
+      "title": "Fixture Song 7",
+      "fit_score": 0.74,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "instrumental"
+    },
+    "status": "RESOLVED_STRONG",
+    "attempted": true,
+    "video": {
+      "VideoID": "mock-video-7",
+      "Title": "Synthetic YouTube Title 7",
+      "ChannelTitle": "Fixture Channel",
+      "ThumbnailURL": "",
+      "DurationSeconds": 180
+    },
+    "evidence": {
+      "artist_match": "fixture",
+      "title_match": "fixture",
+      "playable": true,
+      "caveat": "Synthetic metadata, not a live YouTube verification"
+    },
+    "searches": []
+  },
+  {
+    "candidate": {
+      "artist": "Fixture Artist 8",
+      "title": "Fixture Song 8",
+      "fit_score": 0.7,
+      "reason": "Synthetic contract fixture; no live model inference",
+      "lyric_language": "unknown"
+    },
+    "status": "RESOLVED_STRONG",
+    "attempted": true,
+    "video": {
+      "VideoID": "mock-video-8",
+      "Title": "Synthetic YouTube Title 8",
+      "ChannelTitle": "Fixture Channel",
+      "ThumbnailURL": "",
+      "DurationSeconds": 180
+    },
+    "evidence": {
+      "artist_match": "fixture",
+      "title_match": "fixture",
+      "playable": true,
+      "caveat": "Synthetic metadata, not a live YouTube verification"
+    },
+    "searches": []
+  }
+]

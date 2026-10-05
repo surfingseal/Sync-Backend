@@ -49,7 +49,7 @@ func (simulatedPlaylist) AddVideo(ctx context.Context, _ string, id string, _ in
 }
 func main() {
 	port := flag.String("port", "8081", "loopback fixture port")
-	dir := flag.String("fixture", "internal/directapi/testdata/completed-e2e", "saved completed E2E fixture")
+	dir := flag.String("fixture", "internal/directapi/testdata/mvp-contract", "explicit synthetic MVP contract fixture")
 	flag.Parse()
 	result, err := directapi.LoadFixture(*dir)
 	if err != nil {
@@ -64,7 +64,7 @@ func main() {
 	sessions := simulatedSession{}
 	creator := service.NewPlaylistService(sessions, func(context.Context, *http.Client) (client.PlaylistClient, error) { return simulatedPlaylist{}, nil }, service.DefaultPlaylistTimeout)
 	playlists := directapi.NewPlaylists(store, sessions, creator)
-	cfg := config.Config{AppEnv: "development", RecommendationEngine: config.DirectEngine, RecommendationCount: 10}
+	cfg := config.Config{AppEnv: "development", RecommendationEngine: config.DirectEngine, RecommendationCount: 5}
 	engine := router.NewWithDirect(cfg, nil, nil, nil, direct, playlists)
 	h := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("X-Sync-Data-Mode", "fixture")
@@ -79,7 +79,7 @@ func main() {
 		defer cancel()
 		_ = srv.Shutdown(shutdown)
 	}()
-	log.Printf("OFFLINE fixture server http://%s; uploaded image is validated, saved recommendations are replayed; no real OAuth/playlist", srv.Addr)
+	log.Printf("OFFLINE fixture server http://%s; uploaded image is validated, explicit synthetic fixture is replayed; no real OAuth/playlist", srv.Addr)
 	if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
 		log.Fatal(err)
 	}
